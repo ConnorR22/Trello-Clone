@@ -1,4 +1,4 @@
-package TrelloClone_Group20;
+package Group20SpringBoot.Group20;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
