@@ -1,6 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Group20",
+    "\\trello-clone",
+    "\\trello-clone\\public",
+    "\\trello-clone\\src"
   ],
+  "SelectedNode": "\\Group20\\pom.xml",
   "PreviewInSolutionExplorer": false
 }
