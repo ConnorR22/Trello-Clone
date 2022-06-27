@@ -11,12 +11,12 @@ public class UserModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String Name;
+    private String name;
     private String emailId;
     private String password;
 
     public UserModel(String name, String emailId, String password) {
-        Name = name;
+        this.name = name;
         this.emailId = emailId;
         this.password = password;
     }
@@ -26,11 +26,11 @@ public class UserModel {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getEmailId() {
