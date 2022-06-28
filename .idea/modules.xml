@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/Group20/Group20.iml" filepath="$PROJECT_DIR$/Group20/Group20.iml" />
+=======
+>>>>>>> Lynda_Dev
       <module fileurl="file://$PROJECT_DIR$/.idea/group20.iml" filepath="$PROJECT_DIR$/.idea/group20.iml" />
     </modules>
   </component>
