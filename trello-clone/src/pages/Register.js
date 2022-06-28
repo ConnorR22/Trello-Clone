@@ -1,7 +1,13 @@
+import Registerform from "../stylings/Registrationform";
+import React, {useRef} from 'react';
+
 function Registration(){
   return (
-
-    <h1> Register Here</h1>
+  <div>
+    <h1> Register Page</h1>
+      <Registerform/>
+  </div>
+    
   );
 
 }
