@@ -1,19 +1,23 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> Lynda_Dev
-
+import {Route, Switch} from "react-router-dom"
+import Registration from "./pages/Register";
+import Loginpage from "./pages/Login";
+import Home from "./pages/Home";
 function App() {
 
   return (
-<<<<<<< HEAD
-    <div>
-          Hello there From React
-      
-    </div>
-=======
-    <div> Hello there From React </div>
->>>>>>> Lynda_Dev
+    <Switch>
+      <Route path="/login">
+        <Loginpage/>
+      </Route>
+
+      <Route path="/register">
+        <Registration/>
+      </Route>
+
+      <Route path="/home">
+        <Home/>
+      </Route>
+    </Switch>
   );
 }
 
