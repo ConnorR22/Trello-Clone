@@ -3,7 +3,6 @@ package Group20SpringBoot.Group20.boards.service;
 import Group20SpringBoot.Group20.boards.entity.BoardModel;
 import Group20SpringBoot.Group20.boards.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -29,14 +28,14 @@ public class BoardService implements IBoardService {
     public BoardModel findBoardByID(int boardId) {
         BoardModel boardModel = null;
 
-//        Optional<BoardModel> optionalBoardModel = BoardRepository.findBoardByID();
-//        if(optionalBoardModel.isPresent())
-//        {
-//            boardModel = optionalBoardModel.get();
-//        }
+//        Optional<BoardModel> optBoardModel = boardRepository.findById(boardId);
+        Optional<BoardModel> optionalBoardModel = boardRepository.findById(boardId);
+        if(optionalBoardModel.isPresent())
+        {
+            boardModel = optionalBoardModel.get();
+        }
 
         return boardModel;
-
     }
 
     @Override
