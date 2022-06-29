@@ -29,7 +29,7 @@ public class BoardController {
     }
 
     @GetMapping("/get_all")
-    public List<BoardModel> getAllBoards(int workspaceId)
+    public List<BoardModel> getBoards(int workspaceId)
     {
         return boardService.getBoards(workspaceId);
     }
