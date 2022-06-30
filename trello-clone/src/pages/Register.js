@@ -1,14 +1,17 @@
+import { useHistory } from "react-router-dom";
 import Registerform from "../stylings/RegisterForm";
 
 
 function Registration(){
 
+  const history = useHistory();
+
   function userHandler(user){
-    fetch('db.cs.dal.ca/users.json' , {
+    fetch('' , {
       method: 'POST',
       body: JSON.stringify(user),
-      headers: {'Content-Type' : 'application/json'}
-    })
+      headers: {'Content-Type': 'application/json'}
+    }).then(() => history.replace('/login'));
    
 
 
@@ -17,7 +20,7 @@ function Registration(){
   return (
   <div>
     <h1> Register Page</h1>
-      <Registerform/>
+      <Registerform userHand={userHandler}/>
   </div>
     
   );

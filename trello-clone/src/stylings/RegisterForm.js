@@ -1,7 +1,7 @@
 
 import React, { useRef } from 'react';
 
-function Registerform(){
+function Registerform(props){
 
    const fullNameRef = useRef();
    const emailRef = useRef();
@@ -15,7 +15,7 @@ function Registerform(){
       const password = passwordRef.current.value;
       const user = {fullName, email, password};
 
-      console.log(user);
+      props.userHand(user);
    }
 
    return (
