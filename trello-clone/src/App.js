@@ -3,9 +3,10 @@ import Registration from "./pages/Register";
 import Loginpage from "./pages/Login";
 import Home from "./pages/Home";
 import Navbar from "./stylings/NavBar";
-function App() {
 
+function App() {
   return (
+    
     <div>
     <Navbar/>
     <Switch>
@@ -18,8 +19,10 @@ function App() {
       <Route path="/register">
         <Registration/>
       </Route>
+      
     </Switch>
     </div>
+
   );
 }
 

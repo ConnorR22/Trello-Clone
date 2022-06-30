@@ -1,7 +1,7 @@
 function Home(){
     return (
   
-        <h1> Trello Clone </h1>
+        <h1> Trello </h1>
     );
   
   }

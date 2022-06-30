@@ -18,10 +18,10 @@ function Registration(){
   }
 
   return (
-  <div>
+  <section>
     <h1> Register Page</h1>
       <Registerform userHand={userHandler}/>
-  </div>
+  </section>
     
   );
 

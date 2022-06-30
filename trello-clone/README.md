@@ -1,5 +1,12 @@
 # Getting Started with Create React App
 
+Team Members:
+Lynda Ofume 
+
+
+References:
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
