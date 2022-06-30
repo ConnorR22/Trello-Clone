@@ -1,5 +1,7 @@
 package Group20SpringBoot.Group20.boards.entity;
 
+import Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel;
+
 import javax.persistence.*;
 
 @Entity(name = "Board")
@@ -9,14 +11,16 @@ public class BoardModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int boardId;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+    @ManyToOne(targetEntity = WorkspaceModel.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private int workspaceId;
 
     private String boardTitle;
 
     private String status;
 
-    public BoardModel( String boardTitle, String status) {
+    public BoardModel(int workspaceId, String boardTitle, String status) {
+        this.workspaceId = workspaceId;
         this.boardTitle = boardTitle;
         this.status = status;
     }

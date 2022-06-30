@@ -9,8 +9,9 @@ public interface IBoardService {
 
     BoardModel findBoardByID(int boardId);
 
-    List<BoardModel> getBoards(int workspaceId);
+    void updateBoard(int boardId, BoardModel boardModel);
 
     void deleteBoard(int boardId);
 
+    List<BoardModel> getBoards(int workspaceId);
 }
