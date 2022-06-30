@@ -5,6 +5,8 @@ import Group20SpringBoot.Group20.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -13,9 +15,10 @@ public class UserController {
     UserService userService;
 
     @PostMapping("/save")
-    public UserModel signupUser(@RequestBody UserModel userModel) {
-        return userService.signUpUser(userModel);
+    public UserModel saveUser(@RequestBody UserModel userModel) {
+        return userService.saveUser(userModel);
     }
+
 
 //    @PutMapping("/assignTask/{userId}")
 //    public UserModel updateTask(@PathVariable Long userId, @RequestParam Long taskId)
@@ -24,11 +27,11 @@ public class UserController {
 //        return model;
 //    }
 //
-//    @GetMapping("/getAll")
-//    public List<UserModel> getAllUsers()
-//    {
-//        return userService.getAllUsers();
-//    }
+    @GetMapping("/getAll")
+    public List<UserModel> getAllUsers()
+    {
+        return userService.getAllUsers();
+    }
 
 
 }

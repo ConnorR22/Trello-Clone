@@ -23,6 +23,13 @@ public class BoardController {
         return boardService.createBoard(boardModel);
     }
 
+    @PutMapping("/update/{boardId}")
+    public void update(@PathVariable int boardId, @RequestParam BoardModel boardModel)
+    {
+        boardService.updateBoard(boardId, boardModel);
+    }
+
+
     @GetMapping("/get/{boardId}")
     public BoardModel findBoardByID(@PathVariable int boardId){
         return boardService.findBoardByID(boardId);
@@ -33,7 +40,6 @@ public class BoardController {
     {
         return boardService.getBoards(workspaceId);
     }
-
 
     @DeleteMapping("/delete/{boardId}")
     public void deleteTask(@PathVariable int boardId)
