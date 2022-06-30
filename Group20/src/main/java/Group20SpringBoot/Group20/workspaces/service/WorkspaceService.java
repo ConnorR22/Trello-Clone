@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class WorkspaceService implements IWorkspaceService{
@@ -24,7 +25,15 @@ public class WorkspaceService implements IWorkspaceService{
 
     @Override
     public WorkspaceModel findWorkspaceByID(int workspaceId) {
-        return null;
+        WorkspaceModel workspaceModel = null;
+
+        Optional<WorkspaceModel> optionalWorkspaceModel = workspaceRepository.findById(workspaceId);
+        if(optionalWorkspaceModel.isPresent())
+        {
+            workspaceModel = optionalWorkspaceModel.get();
+        }
+
+        return workspaceModel;
     }
 
     @Override

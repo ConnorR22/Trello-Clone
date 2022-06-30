@@ -12,7 +12,12 @@ public class BoardModel {
     private int boardId;
 
 //    @GeneratedValue(strategy = GenerationType.AUTO)
-    @ManyToOne(targetEntity = WorkspaceModel.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    @ManyToOne(targetEntity = WorkspaceModel.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    @JoinTable(
+//            name="workspace",
+//            joinColumns=
+//            @JoinColumn( name="workspaceId", referencedColumnName="workspaceId"),
+//            inverseJoinColumns=@JoinColumn(name="boardId", referencedColumnName="boardId"))
     private int workspaceId;
 
     private String boardTitle;

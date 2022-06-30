@@ -1,6 +1,7 @@
 package Group20SpringBoot.Group20.workspaces.entity;
 
 import Group20SpringBoot.Group20.boards.entity.BoardModel;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -17,12 +18,8 @@ public class WorkspaceModel {
 
     private String workspaceDesc;
 
+    @JsonIgnore
     @OneToMany(targetEntity = BoardModel.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(
-            name="workspace_board",
-            joinColumns=
-            @JoinColumn( name="workspace_id", referencedColumnName="workspaceId"),
-            inverseJoinColumns=@JoinColumn(name="board_id", referencedColumnName="boardId"))
     private List<BoardModel> boards;
 
     public WorkspaceModel(String workspaceTitle, String workspaceDesc) {
