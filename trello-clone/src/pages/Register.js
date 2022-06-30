@@ -1,5 +1,6 @@
 import { useHistory } from "react-router-dom";
 import Registerform from "../stylings/RegisterForm";
+import e from "./Register.module.css";
 
 
 function Registration(){
@@ -18,8 +19,8 @@ function Registration(){
   }
 
   return (
-  <section>
-    <h1> Register Page</h1>
+  <section className={e.forms}>
+    <h1 className={e.registerColor}> Register Page</h1>
       <Registerform userHand={userHandler}/>
   </section>
     

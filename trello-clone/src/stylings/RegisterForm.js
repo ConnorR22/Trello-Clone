@@ -25,16 +25,21 @@ function Registerform(props){
    }
 
    return (
+      <section>
        <form onSubmit={submitHandler}>
         <input type="text" required placeholder="Full Name" ref={fullNameRef} />
+        <br></br>
         <input type="email" required placeholder="Email Address" ref={emailRef} />
+        <br></br>
         <input pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{0,8}" 
         title="Must contain at least one number and one uppercase and lowercase letter, and at least 8"
         type="password" required placeholder="Password" ref={passwordRef} />
-         
+         <br></br>
          <input maxLength={1} type="text" required placeholder="Do you like dogs? (Y/N)" ref={securityRef} />
+         <br></br>
         <button> Register Now </button>
        </form>
+       </section>
     );
   
   }

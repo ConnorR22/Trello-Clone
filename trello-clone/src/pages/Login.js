@@ -16,8 +16,9 @@ function Loginpage(){
   <div className={c.forms}>
     <h1 className={c.loginColor}> Login Here </h1>
       <LoginForm LoginHand={LoginHandler}/>
-      <a href="/forgotpassword"><p className="forgetIt">Forgot Password? </p></a>
+      <section className="forgetIt"> <a href="/forgotpassword"><p> Forgot Password? </p></a></section>
   </div>  
+  
     
   );
 

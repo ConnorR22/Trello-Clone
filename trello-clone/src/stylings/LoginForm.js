@@ -20,7 +20,9 @@ function LoginForm(props){
    return (
        <form onSubmit={submitHandler}>
         <input type="email" required placeholder="Email Address" ref={emailRef} />
+        <br></br>
         <input type="password" required placeholder="Password" ref={passwordRef} />
+        <br></br>
         <button> Login </button>
        </form>
     );
