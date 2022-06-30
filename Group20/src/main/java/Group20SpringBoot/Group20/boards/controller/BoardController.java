@@ -23,17 +23,28 @@ public class BoardController {
         return boardService.createBoard(boardModel);
     }
 
+    @PutMapping("/update/{boardId}")
+    public void update(@PathVariable int boardId, @RequestParam BoardModel boardModel)
+    {
+        boardService.updateBoard(boardModel);
+    }
+
     @GetMapping("/get/{boardId}")
     public BoardModel findBoardByID(@PathVariable int boardId){
         return boardService.findBoardByID(boardId);
     }
 
-    @GetMapping("/get_all")
-    public List<BoardModel> getBoards(int workspaceId)
+    @GetMapping("/getWorkspaceBoards/{workspaceId}")
+    public List<BoardModel> getAllBoards(@PathVariable int workspaceId)
     {
-        return boardService.getBoards(workspaceId);
+        return boardService.getWorkspaceBoards(workspaceId);
     }
 
+    @GetMapping("/getAll")
+    public List<BoardModel> getAllBoards()
+    {
+        return boardService.getBoards();
+    }
 
     @DeleteMapping("/delete/{boardId}")
     public void deleteTask(@PathVariable int boardId)

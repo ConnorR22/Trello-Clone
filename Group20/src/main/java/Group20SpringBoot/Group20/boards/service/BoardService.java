@@ -28,7 +28,6 @@ public class BoardService implements IBoardService {
     public BoardModel findBoardByID(int boardId) {
         BoardModel boardModel = null;
 
-//        Optional<BoardModel> optBoardModel = boardRepository.findById(boardId);
         Optional<BoardModel> optionalBoardModel = boardRepository.findById(boardId);
         if(optionalBoardModel.isPresent())
         {
@@ -39,13 +38,23 @@ public class BoardService implements IBoardService {
     }
 
     @Override
-    public List<BoardModel> getBoards(int workspaceId) {
-        return null;
+    public void updateBoard(@RequestBody BoardModel boardModel) {
+        boardRepository.save(boardModel);
     }
 
     @Override
     public void deleteBoard(int boardId) {
         boardRepository.deleteById(boardId);
+    }
+
+    @Override
+    public List<BoardModel> getWorkspaceBoards(int workspaceId) {
+        return null;
+    }
+
+    @Override
+    public List<BoardModel> getBoards() {
+        return boardRepository.findAll();
     }
 
 }
