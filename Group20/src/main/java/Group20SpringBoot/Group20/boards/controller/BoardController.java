@@ -24,9 +24,9 @@ public class BoardController {
     }
 
     @PutMapping("/update/{boardId}")
-    public void update(@PathVariable int boardId, @RequestParam BoardModel boardModel)
+    public BoardModel update(@PathVariable int boardId, @RequestBody BoardModel boardModel)
     {
-        boardService.updateBoard(boardModel);
+        return boardService.updateBoard(boardId, boardModel);
     }
 
     @GetMapping("/get/{boardId}")

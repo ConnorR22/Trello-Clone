@@ -11,8 +11,8 @@ public class BoardModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int boardId;
 
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-    @ManyToOne(targetEntity = WorkspaceModel.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    @ManyToOne
+//    @JoinColumn(name = "workspace_Id")
     private int workspaceId;
 
     private String boardTitle;
@@ -46,7 +46,13 @@ public class BoardModel {
         this.status = status;
     }
 
+    public int getWorkspaceId() {
+        return workspaceId;
+    }
 
+    public void setWorkspaceId(int workspaceId) {
+        this.workspaceId = workspaceId;
+    }
 
 
 }

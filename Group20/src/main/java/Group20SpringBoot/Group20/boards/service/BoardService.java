@@ -38,8 +38,17 @@ public class BoardService implements IBoardService {
     }
 
     @Override
-    public void updateBoard(@RequestBody BoardModel boardModel) {
-        boardRepository.save(boardModel);
+    public BoardModel updateBoard(int boardId, BoardModel boardModel) {
+        BoardModel updatedBoard = findBoardByID(boardId);
+
+        if (boardModel.getBoardTitle() != null){
+            updatedBoard.setBoardTitle(boardModel.getBoardTitle());
+        }
+        if (boardModel.getStatus() != null){
+            updatedBoard.setStatus(boardModel.getStatus());
+        }
+
+        return boardRepository.save(updatedBoard);
     }
 
     @Override

@@ -9,7 +9,7 @@ public interface IBoardService {
 
     BoardModel findBoardByID(int boardId);
 
-    void updateBoard(BoardModel boardModel);
+    BoardModel updateBoard(int boardId, BoardModel boardModel);
 
     void deleteBoard(int boardId);
 
