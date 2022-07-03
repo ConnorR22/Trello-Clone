@@ -18,11 +18,6 @@ public class WorkspaceModel {
     private String workspaceDesc;
 
     @OneToMany(targetEntity = BoardModel.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(
-            name="workspace_board",
-            joinColumns=
-            @JoinColumn( name="workspace_id", referencedColumnName="workspaceId"),
-            inverseJoinColumns=@JoinColumn(name="board_id", referencedColumnName="boardId"))
     private List<BoardModel> boards;
 
     public WorkspaceModel(String workspaceTitle, String workspaceDesc) {
@@ -56,5 +51,9 @@ public class WorkspaceModel {
 
     public List<BoardModel> getBoards() {
         return boards;
+    }
+
+    public void setBoards(List<BoardModel> boards) {
+        this.boards = boards;
     }
 }

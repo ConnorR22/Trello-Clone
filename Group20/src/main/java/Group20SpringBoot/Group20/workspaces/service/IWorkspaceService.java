@@ -11,6 +11,8 @@ public interface IWorkspaceService {
 
     WorkspaceModel findWorkspaceByID(int workspaceId);
 
+    WorkspaceModel addBoard(int workspaceId, int boardId);
+
     List<BoardModel> getBoardsOfWorkspace(int workspaceId);
 
     void deleteWorkspace(int workspaceId);

@@ -11,13 +11,17 @@ public class BoardModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int boardId;
 
-//    @ManyToOne
-//    @JoinColumn(name = "workspace_Id")
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinTable(name = "workspaceId")
     private int workspaceId;
 
     private String boardTitle;
 
     private String status;
+
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "workspaceId")
+//    private WorkspaceModel workspace;
 
     public BoardModel(int workspaceId, String boardTitle, String status) {
         this.workspaceId = workspaceId;
@@ -28,6 +32,10 @@ public class BoardModel {
 
     public BoardModel() {
 
+    }
+
+    public int getBoardId() {
+        return boardId;
     }
 
     public String getBoardTitle() {
@@ -49,10 +57,5 @@ public class BoardModel {
     public int getWorkspaceId() {
         return workspaceId;
     }
-
-    public void setWorkspaceId(int workspaceId) {
-        this.workspaceId = workspaceId;
-    }
-
 
 }
