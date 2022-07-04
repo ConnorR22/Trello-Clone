@@ -3,7 +3,8 @@ import React, { useRef } from 'react';
 
 function Registerform(props){
 
-   const fullNameRef = useRef();
+   const fNameRef = useRef();
+   const lNameRef = useRef();
    const emailRef = useRef();
    const passwordRef = useRef();
    const securityRef = useRef();
@@ -13,12 +14,13 @@ function Registerform(props){
       event.preventDefault();
    
 
-      const fullName = fullNameRef.current.value;
+      const fName = fNameRef.current.value;
+      const lName = lNameRef.current.value;
       const email = emailRef.current.value;
       const password = passwordRef.current.value;
       const security = securityRef.current.value;
 
-      const user = {fullName, email, password, security};
+      const user = {fName, lName, email, password, security};
 
 
       props.userHand(user);
@@ -27,7 +29,9 @@ function Registerform(props){
    return (
       <section>
        <form onSubmit={submitHandler}>
-        <input type="text" required placeholder="Full Name" ref={fullNameRef} />
+        <input type="text" required placeholder="First Name" ref={fNameRef} />
+        <br></br>
+        <input type="text" required placeholder="Last Name" ref={lNameRef} />
         <br></br>
         <input type="email" required placeholder="Email Address" ref={emailRef} />
         <br></br>
@@ -35,7 +39,7 @@ function Registerform(props){
         title="Must contain at least one number and one uppercase and lowercase letter, and at least 8"
         type="password" required placeholder="Password" ref={passwordRef} />
          <br></br>
-         <input maxLength={1} type="text" required placeholder="Do you like dogs? (Y/N)" ref={securityRef} />
+         <input maxLength={64} type="text" required placeholder="What country would you like to visit?" ref={securityRef} />
          <br></br>
         <button> Register Now </button>
        </form>
