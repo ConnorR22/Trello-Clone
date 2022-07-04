@@ -1,5 +1,5 @@
 import { useHistory } from "react-router-dom";
-import LoginForm from "../stylings/LoginForm";
+import LoginForm from "../components/forms/LoginForm";
 import c from "./Login.module.css";
 
 function Loginpage(){
@@ -19,9 +19,8 @@ function Loginpage(){
       <section className="forgetIt"> <a href="/forgotpassword"><p> Forgot Password? </p></a></section>
   </div>  
   
-    
   );
-
 }
+
 export default Loginpage;
 

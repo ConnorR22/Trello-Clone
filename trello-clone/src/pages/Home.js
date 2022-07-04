@@ -1,6 +1,5 @@
 function Home(){
-    return (
-  
+    return (  
         <h1> Trello </h1>
     );
   

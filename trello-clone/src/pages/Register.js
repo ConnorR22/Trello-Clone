@@ -1,5 +1,5 @@
 import { useHistory } from "react-router-dom";
-import Registerform from "../stylings/RegisterForm";
+import Registerform from "../components/forms/RegisterForm";
 import e from "./Register.module.css";
 
 
