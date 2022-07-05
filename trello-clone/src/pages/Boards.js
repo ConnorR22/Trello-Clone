@@ -5,7 +5,7 @@ function Boards() {
     const [boardsData, setBoardsData] = useState([]);
 
     function getAllBoards() {
-        fetch('http://localhost:3000/board')
+        fetch('http://localhost:3000/boards')
             .then(response => response.json())
             .then(boards => {
                 setBoardsData(boards);

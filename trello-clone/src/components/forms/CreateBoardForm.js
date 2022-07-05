@@ -19,16 +19,17 @@ function CreateBoardForm(props) {
     };
 
     return (
-        <section style={{ marginTop: '64px' }}>
+        <section style={{ marginTop: '70px' }}>
             <Card elevation={6}>
                 <Grid container 
                     direction="column" 
                     justifyContent="center" 
                     alignItems="center"
+                    padding={10}
 
                 >
                     <Typography variant='h2'>Create New Board</Typography>
-                    
+                    <br></br>
                     <form onSubmit={createBoard}>
                         <TextField
                             id='boardName'
