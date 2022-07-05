@@ -22,7 +22,7 @@ function ForgotPassForm(props){
         <br></br>
         <input type="text" required placeholder="What country would you like to visit?" ref={securityRef} />
         <br></br>
-        <button> Reset Password </button>
+        <button> Confirm </button>
        </form>
     );
   
