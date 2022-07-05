@@ -1,5 +1,4 @@
 import { useHistory } from "react-router-dom";
-import ForgotPassForm from "../components/forms/ForgotpassForm";
 import ResetPassForm from "../components/forms/ResetPasswordForm";
 import r from "../pages/Login.module.css";
 
