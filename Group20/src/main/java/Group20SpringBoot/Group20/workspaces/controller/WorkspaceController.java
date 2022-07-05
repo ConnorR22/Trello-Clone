@@ -7,6 +7,8 @@ import Group20SpringBoot.Group20.workspaces.service.WorkspaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/workspace")
 public class WorkspaceController {
@@ -26,6 +28,11 @@ public class WorkspaceController {
     @PutMapping("/addBoard/{workspaceId}")
     public WorkspaceModel addBoard(@PathVariable int workspaceId, @RequestParam int boardId) {
         return workspaceService.addBoard(workspaceId, boardId);
+    }
+
+    @GetMapping("/getBoards/{workspaceId}")
+    public List<BoardModel> addBoard(@PathVariable int workspaceId) {
+        return workspaceService.getBoardsOfWorkspace(workspaceId);
     }
 
     @DeleteMapping("/removeBoard/{workspaceId}")
