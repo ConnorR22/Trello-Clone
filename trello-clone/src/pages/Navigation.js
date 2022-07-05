@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom"
 import React from 'react';
 
-
+/* functionality for stagnant registration */
 function Navigation(){
 
     return(

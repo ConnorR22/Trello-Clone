@@ -2,7 +2,7 @@ import { useHistory } from "react-router-dom";
 import Registerform from "../components/forms/RegisterForm";
 import e from "./Register.module.css";
 
-
+/* functionality for registration page */
 function Registration(){
 
   const history = useHistory();
@@ -13,9 +13,6 @@ function Registration(){
       body: JSON.stringify(user),
       headers: {'Content-Type': 'application/json'}
     }).then(() => history.replace('/login'));
-   
-
-
   }
 
   return (
@@ -23,9 +20,7 @@ function Registration(){
     <h1 className={e.registerColor}> Register Page</h1>
       <Registerform userHand={userHandler}/>
   </section>
-    
   );
-
 }
 export default Registration;
 

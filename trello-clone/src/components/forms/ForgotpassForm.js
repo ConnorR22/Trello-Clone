@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 
+/* forget password form */
 function ForgotPassForm(props){
 
    const emailRef = useRef();
@@ -11,7 +12,6 @@ function ForgotPassForm(props){
       const email = emailRef.current.value;
       const security = securityRef.current.value;
       const user = {email, security};
-
 
       props.ForgotHand(user);
    }

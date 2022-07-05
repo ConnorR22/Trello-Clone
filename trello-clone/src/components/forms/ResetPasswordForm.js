@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 
+/* reset form */
 function ResetPassForm(props){
 
    const passwordRef = useRef();

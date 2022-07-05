@@ -1,18 +1,16 @@
+/* stylings for login form */
 .loginColor{
     color: steelblue;
     text-align: center;
-    
 }
-
 .forms{
     min-width: 500px;
-  position: absolute;
-  text-align: center;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 2rem;
-  
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
     margin-top: 20px;
     background-color: #FFF;
     padding: 30px 50px;
@@ -21,10 +19,7 @@
     margin: auto;
     z-index: 2;
     display: block;
-
-
 }
 .forgetIt{
     font-size: 2px;
-    
 }

@@ -1,6 +1,7 @@
 
 import React, { useRef } from 'react';
 
+/* registration form */
 function Registerform(props){
 
    const fNameRef = useRef();
@@ -12,7 +13,6 @@ function Registerform(props){
    
    function submitHandler(event){
       event.preventDefault();
-   
 
       const fName = fNameRef.current.value;
       const lName = lNameRef.current.value;
@@ -21,7 +21,6 @@ function Registerform(props){
       const security = securityRef.current.value;
 
       const user = {fName, lName, email, password, security};
-
 
       props.userHand(user);
    }

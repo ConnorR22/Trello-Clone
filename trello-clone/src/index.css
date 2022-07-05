@@ -11,6 +11,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/* stylings for Navigation Bar */
 ul {
   list-style-type: none;
   margin: 0;
@@ -18,11 +19,9 @@ ul {
   overflow: hidden;
   background-color: steelblue;
 }
-
 li {
   float: right;
 }
-
 li a {
   display: block;
   color: white;
