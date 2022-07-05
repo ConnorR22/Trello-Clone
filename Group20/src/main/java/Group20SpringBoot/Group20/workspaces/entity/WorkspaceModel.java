@@ -1,6 +1,7 @@
 package Group20SpringBoot.Group20.workspaces.entity;
 
 import Group20SpringBoot.Group20.boards.entity.BoardModel;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -17,6 +18,7 @@ public class WorkspaceModel {
 
     private String workspaceDesc;
 
+    @JsonIgnore
     @OneToMany(targetEntity = BoardModel.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "boardMap")
     private List<BoardModel> boards;

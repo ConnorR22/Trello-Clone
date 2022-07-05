@@ -1,5 +1,13 @@
 # Getting Started with Create React App
 
+Team Members:
+Lynda Ofume (B00738568)
+
+
+References:
+https://www.w3schools.com/css/css_form.asp, accessed July 5, 2022, Used to remember functionality for css styling for forms
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

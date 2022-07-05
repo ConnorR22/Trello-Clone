@@ -29,7 +29,15 @@ public class WorkspaceService implements IWorkspaceService{
 
     @Override
     public WorkspaceModel findWorkspaceByID(int workspaceId) {
-        return null;
+        WorkspaceModel workspaceModel = null;
+
+        Optional<WorkspaceModel> optionalWorkspaceModel = workspaceRepository.findById(workspaceId);
+        if(optionalWorkspaceModel.isPresent())
+        {
+            workspaceModel = optionalWorkspaceModel.get();
+        }
+
+        return workspaceModel;
     }
 
     @Override
