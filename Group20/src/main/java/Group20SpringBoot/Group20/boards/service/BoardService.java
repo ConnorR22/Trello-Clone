@@ -2,6 +2,8 @@ package Group20SpringBoot.Group20.boards.service;
 
 import Group20SpringBoot.Group20.boards.entity.BoardModel;
 import Group20SpringBoot.Group20.boards.repository.BoardRepository;
+import Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel;
+import Group20SpringBoot.Group20.workspaces.service.WorkspaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,12 +14,8 @@ import java.util.Optional;
 @Service
 public class BoardService implements IBoardService {
 
-    private final BoardRepository boardRepository;
-
     @Autowired
-    public BoardService(BoardRepository boardRepository){
-        this.boardRepository = boardRepository;
-    }
+    BoardRepository boardRepository;
 
     @Override
     public BoardModel createBoard(@RequestBody BoardModel boardModel) {
@@ -37,21 +35,6 @@ public class BoardService implements IBoardService {
         return boardModel;
     }
 
-    @Override
-    public void updateBoard(int boardId, BoardModel boardModel) {
-        Optional<BoardModel> board;
-
-        try {
-            board = boardRepository.findById(boardId);
-
-            if (board.isPresent()){
-//                BoardModel boardModel = board.get();
-
-            }
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-    }
 
     @Override
     public void deleteBoard(int boardId) {
@@ -59,8 +42,8 @@ public class BoardService implements IBoardService {
     }
 
     @Override
-    public List<BoardModel> getBoards(int workspaceId) {
-        return null;
+    public List<BoardModel> getBoards() {
+        return boardRepository.findAll();
     }
 
 }
