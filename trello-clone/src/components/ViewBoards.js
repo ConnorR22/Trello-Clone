@@ -9,6 +9,8 @@ function ViewBoards(props) {
                     direction="column" 
                     justifyContent="center" 
                     alignItems="center"
+                    paddingBottom={55}
+                    paddingTop={5}
                 >
                 <Typography variant='h2' component='h2'>Boards</Typography>
                     {props.boards.map((board) => {
