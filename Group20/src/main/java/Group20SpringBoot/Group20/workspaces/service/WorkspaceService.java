@@ -62,6 +62,35 @@ public class WorkspaceService implements IWorkspaceService{
     }
 
     @Override
+    public WorkspaceModel removeBoard(int workspaceId, int boardId){
+        WorkspaceModel updatedWorkspace = null;
+        Optional<WorkspaceModel> workspace = null;
+
+        try {
+            workspace = workspaceRepository.findById(workspaceId);
+            if (workspace.isPresent()){
+                WorkspaceModel workspaceModel = workspace.get();
+                BoardModel boardModel = boardService.findBoardByID(boardId);
+
+                List<BoardModel> boards = workspaceModel.getBoards();
+                if (boards == null){
+                    return workspaceModel;
+                }
+
+                boards.remove(boardModel);
+
+                workspaceModel.setBoards(boards);
+
+                updatedWorkspace = workspaceRepository.save(workspaceModel);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return updatedWorkspace;
+    }
+    
+    @Override
     public List<BoardModel> getBoardsOfWorkspace(int workspaceId) {
         WorkspaceModel workspace = findWorkspaceByID(workspaceId);
         return workspace.getBoards();

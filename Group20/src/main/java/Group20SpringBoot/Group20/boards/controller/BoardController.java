@@ -23,12 +23,6 @@ public class BoardController {
         return boardService.createBoard(boardModel);
     }
 
-//    @PutMapping("/update/{boardId}")
-//    public BoardModel update(@PathVariable int boardId, @RequestBody BoardModel boardModel)
-//    {
-//        return boardService.updateBoard(boardId, boardModel);
-//    }
-
     @GetMapping("/get/{boardId}")
     public BoardModel findBoardByID(@PathVariable int boardId){
         return boardService.findBoardByID(boardId);

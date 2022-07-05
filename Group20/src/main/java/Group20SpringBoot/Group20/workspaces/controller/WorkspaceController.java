@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/workspace")
 public class WorkspaceController {
 
 
@@ -22,8 +23,13 @@ public class WorkspaceController {
         return workspaceService.createWorkspace(workspaceModel);
     }
 
-    @PutMapping("/addBoard/{boardId}")
-    public WorkspaceModel addBoard(@PathVariable int workspaceId, @RequestBody int boardId) {
+    @PutMapping("/addBoard/{workspaceId}")
+    public WorkspaceModel addBoard(@PathVariable int workspaceId, @RequestParam int boardId) {
         return workspaceService.addBoard(workspaceId, boardId);
+    }
+
+    @DeleteMapping("/removeBoard/{workspaceId}")
+    public WorkspaceModel removeBoard(@PathVariable int workspaceId, @RequestParam int boardId) {
+        return workspaceService.removeBoard(workspaceId, boardId);
     }
 }

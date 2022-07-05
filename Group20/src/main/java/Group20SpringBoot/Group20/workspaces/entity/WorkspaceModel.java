@@ -18,6 +18,7 @@ public class WorkspaceModel {
     private String workspaceDesc;
 
     @OneToMany(targetEntity = BoardModel.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "boardMap")
     private List<BoardModel> boards;
 
     public WorkspaceModel(String workspaceTitle, String workspaceDesc) {
