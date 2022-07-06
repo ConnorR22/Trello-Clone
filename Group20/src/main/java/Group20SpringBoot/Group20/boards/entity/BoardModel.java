@@ -11,28 +11,18 @@ public class BoardModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int boardId;
 
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    @ManyToOne(targetEntity = WorkspaceModel.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    @JoinTable(
-//            name="workspace",
-//            joinColumns=
-//            @JoinColumn( name="workspaceId", referencedColumnName="workspaceId"),
-//            inverseJoinColumns=@JoinColumn(name="boardId", referencedColumnName="boardId"))
-    private int workspaceId;
-
     private String boardTitle;
 
-    private String status;
-
-    public BoardModel(int workspaceId, String boardTitle, String status) {
-        this.workspaceId = workspaceId;
+    public BoardModel(String boardTitle) {
         this.boardTitle = boardTitle;
-        this.status = status;
     }
-
 
     public BoardModel() {
 
+    }
+
+    public int getBoardId() {
+        return boardId;
     }
 
     public String getBoardTitle() {
@@ -42,16 +32,5 @@ public class BoardModel {
     public void setBoardTitle(String boardTitle) {
         this.boardTitle = boardTitle;
     }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-
-
 
 }

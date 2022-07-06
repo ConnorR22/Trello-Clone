@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/workspace")
 public class WorkspaceController {
 
 
@@ -24,14 +25,18 @@ public class WorkspaceController {
         return workspaceService.createWorkspace(workspaceModel);
     }
 
-    @GetMapping("/get/{workspaceId}")
-    public WorkspaceModel findWorkspaceByID(@PathVariable int workspaceId){
-        return workspaceService.findWorkspaceByID(workspaceId);
+    @PutMapping("/addBoard/{workspaceId}")
+    public WorkspaceModel addBoard(@PathVariable int workspaceId, @RequestParam int boardId) {
+        return workspaceService.addBoard(workspaceId, boardId);
     }
 
     @GetMapping("/getBoards/{workspaceId}")
-    public List<BoardModel> getBoards(@PathVariable int workspaceId){
-        WorkspaceModel workspace = workspaceService.findWorkspaceByID(workspaceId);
-        return workspace.getBoards();
+    public List<BoardModel> addBoard(@PathVariable int workspaceId) {
+        return workspaceService.getBoardsOfWorkspace(workspaceId);
+    }
+
+    @DeleteMapping("/removeBoard/{workspaceId}")
+    public WorkspaceModel removeBoard(@PathVariable int workspaceId, @RequestParam int boardId) {
+        return workspaceService.removeBoard(workspaceId, boardId);
     }
 }

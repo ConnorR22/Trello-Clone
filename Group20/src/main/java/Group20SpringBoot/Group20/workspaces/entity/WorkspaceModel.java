@@ -20,6 +20,7 @@ public class WorkspaceModel {
 
     @JsonIgnore
     @OneToMany(targetEntity = BoardModel.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "boardMap")
     private List<BoardModel> boards;
 
     public WorkspaceModel(String workspaceTitle, String workspaceDesc) {
@@ -53,5 +54,9 @@ public class WorkspaceModel {
 
     public List<BoardModel> getBoards() {
         return boards;
+    }
+
+    public void setBoards(List<BoardModel> boards) {
+        this.boards = boards;
     }
 }

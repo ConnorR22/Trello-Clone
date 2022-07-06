@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 
-
+/* Login form */
 function LoginForm(props){
 
    const emailRef = useRef();
@@ -12,7 +12,6 @@ function LoginForm(props){
       const email = emailRef.current.value;
       const password = passwordRef.current.value;
       const user = {email, password};
-
 
       props.LoginHand(user);
    }
