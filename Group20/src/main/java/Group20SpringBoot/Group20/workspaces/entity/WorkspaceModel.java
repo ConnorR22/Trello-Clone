@@ -1,13 +1,14 @@
 package Group20SpringBoot.Group20.workspaces.entity;
 
 import Group20SpringBoot.Group20.boards.entity.BoardModel;
+import Group20SpringBoot.Group20.user.entity.UserModel;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-@Entity(name = "Workspace")
+@Entity(name = "Workspaces")
 public class WorkspaceModel {
 
     @Id
@@ -50,7 +51,6 @@ public class WorkspaceModel {
     public void setWorkspaceDesc(String workspaceDesc) {
         this.workspaceDesc = workspaceDesc;
     }
-
 
     public List<BoardModel> getBoards() {
         return boards;
