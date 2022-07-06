@@ -20,21 +20,21 @@ public class UserController {
     UserRepository UserRepo;
 
     @PostMapping("/register")
-    @CrossOrigin(origins = "http://localhost:9001")
+    @CrossOrigin(origins = "http://localhost:3000")
     public UserModel saveUser(@RequestBody UserModel userModel) {
         return userService.registerUser(userModel);
     }
 
     @GetMapping("/login/{email}")
-    @CrossOrigin(origins = "http://localhost:9001")
+    @CrossOrigin(origins = "http://localhost:3000")
     public HashMap<String, String> loginUser(@PathVariable String email, @RequestParam String password){
         return userService.loginUser(email, password);
     }
 
     @PutMapping("/resetPassword/{email}")
-    @CrossOrigin(origins = "http://localhost:9001")
-    public HashMap<String, String> resetPassword(@PathVariable String email, @RequestParam String password, @RequestParam String securityAnswer){
-        return userService.resetPassword(email, password, securityAnswer);
+    @CrossOrigin(origins = "http://localhost:3000")
+    public HashMap<String, String> resetPassword(@PathVariable String email, @RequestParam String newPass, @RequestParam String securityAnswer){
+        return userService.resetPassword(email, newPass, securityAnswer);
     }
 
 }

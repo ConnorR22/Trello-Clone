@@ -1,6 +1,7 @@
 package Group20SpringBoot.Group20.user.entity;
 
 import Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.List;
@@ -19,6 +20,7 @@ public class UserModel {
     private String password;
     private String secretKey;
 
+    @JsonIgnore
     @ManyToMany(targetEntity = WorkspaceModel.class)
     @JoinColumn(name = "workspaceMap")
     private List<WorkspaceModel> workspaces;
