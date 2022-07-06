@@ -7,6 +7,7 @@ import Group20SpringBoot.Group20.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -18,32 +19,22 @@ public class UserController {
     @Autowired
     UserRepository UserRepo;
 
-    @GetMapping("")
-    public String viewHomePage() {
-        return "Home";
-    }
-
-    @PostMapping("/save")
-    public UserModel saveUser(@RequestBody UserModel userModel) {
-        return userService.saveUser(userModel);
-    }
-
     @PostMapping("/register")
-    public String registerUser() {
-        IUserService.saveUser(new UserModel());
-
-
-        return "Register";
-    }
-    @GetMapping("/getAll")
-    public List<UserModel> getAllUsers()
-    {
-        return userService.getAllUsers();
+    @CrossOrigin(origins = "http://localhost:9001")
+    public UserModel saveUser(@RequestBody UserModel userModel) {
+        return userService.registerUser(userModel);
     }
 
-    @GetMapping("/login")
-    public UserModel getUser(int id){
-        return userService.getUser(id);
+    @GetMapping("/login/{email}")
+    @CrossOrigin(origins = "http://localhost:9001")
+    public HashMap<String, String> loginUser(@PathVariable String email, @RequestParam String password){
+        return userService.loginUser(email, password);
+    }
+
+    @PutMapping("/resetPassword/{email}")
+    @CrossOrigin(origins = "http://localhost:9001")
+    public HashMap<String, String> resetPassword(@PathVariable String email, @RequestParam String password, @RequestParam String securityAnswer){
+        return userService.resetPassword(email, password, securityAnswer);
     }
 
 }
