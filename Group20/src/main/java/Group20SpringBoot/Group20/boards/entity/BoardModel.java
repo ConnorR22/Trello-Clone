@@ -4,7 +4,8 @@ import Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel;
 
 import javax.persistence.*;
 
-@Entity(name = "Board")
+@Entity
+@Table(name = "Boards")
 public class BoardModel {
 
     @Id

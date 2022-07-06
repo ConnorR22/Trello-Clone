@@ -6,13 +6,12 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "Users")
 public class UserModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-
 
     private String firstName;
     private String lastName;
@@ -21,7 +20,7 @@ public class UserModel {
     private String secretKey;
 
     @ManyToMany(targetEntity = WorkspaceModel.class)
-    @JoinColumn(name = "Workspace_User")
+    @JoinColumn(name = "workspaceMap")
     private List<WorkspaceModel> workspaces;
 
     public List<WorkspaceModel> getWorkspaces() {
