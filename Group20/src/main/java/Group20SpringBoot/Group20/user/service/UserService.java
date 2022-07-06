@@ -1,9 +1,7 @@
 package Group20SpringBoot.Group20.user.service;
 
-import Group20SpringBoot.Group20.boards.repository.BoardRepository;
 import Group20SpringBoot.Group20.user.entity.UserModel;
 import Group20SpringBoot.Group20.user.repository.UserRepository;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,7 +14,7 @@ import java.util.regex.Pattern;
 @Service
 public class UserService implements IUserService {
 
-    private UserRepository userRepository;
+    private static UserRepository userRepository;
 
     @Autowired
     public UserService(UserRepository userRepository){
@@ -26,7 +24,7 @@ public class UserService implements IUserService {
     public UserService() {}
 
     @Override
-    public UserModel saveUser(@RequestBody UserModel userModel) {
+    public static UserModel saveUser(@RequestBody UserModel userModel) {
         return userRepository.save(userModel);
     }
 
@@ -35,7 +33,19 @@ public class UserService implements IUserService {
         return userRepository.findAll();
     }
 
-    public void signUp() {
+    public UserModel getUser(int id) {
+        long idLong = id;
+        UserModel user = userRepository.findById(idLong).get();
+        user.setSecretKey(null);
+        return user;
+    }
+
+
+
+
+
+
+        public void signUp() {
         Scanner kb = new Scanner(System.in);
 
         System.out.println("What is your first name?");
@@ -106,7 +116,7 @@ public class UserService implements IUserService {
         if (passwordCheck) {
             UserModel user = new UserModel(firstName, lastName, email, password, securityAns);
             user.setSecretKey(securityAns);
-            saveUser(user);
+            IUserService.saveUser(user);
         }
 
 

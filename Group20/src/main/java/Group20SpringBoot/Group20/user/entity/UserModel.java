@@ -1,9 +1,6 @@
 package Group20SpringBoot.Group20.user.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class UserModel {
@@ -11,10 +8,15 @@ public class UserModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name = "first_name", nullable = false, length = 10)
     private String firstName;
+    @Column(name = "last_name", nullable = false, length = 20)
     private String lastName;
+    @Column(nullable = false, unique = true, length = 25)
     private String emailId;
+    @Column(nullable = false, length = 20)
     private String password;
+    @Column(nullable = false,length = 30 )
     private String secretKey;
 
     public UserModel(String firstName, String lastName, String emailId, String password, String secretKey) {
@@ -28,7 +30,6 @@ public class UserModel {
     public UserModel(){
 
     }
-
     public String getFirstName() {
         return firstName;
     }
@@ -37,9 +38,13 @@ public class UserModel {
         this.firstName = firstName;
     }
 
-    public String getLastName() {return lastName;}
+    public String getLastName() {
+        return lastName;
+    }
 
-    public void setLastName(String lastName) {this.lastName = lastName;}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
     public String getEmailId() {
         return emailId;
@@ -57,7 +62,14 @@ public class UserModel {
         this.password = password;
     }
 
-    public void setSecretKey(String secretKeyAns) {this.secretKey = secretKeyAns;}
+    public void setSecretKey(String secretKeyAns) {
+        this.secretKey = secretKeyAns;
+    }
 
-    public String getSecretKey() {return secretKey;}
+    public String getSecretKey() {
+        return secretKey;
+    }
+
+
+
 }
