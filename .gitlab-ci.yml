@@ -7,14 +7,14 @@ build-job :
      tags:
          - ugrad
      script:
-         -cd Group20
-         -mvn clean package -DskipTests = True
+         - cd Group20
+         - mvn clean package -DskipTests = True
 
 test-job:
     stage: test
     tags:
          - ugrad
     script:
-        -cd Group20
-        -mvn clean verify      
+        - cd Group20
+        - mvn clean verify      
 
