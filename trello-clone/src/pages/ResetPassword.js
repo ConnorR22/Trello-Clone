@@ -6,7 +6,7 @@ import r from "../pages/Login.module.css";
 function ResetPass(){
   
   const history = useHistory();
-
+//updated front to back end
   function ResetHandler(user){
     fetch('http://localhost:9001/changePassword/{userId}' ).then(() => history.replace('/login'));
       
