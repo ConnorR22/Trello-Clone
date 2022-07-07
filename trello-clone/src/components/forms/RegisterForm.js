@@ -34,7 +34,7 @@ function Registerform(props){
         <br></br>
         <input type="email" required placeholder="Email Address" ref={emailRef} />
         <br></br>
-        <input pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{0,8}" 
+        <input pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,64}" 
         title="Must contain at least one number and one uppercase and lowercase letter, and at least 8"
         type="password" required placeholder="Password" ref={passwordRef} />
          <br></br>
