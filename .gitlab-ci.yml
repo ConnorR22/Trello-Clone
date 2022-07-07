@@ -8,7 +8,7 @@ build-job :
          - grad
      script:
          - cd Group20
-         - mvn clean package -DskipTests = True
+         - mvn clean package -DskipTests
 
 test-job:
     stage: test
