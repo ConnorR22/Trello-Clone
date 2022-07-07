@@ -11,7 +11,7 @@ public interface IUserService {
     UserModel registerUser(UserModel usermodel);
     HashMap<String, String> loginUser(String email, String password);
     HashMap<String, String> resetPassword(String email, String newPass, String securityAnswer);
-    boolean addUserToWorkspace(String email, WorkspaceModel workspace);
+//    boolean addUserToWorkspace(String email, WorkspaceModel workspace);
     List<WorkspaceModel> getWorkspaces(int userId);
 
 
@@ -20,6 +20,6 @@ public interface IUserService {
 //    List<WorkspaceModel> getUserWorkspaces(int userId);
     UserModel findUserById(int userId);
     void deleteWorkspaceFromUser(int userId, int workspaceId);
-//    void addWorkspaceToUser(int userId, int workspaceId);
+    void addWorkspaceToUser(int userId, int workspaceId);
 
 }

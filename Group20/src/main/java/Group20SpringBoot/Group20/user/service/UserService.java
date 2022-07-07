@@ -84,30 +84,30 @@ public class UserService implements IUserService {
         return request;
     }
 
-    @Override
-    public boolean addUserToWorkspace(String email, WorkspaceModel workspace) {
-        UserModel user = null;
-        Optional<UserModel> optionalUserModel = userRepository.findByEmailId(email);
-
-        if (optionalUserModel.isPresent()) {
-            user = optionalUserModel.get();
-
-            List<WorkspaceModel> workspaces = user.getWorkspaces();
-            if (workspaces == null) {
-                workspaces = new ArrayList<>();
-            }
-
-            if (workspaces.contains(workspace)) {
-                workspaces.add(workspace);
-                user.setWorkspaces(workspaces);
-                userRepository.save(user);
-
-                return true;
-            }
-        }
-
-        return false;
-    }
+//    @Override
+//    public boolean addUserToWorkspace(String email, WorkspaceModel workspace) {
+//        UserModel user = null;
+//        Optional<UserModel> optionalUserModel = userRepository.findByEmailId(email);
+//
+//        if (optionalUserModel.isPresent()) {
+//            user = optionalUserModel.get();
+//
+//            List<WorkspaceModel> workspaces = user.getWorkspaces();
+//            if (workspaces == null) {
+//                workspaces = new ArrayList<>();
+//            }
+//
+//            if (workspaces.contains(workspace)) {
+//                workspaces.add(workspace);
+//                user.setWorkspaces(workspaces);
+//                userRepository.save(user);
+//
+//                return true;
+//            }
+//        }
+//
+//        return false;
+//    }
 
     @Override
     public List<WorkspaceModel> getWorkspaces(int userId) {
@@ -138,7 +138,7 @@ public List<WorkspaceModel> getUserWorkspaces(int userId) {
     user = userRepository.findById(userId);
     if (user.isPresent()) {
 
-        workspacemodel = user.get().getWorkspace_list();
+        workspacemodel = user.get().getWorkspaces();
 
     }
 
@@ -147,36 +147,36 @@ public List<WorkspaceModel> getUserWorkspaces(int userId) {
 }
 
 
-//    @Override
-//    public void addWorkspaceToUser(int userId, int workspaceId) {
-//
-//        Optional<UserModel> user = null;
-//
-//        try {
-//            user = userRepository.findById(userId);
-//            if (user.isPresent()) {
-//
-//                UserModel usermodel = user.get();
-//                WorkspaceModel workspacemodel = workspaceService.findWorkspaceByID(workspaceId);
-//
-//                List<WorkspaceModel> workspace_list = usermodel.getWorkspace_list();
-//
-//                if (workspace_list == null) {
-//                    workspace_list = new ArrayList<>();
-//                }
-//
-//                workspace_list.add(workspacemodel);
-//                usermodel.setWorkspace_list(workspace_list);
-//                userRepository.save(usermodel);
-//
-//            }
-//
-//        } catch (Exception err) {
-//            System.out.println("Cannot add workspace to user");
-//
-//        }
-//
-//    }
+    @Override
+    public void addWorkspaceToUser(int userId, int workspaceId) {
+
+        Optional<UserModel> user = null;
+
+        try {
+            user = userRepository.findById(userId);
+            if (user.isPresent()) {
+
+                UserModel usermodel = user.get();
+                WorkspaceModel workspacemodel = workspaceService.findWorkspaceByID(workspaceId);
+
+                List<WorkspaceModel> workspace_list = usermodel.getWorkspaces();
+
+                if (workspace_list == null) {
+                    workspace_list = new ArrayList<>();
+                }
+
+                workspace_list.add(workspacemodel);
+                usermodel.setWorkspaces(workspace_list);
+                userRepository.save(usermodel);
+
+            }
+
+        } catch (Exception err) {
+            System.out.println("Cannot add workspace to user");
+
+        }
+
+    }
 
     @Override
     public void deleteWorkspaceFromUser(int userId, int workspaceId) {
@@ -189,11 +189,11 @@ public List<WorkspaceModel> getUserWorkspaces(int userId) {
                     UserModel usermodel = user.get();
                     WorkspaceModel workspacemodel = workspaceService.findWorkspaceByID(workspaceId);
 
-                    List<WorkspaceModel> workspace_list = usermodel.getWorkspace_list();
+                    List<WorkspaceModel> workspace_list = usermodel.getWorkspaces();
 
                     assert workspace_list != null;
                     workspace_list.remove(workspacemodel);
-                    usermodel.setWorkspace_list(workspace_list);
+                    usermodel.setWorkspaces(workspace_list);
                     userRepository.save(usermodel);
 
                 }

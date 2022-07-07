@@ -20,11 +20,11 @@ public interface IWorkspaceService {
     void deleteWorkspace(int workspaceId);
 
     //sanjay
-    void deleteUserFromWorkspace(int workspaceId, int userId);
+//    void deleteUserFromWorkspace(int workspaceId, int userId);
 
 //    List<WorkspaceModel> getUserWorkspaces(int userId);
 
-    void addUserToWorkspace(int workspaceId, int userId);
+//    void addUserToWorkspace(int workspaceId, int userId);
 
 
 }

@@ -39,14 +39,14 @@ public class WorkspaceController {
     }
 
     //sanjay
-    @PutMapping("/addUser/{userId}")
-    public void addUserToWorkspace(@PathVariable int workspaceId, @RequestParam int userId){
-        workspaceService.addUserToWorkspace(workspaceId, userId);
-    }
-    @PutMapping ("/deleteUser/{userId}")
-    public void deleteUserFromWorkspace(@PathVariable int workspaceId, @RequestParam int userId){
-        workspaceService.deleteUserFromWorkspace(workspaceId, userId);
-    }
+//    @PutMapping("/addUser/{userId}")
+//    public void addUserToWorkspace(@PathVariable int workspaceId, @RequestParam int userId){
+//        workspaceService.addUserToWorkspace(workspaceId, userId);
+//    }
+//    @PutMapping ("/deleteUser/{userId}")
+//    public void deleteUserFromWorkspace(@PathVariable int workspaceId, @RequestParam int userId){
+//        workspaceService.deleteUserFromWorkspace(workspaceId, userId);
+//    }
 
 
 }

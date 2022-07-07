@@ -61,16 +61,16 @@ public class WorkspaceModel {
 
 
     //Sanjay
-    @ManyToMany(targetEntity = UserModel.class)
-    @JoinColumn(name = "user_listMapping")
-    private List<UserModel> user_List;
-
-    public List<UserModel> getUser_List() {
-        return user_List;
-    }
-
-    public void setUser_List(List<UserModel> user_List) {
-        this.user_List = user_List;
-    }
+//    @ManyToMany(targetEntity = UserModel.class)
+//    @JoinColumn(name = "user_listMapping")
+//    private List<UserModel> user_List;
+//
+//    public List<UserModel> getUser_List() {
+//        return user_List;
+//    }
+//
+//    public void setUser_List(List<UserModel> user_List) {
+//        this.user_List = user_List;
+//    }
 
 }
