@@ -1,6 +1,7 @@
 package Group20SpringBoot.Group20.workspaces.controller;
 
-import Group20SpringBoot.Group20.boards.entity.WorkspaceModel;
+import Group20SpringBoot.Group20.boards.entity.BoardModel;
+import Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel;
 import Group20SpringBoot.Group20.workspaces.service.IWorkspaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,17 +19,17 @@ public class WorkspaceController {
     }
 
     @PostMapping("/save")
-    public Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel addWorkspace(@RequestBody Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel workspaceModel) {
+    public WorkspaceModel addWorkspace(@RequestBody WorkspaceModel workspaceModel) {
         return workspaceService.createWorkspace(workspaceModel);
     }
 
     @PutMapping("/addBoard/{workspaceId}")
-    public Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel addBoard(@PathVariable int workspaceId, @RequestParam int boardId) {
+    public WorkspaceModel addBoard(@PathVariable int workspaceId, @RequestParam int boardId) {
         return workspaceService.addBoard(workspaceId, boardId);
     }
 
     @GetMapping("/getBoards/{workspaceId}")
-    public List<WorkspaceModel> addBoard(@PathVariable int workspaceId) {
+    public List<BoardModel> getBoards(@PathVariable int workspaceId) {
         return workspaceService.getBoardsOfWorkspace(workspaceId);
     }
 

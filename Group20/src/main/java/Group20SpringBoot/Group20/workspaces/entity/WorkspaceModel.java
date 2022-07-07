@@ -1,5 +1,6 @@
 package Group20SpringBoot.Group20.workspaces.entity;
 
+import Group20SpringBoot.Group20.boards.entity.BoardModel;
 import Group20SpringBoot.Group20.user.entity.UserModel;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -18,9 +19,9 @@ public class WorkspaceModel {
     private String workspaceDesc;
 
     @JsonIgnore
-    @OneToMany(targetEntity = Group20SpringBoot.Group20.boards.entity.WorkspaceModel.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = BoardModel.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "boardMap")
-    private List<Group20SpringBoot.Group20.boards.entity.WorkspaceModel> boards;
+    private List<BoardModel> boards;
 
     public WorkspaceModel(String workspaceTitle, String workspaceDesc) {
         this.workspaceTitle = workspaceTitle;
@@ -50,11 +51,11 @@ public class WorkspaceModel {
         this.workspaceDesc = workspaceDesc;
     }
 
-    public List<Group20SpringBoot.Group20.boards.entity.WorkspaceModel> getBoards() {
+    public List<BoardModel> getBoards() {
         return boards;
     }
 
-    public void setBoards(List<Group20SpringBoot.Group20.boards.entity.WorkspaceModel> boards) {
+    public void setBoards(List<BoardModel> boards) {
         this.boards = boards;
     }
 

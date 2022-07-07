@@ -17,9 +17,9 @@ public interface IUserService {
 
 
     //sanjay
-    List<WorkspaceModel> getUserWorkspaces(int userId);
+//    List<WorkspaceModel> getUserWorkspaces(int userId);
     UserModel findUserById(int userId);
     void deleteWorkspaceFromUser(int userId, int workspaceId);
-    void addWorkspaceToUser(int userId, int workspaceId);
+//    void addWorkspaceToUser(int userId, int workspaceId);
 
 }

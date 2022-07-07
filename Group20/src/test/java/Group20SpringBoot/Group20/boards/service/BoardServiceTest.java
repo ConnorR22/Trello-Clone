@@ -1,6 +1,6 @@
 package Group20SpringBoot.Group20.boards.service;
 
-import Group20SpringBoot.Group20.boards.entity.WorkspaceModel;
+import Group20SpringBoot.Group20.boards.entity.BoardModel;
 import Group20SpringBoot.Group20.boards.repository.BoardRepository;
 
 import org.junit.jupiter.api.Test;
@@ -31,29 +31,29 @@ class BoardServiceTest {
 
     @Test
     void createBoardTest() {
-        WorkspaceModel boardmodel = new WorkspaceModel();
+        BoardModel boardmodel = new BoardModel();
         boardmodel.setBoardTitle("Test");
 
         when(boardRepository.save(boardmodel)).thenReturn(boardmodel);
 
-        WorkspaceModel savedBoard = boardService.createBoard(boardmodel);
+        BoardModel savedBoard = boardService.createBoard(boardmodel);
         assertNotNull(savedBoard);
     }
 
     @Test
     void findBoardByIDTest() {
-        WorkspaceModel boardmodel = new WorkspaceModel();
+        BoardModel boardmodel = new BoardModel();
         boardmodel.setBoardTitle("Test");
 
         Mockito.when(boardRepository.findById(boardmodel.getBoardId())).thenReturn(Optional.of(boardmodel));
-        WorkspaceModel board = boardService.findBoardByID(boardmodel.getBoardId());
+        BoardModel board = boardService.findBoardByID(boardmodel.getBoardId());
         assertNotNull(board);
     }
 
     @Test
     void deleteBoardTest() {
 
-        WorkspaceModel boardmodel = new WorkspaceModel();
+        BoardModel boardmodel = new BoardModel();
         boardmodel.setBoardTitle("Test");
         boardRepository.save(boardmodel);
 
@@ -65,8 +65,8 @@ class BoardServiceTest {
     @Test
     void getBoardsTest() {
 
-        boardRepository.save(new WorkspaceModel("Test"));
-        List<WorkspaceModel> boards = boardService.getBoards();
+        boardRepository.save(new BoardModel("Test"));
+        List<BoardModel> boards = boardService.getBoards();
         assertNotNull(boards);
 
     }

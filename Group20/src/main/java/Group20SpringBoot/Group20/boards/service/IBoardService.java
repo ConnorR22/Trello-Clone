@@ -1,17 +1,17 @@
 package Group20SpringBoot.Group20.boards.service;
 
-import Group20SpringBoot.Group20.boards.entity.WorkspaceModel;
+import Group20SpringBoot.Group20.boards.entity.BoardModel;
 
 import java.util.List;
 
 public interface IBoardService {
-    WorkspaceModel createBoard(WorkspaceModel boardModel);
+    BoardModel createBoard(BoardModel boardModel);
 
-    WorkspaceModel findBoardByID(int boardId);
+    BoardModel findBoardByID(int boardId);
 
 //    BoardModel updateBoard(int boardId, BoardModel boardModel);
 
     void deleteBoard(int boardId);
 
-    List<WorkspaceModel> getBoards();
+    List<BoardModel> getBoards();
 }
