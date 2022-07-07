@@ -8,7 +8,7 @@ function ResetPass(){
   const history = useHistory();
 
   function ResetHandler(user){
-    fetch('' ).then(() => history.replace('/login'));
+    fetch('http://localhost:9001/changePassword/{userId}' ).then(() => history.replace('/login'));
       
   }
   

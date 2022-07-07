@@ -8,7 +8,7 @@ function ForgotPass(){
   const history = useHistory();
 
   function ForgotHandler(user){
-    fetch('' ).then(() => history.replace('/resetpassword'));
+    fetch('http://localhost:9001/resetPassword/{email}' ).then(() => history.replace('/resetpassword'));
   }
   
   return (
