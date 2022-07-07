@@ -1,0 +1,17 @@
+stages:
+    -build
+    -test
+
+build:
+    stage: build
+    tags: 
+        - ugrad
+    script:
+        -mvn clean package -DskipTests=true
+
+test:
+    stage: test
+    tags:
+        - ugrad
+    script:
+        -mvn clean verify
