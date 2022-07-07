@@ -1,8 +1,8 @@
-stages :
+stages:
      - build
      - test
 
-build-job:
+build-job :
      stage: build
      tags:
          - ugrad
@@ -13,7 +13,7 @@ build-job:
 test-job:
     stage: test
     tags:
-        -ugrad
+         - ugrad
     script:
         -cd Group20
         -mvn clean verify      
