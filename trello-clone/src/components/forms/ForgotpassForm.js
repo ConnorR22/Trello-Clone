@@ -10,10 +10,10 @@ function ForgotPassForm(props){
       event.preventDefault();
    
       const email = emailRef.current.value;
-      const security = securityRef.current.value;
-      const user = {email, security};
+      const securityAnswer = securityRef.current.value;
+      const user = {email, securityAnswer};
 
-      props.ForgotHand(user);
+      props.ForgotHand(user, email, securityAnswer);
    }
 
    return (

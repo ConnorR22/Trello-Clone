@@ -7,7 +7,7 @@ function CreateBoard() {
     const history = useHistory();
 
     function createBoardHandler(board) {
-        fetch('http://localhost:3000/board', {
+        fetch('http://localhost:9001/board', {
             method: 'POST',
             body: JSON.stringify(board),
             headers: {
