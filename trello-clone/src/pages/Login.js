@@ -8,7 +8,8 @@ function Loginpage(){
   const history = useHistory();
 
   function LoginHandler(user){
-    fetch('http://localhost:9001cd' , {
+    //http://localhost:9001/login/{email}
+    fetch('' , {
       method: 'POST',
       body: JSON.stringify(user),
       headers: {'Content-Type': 'application/json'}

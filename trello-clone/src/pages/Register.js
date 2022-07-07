@@ -8,7 +8,8 @@ function Registration(){
   const history = useHistory();
 
   function userHandler(user){
-    fetch('http://localhost:9001/register' , {
+    //http://localhost:9001/register
+    fetch('' , {
       method: 'POST',
       body: JSON.stringify(user),
       headers: {'Content-Type': 'application/json'}
