@@ -88,19 +88,19 @@ public class UserModel {
     }
 
 
-    //sanjay
-    @ManyToMany(targetEntity = WorkspaceModel.class)
-    @JoinColumn(name = "workspace_listMapping")
-    private List<WorkspaceModel> workspace_list;
-
-
-    public List<WorkspaceModel> getWorkspace_list() {
-        return workspace_list;
-    }
-
-    public void setWorkspace_list(List<WorkspaceModel> workspace_list) {
-        this.workspace_list = workspace_list;
-    }
+//    //sanjay
+//    @ManyToMany(targetEntity = WorkspaceModel.class)
+//    @JoinColumn(name = "workspace_listMapping")
+//    private List<WorkspaceModel> workspace_list;
+//
+//
+//    public List<WorkspaceModel> getWorkspace_list() {
+//        return workspace_list;
+//    }
+//
+//    public void setWorkspace_list(List<WorkspaceModel> workspace_list) {
+//        this.workspace_list = workspace_list;
+//    }
 
 
 
