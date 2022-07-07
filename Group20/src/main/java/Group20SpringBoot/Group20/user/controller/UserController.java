@@ -37,5 +37,22 @@ public class UserController {
         return userService.resetPassword(email, newPass, securityAnswer);
     }
 
+
+
+
+    //sanjay
+    @PutMapping("/add_workspace/{workspaceId}")
+    public void addWorkspaceToUser(@PathVariable int userId , @RequestParam int workspaceId){
+        userService.addWorkspaceToUser(userId,workspaceId);
+        System.out.println("User Added to the Workspace Successfully");
+    }
+    @PutMapping ("/delete_workspace/{workspaceId}")
+    public void deleteWorkspaceFromUser(@PathVariable int workspaceId, @RequestParam int userId){
+        userService.deleteWorkspaceFromUser(userId,workspaceId);
+        System.out.println("User Deleted from the Workspace Successfully");
+
+    }
+
+
 }
 

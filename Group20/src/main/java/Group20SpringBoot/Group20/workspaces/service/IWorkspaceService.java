@@ -1,24 +1,29 @@
 package Group20SpringBoot.Group20.workspaces.service;
 
-import Group20SpringBoot.Group20.boards.entity.BoardModel;
-import Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel;
+import Group20SpringBoot.Group20.boards.entity.WorkspaceModel;
 
 import java.util.List;
 //import org.springframework.stereotype.Service;
 
 public interface IWorkspaceService {
-    WorkspaceModel createWorkspace(WorkspaceModel workspaceModel);
+    Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel createWorkspace(Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel workspaceModel);
 
-    WorkspaceModel findWorkspaceByID(int workspaceId);
+    Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel findWorkspaceByID(int workspaceId);
 
-    WorkspaceModel addBoard(int workspaceId, int boardId);
+    Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel addBoard(int workspaceId, int boardId);
 
-    WorkspaceModel removeBoard(int workspaceId, int boardId);
+    Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel removeBoard(int workspaceId, int boardId);
 
-    List<BoardModel> getBoardsOfWorkspace(int workspaceId);
+    List<WorkspaceModel> getBoardsOfWorkspace(int workspaceId);
 
     void deleteWorkspace(int workspaceId);
 
-    List<WorkspaceModel> getUserWorkspaces(int userId);
+    List<Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel> getUserWorkspaces(int userId);
+
+
+    //sanjay
+    void deleteUserFromWorkspace(int workspaceId, int userId);
+    void addUserToWorkspace(int workspaceId, int userId);
+
 
 }

@@ -1,9 +1,7 @@
 package Group20SpringBoot.Group20.boards.service;
 
-import Group20SpringBoot.Group20.boards.entity.BoardModel;
+import Group20SpringBoot.Group20.boards.entity.WorkspaceModel;
 import Group20SpringBoot.Group20.boards.repository.BoardRepository;
-import Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel;
-import Group20SpringBoot.Group20.workspaces.service.WorkspaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,15 +16,15 @@ public class BoardService implements IBoardService {
     BoardRepository boardRepository;
 
     @Override
-    public BoardModel createBoard(@RequestBody BoardModel boardModel) {
+    public WorkspaceModel createBoard(@RequestBody WorkspaceModel boardModel) {
         return boardRepository.save(boardModel);
     }
 
     @Override
-    public BoardModel findBoardByID(int boardId) {
-        BoardModel boardModel = null;
+    public WorkspaceModel findBoardByID(int boardId) {
+        WorkspaceModel boardModel = null;
 
-        Optional<BoardModel> optionalBoardModel = boardRepository.findById(boardId);
+        Optional<WorkspaceModel> optionalBoardModel = boardRepository.findById(boardId);
         if(optionalBoardModel.isPresent())
         {
             boardModel = optionalBoardModel.get();
@@ -42,7 +40,7 @@ public class BoardService implements IBoardService {
     }
 
     @Override
-    public List<BoardModel> getBoards() {
+    public List<WorkspaceModel> getBoards() {
         return boardRepository.findAll();
     }
 

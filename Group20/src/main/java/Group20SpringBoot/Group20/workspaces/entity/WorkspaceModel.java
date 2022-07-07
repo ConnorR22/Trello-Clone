@@ -1,11 +1,9 @@
 package Group20SpringBoot.Group20.workspaces.entity;
 
-import Group20SpringBoot.Group20.boards.entity.BoardModel;
 import Group20SpringBoot.Group20.user.entity.UserModel;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 @Entity(name = "Workspaces")
@@ -20,9 +18,9 @@ public class WorkspaceModel {
     private String workspaceDesc;
 
     @JsonIgnore
-    @OneToMany(targetEntity = BoardModel.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Group20SpringBoot.Group20.boards.entity.WorkspaceModel.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "boardMap")
-    private List<BoardModel> boards;
+    private List<Group20SpringBoot.Group20.boards.entity.WorkspaceModel> boards;
 
     public WorkspaceModel(String workspaceTitle, String workspaceDesc) {
         this.workspaceTitle = workspaceTitle;
@@ -52,11 +50,26 @@ public class WorkspaceModel {
         this.workspaceDesc = workspaceDesc;
     }
 
-    public List<BoardModel> getBoards() {
+    public List<Group20SpringBoot.Group20.boards.entity.WorkspaceModel> getBoards() {
         return boards;
     }
 
-    public void setBoards(List<BoardModel> boards) {
+    public void setBoards(List<Group20SpringBoot.Group20.boards.entity.WorkspaceModel> boards) {
         this.boards = boards;
     }
+
+
+    //Sanjay
+    @ManyToMany(targetEntity = UserModel.class)
+    @JoinColumn(name = "user_listMapping")
+    private List<UserModel> user_List;
+
+    public List<UserModel> getUser_List() {
+        return user_List;
+    }
+
+    public void setUser_List(List<UserModel> user_List) {
+        this.user_List = user_List;
+    }
+
 }

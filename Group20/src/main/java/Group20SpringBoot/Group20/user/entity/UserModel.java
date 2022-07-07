@@ -12,7 +12,7 @@ public class UserModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int userId;
 
     private String firstName;
     private String lastName;
@@ -44,8 +44,8 @@ public class UserModel {
     public UserModel(){
 
     }
-    public int getId() {
-        return id;
+    public int getUserId() {
+        return userId;
     }
     public String getFirstName() {
         return firstName;
@@ -85,6 +85,21 @@ public class UserModel {
 
     public String getSecretKey() {
         return secretKey;
+    }
+
+
+    //sanjay
+    @ManyToMany(targetEntity = WorkspaceModel.class)
+    @JoinColumn(name = "workspace_listMapping")
+    private List<WorkspaceModel> workspace_list;
+
+
+    public List<WorkspaceModel> getWorkspace_list() {
+        return workspace_list;
+    }
+
+    public void setWorkspace_list(List<WorkspaceModel> workspace_list) {
+        this.workspace_list = workspace_list;
     }
 
 

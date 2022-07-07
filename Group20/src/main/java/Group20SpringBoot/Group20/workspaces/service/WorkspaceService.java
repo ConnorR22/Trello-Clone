@@ -1,8 +1,9 @@
 package Group20SpringBoot.Group20.workspaces.service;
 
-import Group20SpringBoot.Group20.boards.entity.BoardModel;
+import Group20SpringBoot.Group20.boards.entity.WorkspaceModel;
 import Group20SpringBoot.Group20.boards.service.BoardService;
-import Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel;
+import Group20SpringBoot.Group20.user.entity.UserModel;
+import Group20SpringBoot.Group20.user.service.IUserService;
 import Group20SpringBoot.Group20.workspaces.repository.WorkspaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,15 +24,15 @@ public class WorkspaceService implements IWorkspaceService{
     }
 
     @Override
-    public WorkspaceModel createWorkspace(@RequestBody WorkspaceModel workspaceModel) {
+    public Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel createWorkspace(@RequestBody Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel workspaceModel) {
         return workspaceRepository.save(workspaceModel);
     }
 
     @Override
-    public WorkspaceModel findWorkspaceByID(int workspaceId) {
-        WorkspaceModel workspaceModel = null;
+    public Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel findWorkspaceByID(int workspaceId) {
+        Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel workspaceModel = null;
 
-        Optional<WorkspaceModel> optionalWorkspaceModel = workspaceRepository.findById(workspaceId);
+        Optional<Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel> optionalWorkspaceModel = workspaceRepository.findById(workspaceId);
         if(optionalWorkspaceModel.isPresent())
         {
             workspaceModel = optionalWorkspaceModel.get();
@@ -41,17 +42,17 @@ public class WorkspaceService implements IWorkspaceService{
     }
 
     @Override
-    public WorkspaceModel addBoard(int workspaceId, int boardId){
-        WorkspaceModel updatedWorkspace = null;
-        Optional<WorkspaceModel> workspace = null;
+    public Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel addBoard(int workspaceId, int boardId){
+        Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel updatedWorkspace = null;
+        Optional<Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel> workspace = null;
 
         try {
             workspace = workspaceRepository.findById(workspaceId);
             if (workspace.isPresent()){
-                WorkspaceModel workspaceModel = workspace.get();
-                BoardModel boardModel = boardService.findBoardByID(boardId);
+                Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel workspaceModel = workspace.get();
+                WorkspaceModel boardModel = boardService.findBoardByID(boardId);
 
-                List<BoardModel> boards = workspaceModel.getBoards();
+                List<WorkspaceModel> boards = workspaceModel.getBoards();
                 if (boards == null){
                     boards = new ArrayList<>();
                 }
@@ -70,17 +71,17 @@ public class WorkspaceService implements IWorkspaceService{
     }
 
     @Override
-    public WorkspaceModel removeBoard(int workspaceId, int boardId){
-        WorkspaceModel updatedWorkspace = null;
-        Optional<WorkspaceModel> workspace = null;
+    public Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel removeBoard(int workspaceId, int boardId){
+        Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel updatedWorkspace = null;
+        Optional<Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel> workspace = null;
 
         try {
             workspace = workspaceRepository.findById(workspaceId);
             if (workspace.isPresent()){
-                WorkspaceModel workspaceModel = workspace.get();
-                BoardModel boardModel = boardService.findBoardByID(boardId);
+                Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel workspaceModel = workspace.get();
+                WorkspaceModel boardModel = boardService.findBoardByID(boardId);
 
-                List<BoardModel> boards = workspaceModel.getBoards();
+                List<WorkspaceModel> boards = workspaceModel.getBoards();
                 if (boards == null){
                     return workspaceModel;
                 }
@@ -99,8 +100,8 @@ public class WorkspaceService implements IWorkspaceService{
     }
     
     @Override
-    public List<BoardModel> getBoardsOfWorkspace(int workspaceId) {
-        WorkspaceModel workspace = findWorkspaceByID(workspaceId);
+    public List<WorkspaceModel> getBoardsOfWorkspace(int workspaceId) {
+        Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel workspace = findWorkspaceByID(workspaceId);
         return workspace.getBoards();
     }
 
@@ -109,9 +110,63 @@ public class WorkspaceService implements IWorkspaceService{
         workspaceRepository.deleteById(workspaceId);
     }
 
+
+
+    //sanjay
+
     @Override
-    public List<WorkspaceModel> getUserWorkspaces(int userId) {
-        return null;
+    public List<Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel> getUserWorkspaces(int userId) {
+        return userService.getUserWorkspaces(userId);
+
     }
+    @Autowired
+    IUserService userService;
+
+    public void addUserToWorkspace(int workspaceId, int userId) {
+
+        Optional<Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel> workspace = null;
+        try{
+            workspace = workspaceRepository.findById(workspaceId);
+            if(workspace.isPresent()){
+
+                Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel workspacemodel = workspace.get();
+                UserModel userModel = userService.findUserById(userId);
+
+                List<UserModel> user_List = workspacemodel.getUser_List();
+                if(user_List==null){
+                    user_List = new ArrayList<>();
+                }
+                user_List.add(userModel);
+                workspacemodel.setUser_List(user_List);
+                workspaceRepository.save(workspacemodel);
+            }
+        }catch (Exception err){
+            System.out.println("Cannot add the user to workspace");
+        }
+
+    }
+    @Override
+    public void deleteUserFromWorkspace(int workspaceId, int userId){
+        Optional<Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel> workspace = null;
+        try{
+            workspace = workspaceRepository.findById(workspaceId);
+            if(workspace.isPresent()){
+
+                Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel workspacemodel = workspace.get();
+                UserModel userModel = userService.findUserById(userId);
+
+                List<UserModel> user_List = workspacemodel.getUser_List();
+
+                assert user_List != null;
+                user_List.remove(userModel);
+                workspacemodel.setUser_List(user_List);
+                workspaceRepository.save(workspacemodel);
+            }
+        }catch (Exception err){
+            System.out.println("Cannot remove the user from the workspace");
+        }
+    }
+
+
 
 }

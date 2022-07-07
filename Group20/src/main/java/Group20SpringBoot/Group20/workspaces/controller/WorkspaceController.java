@@ -1,16 +1,13 @@
 package Group20SpringBoot.Group20.workspaces.controller;
 
-import Group20SpringBoot.Group20.boards.entity.BoardModel;
-import Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel;
+import Group20SpringBoot.Group20.boards.entity.WorkspaceModel;
 import Group20SpringBoot.Group20.workspaces.service.IWorkspaceService;
-import Group20SpringBoot.Group20.workspaces.service.WorkspaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/workspace")
 public class WorkspaceController {
 
 
@@ -21,22 +18,34 @@ public class WorkspaceController {
     }
 
     @PostMapping("/save")
-    public WorkspaceModel addWorkspace(@RequestBody WorkspaceModel workspaceModel) {
+    public Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel addWorkspace(@RequestBody Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel workspaceModel) {
         return workspaceService.createWorkspace(workspaceModel);
     }
 
     @PutMapping("/addBoard/{workspaceId}")
-    public WorkspaceModel addBoard(@PathVariable int workspaceId, @RequestParam int boardId) {
+    public Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel addBoard(@PathVariable int workspaceId, @RequestParam int boardId) {
         return workspaceService.addBoard(workspaceId, boardId);
     }
 
     @GetMapping("/getBoards/{workspaceId}")
-    public List<BoardModel> addBoard(@PathVariable int workspaceId) {
+    public List<WorkspaceModel> addBoard(@PathVariable int workspaceId) {
         return workspaceService.getBoardsOfWorkspace(workspaceId);
     }
 
     @DeleteMapping("/removeBoard/{workspaceId}")
-    public WorkspaceModel removeBoard(@PathVariable int workspaceId, @RequestParam int boardId) {
+    public Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel removeBoard(@PathVariable int workspaceId, @RequestParam int boardId) {
         return workspaceService.removeBoard(workspaceId, boardId);
     }
+
+    //sanjay
+    @PutMapping("/addUser/{userId}")
+    public void addUserToWorkspace(@PathVariable int workspaceId, @RequestParam int userId){
+        workspaceService.addUserToWorkspace(workspaceId, userId);
+    }
+    @PutMapping ("/deleteUser/{userId}")
+    public void deleteUserFromWorkspace(@PathVariable int workspaceId, @RequestParam int userId){
+        workspaceService.deleteUserFromWorkspace(workspaceId, userId);
+    }
+
+
 }
