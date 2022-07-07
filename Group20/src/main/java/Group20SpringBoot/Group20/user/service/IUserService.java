@@ -8,18 +8,21 @@ import java.util.HashMap;
 import java.util.List;
 
 public interface IUserService {
-    UserModel registerUser(UserModel usermodel);
-    HashMap<String, String> loginUser(String email, String password);
-    HashMap<String, String> resetPassword(String email, String newPass, String securityAnswer);
+    boolean registerUser(UserModel usermodel);
+    String loginUser(String email, String password);
+    boolean resetPassword(String email, String securityAnswer);
+
+    boolean changePassword(String email, String newPass);
+
     boolean addUserToWorkspace(String email, WorkspaceModel workspace);
     List<WorkspaceModel> getWorkspaces(int userId);
 
 
 
     //sanjay
-    List<WorkspaceModel> getUserWorkspaces(int userId);
+//    List<WorkspaceModel> getUserWorkspaces(int userId);
     UserModel findUserById(int userId);
-    void deleteWorkspaceFromUser(int userId, int workspaceId);
-    void addWorkspaceToUser(int userId, int workspaceId);
+    void deleteWorkspaceFromUser(int userId, WorkspaceModel workspace);
+//    void addWorkspaceToUser(int userId, int workspaceId);
 
 }

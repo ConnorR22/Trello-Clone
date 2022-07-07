@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,68 +19,69 @@ public class UserService implements IUserService {
     UserRepository userRepository;
 
     @Override
-    public UserModel registerUser(UserModel usermodel) {
-
+    public boolean registerUser(UserModel usermodel) {
         Optional<UserModel> optionalUserModel = userRepository.findByEmailId(usermodel.getEmailId());
         if (optionalUserModel.isPresent()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User Already Exists With that Email.");
         }
-
-        return userRepository.save(usermodel);
+        userRepository.save(usermodel);
+        return true;
     }
 
     @Override
-    public HashMap<String, String> loginUser(String email, String password) {
-        HashMap<String, String> request = new HashMap<>();
+    public String loginUser(String email, String password) {
+//        HashMap<String, String> request = new HashMap<>();
+        String result = "";
 
         UserModel user = null;
         Optional<UserModel> optionalUserModel = userRepository.findByEmailId(email);
         if (optionalUserModel.isPresent()) {
             user = optionalUserModel.get();
             if (user.getPassword().equals(password)) {
-                request.put("result", "" + user.getUserId());
-                request.put("status", "success");
-            } else {
-                request.put("result", "Login unsuccessful");
-                request.put("status", "Invalid Email or Password");
+                result = "" + user.getUserId();
+                return result;
             }
         }
         // User with sent in email string does not exist in database
         else {
-            request.put("result", "Login unsuccessful");
-            request.put("status", "No user registered with that email.");
+            result = "Login unsuccessful, email or password incorrect.";
         }
-        return request;
+        return result;
     }
 
     @Override
-    public HashMap<String, String> resetPassword(String email, String newPass, String securityAnswer) {
-        HashMap<String, String> request = new HashMap<>();
+    public boolean resetPassword(String email, String securityAnswer) {
+//        HashMap<String, String> request = new HashMap<>();
 
         UserModel user = null;
         Optional<UserModel> optionalUserModel = userRepository.findByEmailId(email);
 
         if (optionalUserModel.isPresent()) {
             user = optionalUserModel.get();
-
             // If security answer matches, register the new password
             if (user.getSecretKey().equals(securityAnswer)) {
-                user.setPassword(newPass);
-                userRepository.save(user);
-
-                request.put("result", "" + user.getUserId());
-                request.put("status", "success");
+                return true;
             } else {
-                request.put("result", "Reset unsuccessful");
-                request.put("status", "Invalid Security Answer");
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Incorrect security answer.");
             }
         }
         // User with sent in email string does not exist in database
         else {
-            request.put("result", "Reset unsuccessful");
-            request.put("status", "No user registered with that email.");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No User Exists With that Email.");
         }
-        return request;
+
+    }
+
+    @Override
+    public boolean changePassword(String email, String newPass) {
+        UserModel user = null;
+        Optional<UserModel> optionalUserModel = userRepository.findByEmailId(email);
+        if (optionalUserModel.isPresent()) {
+            user = optionalUserModel.get();
+            user.setPassword(newPass);
+            userRepository.save(user);
+        }
+        return true;
     }
 
     @Override
@@ -125,198 +125,61 @@ public class UserService implements IUserService {
         }
         return user;
     }
-
-//    public UserModel getUser(int id) {
-//        long idLong = id;
-//        UserModel user = userRepository.findById(idLong).get();
-//        user.setSecretKey(null);
-//        return user;
+//
+//    //sanjay
+//    @Autowired
+//    IWorkspaceService workspaceService;
+//
+//
+//public List<WorkspaceModel> getUserWorkspaces(int userId) {
+//
+//    Optional<UserModel> user = null;
+//    List<WorkspaceModel> workspacemodel = null;
+//    user = userRepository.findById(userId);
+//    if (user.isPresent()) {
+//
+//        workspacemodel = user.get().getWorkspace_list();
+//
 //    }
-
-//        public void signUp() {
-//        Scanner kb = new Scanner(System.in);
 //
-//        System.out.println("What is your first name?");
-//        String firstName = kb.next();
-//
-//        System.out.println("What is your last name?");
-//        String lastName = kb.next();
-//
-//        System.out.println("Please enter your email");
-//        String email = kb.next();
-//
-//        System.out.println("Please enter your password");
-//        System.out.println("Your password must contain:");
-//        System.out.println("At least 1 uppercase letter");
-//        System.out.println("At least 1 lowercase letter");
-//        System.out.println("At least 1 number");
-//        System.out.println("At least 1 special character");
-//        System.out.println("At least 8 or more characters");
-//
-//        String password = kb.next();
-//
-//        boolean upperCheck = false;
-//        boolean lowerCheck = false;
-//        boolean numberCheck = false;
-//        boolean lengthCheck = false;
-//        boolean specialCheck = false;
-//
-//        for (int i = 0; i < password.length(); i++) {
-//            if (Character.isUpperCase(password.charAt(i))) {
-//                upperCheck = true;
-//            } else {
-//                System.out.println("Password must contain at least 1 uppercase letter");
-//            }
-//            if (Character.isLowerCase(password.charAt(i))) {
-//                lowerCheck = true;
-//            } else {
-//                System.out.println("Password must contain at least 1 lowercase letter");
-//            }
-//            if (Character.isDigit(password.charAt(i))) {
-//                numberCheck = true;
-//            } else {
-//                System.out.println("Password must contain at least 1 number");
-//            }
-//            if (password.length() > 8) {
-//                lengthCheck = true;
-//            } else {
-//                System.out.println("Password must be at least 8 characters or more");
-//            }
-//
-//            // https://www.w3schools.com/java/java_regex.asp
-//            //Date accessed: 30th June 2022
-//            //needed to understand how to use regex
-//
-//            Pattern pattern = Pattern.compile("[^A-Za-z0-9]");
-//            Matcher matcher = pattern.matcher(password);
-//            specialCheck = matcher.find();
-//            if (!specialCheck) {
-//                System.out.println("Password must contain at least 1 special character");
-//            }
-//
-//        }
-//
-//        System.out.println("What is the first name of your favourite teacher?");
-//        String securityAns = kb.next();
-//
-//        boolean passwordCheck = upperCheck && lowerCheck && numberCheck && lengthCheck && specialCheck;
-//
-//        if (passwordCheck) {
-//            UserModel user = new UserModel(firstName, lastName, email, password, securityAns);
-//            user.setSecretKey(securityAns);
-//            IUserService.saveUser(user);
-//        }
-//
+//        return workspacemodel;
 //
 //}
-
-//    public void login(String emailId, String password) {
-//        List<UserModel> allUsers = getAllUsers();
 //
-//        for (UserModel user : allUsers) {
-//            if (user.getEmailId().equals(emailId)) {
-//                if (user.getPassword().equals(password)) {
-//                    // Redirect user to the dashboard
-//                } else {
-//                    System.out.println("The provided password is incorrect");
+//
+//    @Override
+//    public void addWorkspaceToUser(int userId, int workspaceId) {
+//
+//        Optional<UserModel> user = null;
+//
+//        try {
+//            user = userRepository.findById(userId);
+//            if (user.isPresent()) {
+//
+//                UserModel usermodel = user.get();
+//                WorkspaceModel workspacemodel = workspaceService.findWorkspaceByID(workspaceId);
+//
+//                List<WorkspaceModel> workspace_list = usermodel.getWorkspace_list();
+//
+//                if (workspace_list == null) {
+//                    workspace_list = new ArrayList<>();
 //                }
-//            } else {
-//                System.out.println("There is no account associated with " + emailId);
+//
+//                workspace_list.add(workspacemodel);
+//                usermodel.setWorkspace_list(workspace_list);
+//                userRepository.save(usermodel);
+//
 //            }
+//
+//        } catch (Exception err) {
+//            System.out.println("Cannot add workspace to user");
+//
 //        }
+//
 //    }
 
-//    public void forgotPassword(String email) throws Exception {
-//        List<UserModel> allUsers = getAllUsers();
-//        UserModel toUse = new UserModel();
-//
-//        Scanner kb = new Scanner(System.in);
-//        String newPassword = "";
-//        boolean isPresent = true;
-//
-//        for (UserModel user : allUsers) {
-//            if (user.getEmailId().equals(email)) {
-//                toUse = user;
-//                break;
-//            } else {
-//                isPresent = false;
-//            }
-//        }
-//
-//        if (!isPresent) {throw new Exception("There is no account associated with the given email.");}
-//
-//        System.out.println("What is the first name of your favourite teacher?");
-//        String securityAns = kb.next();
-//
-//        if (toUse.getSecretKey().equals(securityAns)) {
-//            System.out.println("Please enter a new password");
-//            System.out.println("Your password must contain:");
-//            System.out.println("At least 1 uppercase letter");
-//            System.out.println("At least 1 lowercase letter");
-//            System.out.println("At least 1 number");
-//            System.out.println("At least 1 special character");
-//            System.out.println("At least 8 or more characters");
-//            newPassword = kb.next();
-//            toUse.setPassword(newPassword);
-//            // Redirect to login page
-//        }
-//    }
-
-
-    //sanjay
-    @Autowired
-    IWorkspaceService workspaceService;
-
-
-public List<WorkspaceModel> getUserWorkspaces(int userId) {
-
-    Optional<UserModel> user = null;
-    List<WorkspaceModel> workspacemodel = null;
-    user = userRepository.findById(userId);
-    if (user.isPresent()) {
-
-        workspacemodel = user.get().getWorkspace_list();
-
-    }
-
-        return workspacemodel;
-
-}
-
-
     @Override
-    public void addWorkspaceToUser(int userId, int workspaceId) {
-
-        Optional<UserModel> user = null;
-
-        try {
-            user = userRepository.findById(userId);
-            if (user.isPresent()) {
-
-                UserModel usermodel = user.get();
-                WorkspaceModel workspacemodel = workspaceService.findWorkspaceByID(workspaceId);
-
-                List<WorkspaceModel> workspace_list = usermodel.getWorkspace_list();
-
-                if (workspace_list == null) {
-                    workspace_list = new ArrayList<>();
-                }
-
-                workspace_list.add(workspacemodel);
-                usermodel.setWorkspace_list(workspace_list);
-                userRepository.save(usermodel);
-
-            }
-
-        } catch (Exception err) {
-            System.out.println("Cannot add workspace to user");
-
-        }
-
-    }
-
-    @Override
-    public void deleteWorkspaceFromUser(int userId, int workspaceId) {
+    public void deleteWorkspaceFromUser(int userId, WorkspaceModel workspace) {
 
             Optional<UserModel> user = null;
             try {
@@ -324,13 +187,12 @@ public List<WorkspaceModel> getUserWorkspaces(int userId) {
                 if (user.isPresent()) {
 
                     UserModel usermodel = user.get();
-                    WorkspaceModel workspacemodel = workspaceService.findWorkspaceByID(workspaceId);
 
-                    List<WorkspaceModel> workspace_list = usermodel.getWorkspace_list();
+                    List<WorkspaceModel> workspace_list = usermodel.getWorkspaces();
 
                     assert workspace_list != null;
-                    workspace_list.remove(workspacemodel);
-                    usermodel.setWorkspace_list(workspace_list);
+                    workspace_list.remove(workspace);
+                    usermodel.setWorkspaces(workspace_list);
                     userRepository.save(usermodel);
 
                 }
@@ -339,7 +201,6 @@ public List<WorkspaceModel> getUserWorkspaces(int userId) {
                 System.out.println("Cannot remove workspace from user");
 
             }
-
     }
 
 }

@@ -8,12 +8,23 @@ function Registration(){
   const history = useHistory();
 
   function userHandler(user){
-    //http://localhost:9001/register
-    fetch('' , {
+    fetch('http://localhost:9001/user/register' , {
       method: 'POST',
       body: JSON.stringify(user),
       headers: {'Content-Type': 'application/json'}
-    }).then(() => history.replace('/login'));
+    }).then(
+      response => response.json()
+    )
+    .then( function(data) {
+      console.log(data);
+      if (data === true) {
+        history.replace('/login');
+        alert("User registered successfully.")
+      } else {
+        alert("User with that email is already registered.")
+      }
+      return;
+    })
   }
 
   return (

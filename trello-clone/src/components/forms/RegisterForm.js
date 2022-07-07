@@ -14,13 +14,13 @@ function Registerform(props){
    function submitHandler(event){
       event.preventDefault();
 
-      const fName = fNameRef.current.value;
-      const lName = lNameRef.current.value;
-      const email = emailRef.current.value;
+      const firstName = fNameRef.current.value;
+      const lastName = lNameRef.current.value;
+      const emailId = emailRef.current.value;
       const password = passwordRef.current.value;
-      const security = securityRef.current.value;
+      const secretKey = securityRef.current.value;
 
-      const user = {fName, lName, email, password, security};
+      const user = {firstName, lastName, emailId, password, secretKey};
 
       props.userHand(user);
    }
