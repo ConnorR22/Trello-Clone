@@ -8,7 +8,7 @@ build-job :
          - ugrad
      script:
          -cd Group20
-         -mvn clean package -DskipTests
+         -mvn clean package -DskipTests = True
 
 test-job:
     stage: test
