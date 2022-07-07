@@ -7,6 +7,7 @@ build:
     tags: 
         - ugrad
     script:
+        -cd Group20
         -mvn clean package -DskipTests=true
 
 test:
@@ -14,5 +15,6 @@ test:
     tags:
         - ugrad
     script:
+        -cd Group20
         -mvn clean verify
 
