@@ -30,7 +30,6 @@ public class UserService implements IUserService {
 
     @Override
     public String loginUser(String email, String password) {
-//        HashMap<String, String> request = new HashMap<>();
         String result = "";
 
         UserModel user = null;
@@ -50,32 +49,31 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public boolean resetPassword(String email, String securityAnswer) {
-//        HashMap<String, String> request = new HashMap<>();
+    public String resetPassword(String email, String securityAnswer) {
 
         UserModel user = null;
         Optional<UserModel> optionalUserModel = userRepository.findByEmailId(email);
-
+        System.out.println(email);
         if (optionalUserModel.isPresent()) {
             user = optionalUserModel.get();
             // If security answer matches, register the new password
             if (user.getSecretKey().equals(securityAnswer)) {
-                return true;
+                return ""+user.getUserId();
             } else {
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Incorrect security answer.");
+                return "Incorrect security answer.";
             }
         }
         // User with sent in email string does not exist in database
         else {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No User Exists With that Email.");
+            return "No User Exists With that Email.";
         }
 
     }
 
     @Override
-    public boolean changePassword(String email, String newPass) {
+    public boolean changePassword(int userId, String newPass) {
         UserModel user = null;
-        Optional<UserModel> optionalUserModel = userRepository.findByEmailId(email);
+        Optional<UserModel> optionalUserModel = userRepository.findById(userId);
         if (optionalUserModel.isPresent()) {
             user = optionalUserModel.get();
             user.setPassword(newPass);

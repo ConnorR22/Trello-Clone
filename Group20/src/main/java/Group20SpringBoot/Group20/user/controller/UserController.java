@@ -27,22 +27,22 @@ public class UserController {
         return userService.registerUser(userModel);
     }
 
-    @GetMapping("/login/{email}")
+    @PostMapping("/login/{email}")
     @CrossOrigin(origins = "http://localhost:3000")
-    public String loginUser(@PathVariable String email, @RequestParam String password){
+    public String loginUser(@PathVariable String email, @RequestBody String password){
         return userService.loginUser(email, password);
     }
 
-    @GetMapping("/resetPassword/{email}")
+    @PostMapping("/resetPassword/{email}")
     @CrossOrigin(origins = "http://localhost:3000")
-    public boolean resetPassword(@PathVariable String email, @RequestParam String securityAnswer){
+    public String resetPassword(@PathVariable String email, @RequestParam String securityAnswer){
         return userService.resetPassword(email, securityAnswer);
     }
 
-    @PutMapping("/changePassword/{email}")
+    @PutMapping("/changePassword/{userId}")
     @CrossOrigin(origins = "http://localhost:3000")
-    public boolean changePassword(@PathVariable String email, @RequestParam String newPass){
-        return userService.resetPassword(email, newPass);
+    public boolean changePassword(@PathVariable int userId, @RequestParam String newPass){
+        return userService.changePassword(userId, newPass);
     }
 
 

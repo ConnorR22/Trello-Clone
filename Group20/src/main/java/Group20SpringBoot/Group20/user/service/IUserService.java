@@ -10,9 +10,9 @@ import java.util.List;
 public interface IUserService {
     boolean registerUser(UserModel usermodel);
     String loginUser(String email, String password);
-    boolean resetPassword(String email, String securityAnswer);
+    String resetPassword(String email, String securityAnswer);
 
-    boolean changePassword(String email, String newPass);
+    boolean changePassword(int userId, String newPass);
 
     boolean addUserToWorkspace(String email, WorkspaceModel workspace);
     List<WorkspaceModel> getWorkspaces(int userId);
