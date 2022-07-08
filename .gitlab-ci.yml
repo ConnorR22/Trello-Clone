@@ -1,20 +1,34 @@
-stages:
-     - build
-     - test
+stages:   
+  - build
+  - test
 
-build-job :
-     stage: build
-     tags:
-         - ugrad
-     script:
-         -cd Group20
-         -mvn clean package -DskipTests
+build-job: 
+  stage: build
 
-test-job:
-    stage: test
-    tags:
-         - ugrad
-    script:
-        -cd Group20
-        -mvn clean verify      
+  before_script:
+    - cd Group20
+  image: maven:3.8.4-openjdk-17
+  tags:
+      - dalfcs_docker_autoscale
+  script:
+    - mvn clean package -DskipTests
+  artifacts:
+    paths: 
+      - Group20/target/*.jar
+    expire_in: 1 week
 
+test-job:  
+  stage: test   
+  before_script:
+    - cd Group20
+  image: maven:3.8.4-openjdk-17
+  tags:
+      - dalfcs_docker_autoscale
+  script:
+    - mvn clean verify
+  artifacts:
+    reports: 
+      junit:
+        - Group20/target/surefire-reports/TEST-*.xml
+        - Group20/target/failsafe-reports/TEST-*.xml
+    expire_in: 1 week
