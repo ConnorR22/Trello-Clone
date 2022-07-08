@@ -11,8 +11,8 @@ function CreateWorkspaceForm(props) {
         const workspaceDesp = workspaceDespRef.current.value;
 
         const workspace = {
-            name: workspaceName,
-            description: workspaceDesp
+            workspaceTitle: workspaceName,
+            workspaceDesc: workspaceDesp
         };
 
         props.createWorkspace(workspace);

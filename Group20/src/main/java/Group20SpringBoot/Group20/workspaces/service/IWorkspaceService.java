@@ -24,7 +24,7 @@ public interface IWorkspaceService {
 
 //    List<WorkspaceModel> getUserWorkspaces(int userId);
 
-//    void addUserToWorkspace(int workspaceId, int userId);
+    boolean addUserToWorkspace(int workspaceId, String email);
 
 
 }

@@ -3,9 +3,10 @@ import ViewWorkspaces from '../components/ViewWorkspaces';
 
 function Workspaces() {
     const [workspacesData, setWorkspacesData] = useState([]);
+    const userId = localStorage.getItem('user');
 
     function getAllWorkspaces() {
-        fetch('http://localhost:9001/workspace')
+        fetch(`http://localhost:9001/user/getWorkspaces/${userId}`)
             .then(response => response.json())
             .then(workspaces => {
                 setWorkspacesData(workspaces);

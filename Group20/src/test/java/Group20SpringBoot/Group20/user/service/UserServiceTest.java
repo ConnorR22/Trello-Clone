@@ -42,7 +42,6 @@ class UserServiceTest {
 
         Mockito.when(userRepository.save(user)).thenReturn(user);
         boolean rg_user = userService.registerUser(user);
-//        assertEquals("daniaka@yahoo.com",rg_user.getEmailId());
         assertTrue(rg_user);
 
     }
@@ -58,12 +57,10 @@ class UserServiceTest {
         user.setSecretKey("SecretKey");
         Mockito.when(userRepository.findByEmailId(user.getEmailId())).thenReturn(Optional.of(user));
 
-//        HashMap<String, String> result = userService.loginUser("daniaka@yahoo.com","Password");
-//        HashMap<String, String> expected= new HashMap<>();;
-//        expected.put("result", "" + user.getUserId());
-//        expected.put("status", "success");
-//        assertEquals(expected,result);
+        String result = userService.loginUser("daniaka@yahoo.com","Password");
 
+        String expected = "0";
+        assertEquals(expected, result);
 
     }
 
@@ -79,11 +76,10 @@ class UserServiceTest {
 
         Mockito.when(userRepository.findByEmailId(user.getEmailId())).thenReturn(Optional.of(user));
 
-//        HashMap<String, String> result = userService.loginUser("daniaka@yahoo.com","IamGroot");
-//        HashMap<String, String> expected= new HashMap<>();;
-//        expected.put("result", "Login unsuccessful");
-//        expected.put("status", "Invalid Email or Password");
-//        assertEquals(expected,result);
+        String result = userService.loginUser("daniaka@yahoo.com","WrongPassword");
+
+        String expected = "Login unsuccessful, email or password incorrect.";
+        assertEquals(expected, result);
 
 
     }
@@ -98,14 +94,9 @@ class UserServiceTest {
 
         Mockito.when(userRepository.findByEmailId(user.getEmailId())).thenReturn(Optional.of(user));
 
-        boolean result = userService.resetPassword("daniaka@yahoo.com","SecretKey");
-//        HashMap<String, String> expected= new HashMap<>();;
-//        expected.put("result", "" + user.getUserId());
-//        expected.put("status", "success");
-        assertTrue(result);
+        String result = userService.resetPassword("daniaka@yahoo.com","SecretKey");
 
-
-
+        assertEquals("0", result);
 
     }
     @Test
@@ -118,11 +109,9 @@ class UserServiceTest {
 
         Mockito.when(userRepository.findByEmailId(user.getEmailId())).thenReturn(Optional.of(user));
 
-        boolean result = userService.resetPassword("daniaka@yahoo.com","~/~#");
-        HashMap<String, String> expected= new HashMap<>();;
-        expected.put("result", "Reset unsuccessful");
-        expected.put("status", "Invalid Security Answer");
-        assertEquals(expected,result);
+        String result = userService.resetPassword("daniaka@yahoo.com","~/~#");
+        String expected = "Incorrect security answer.";
+        assertEquals(expected, result);
 
 
     }
@@ -173,8 +162,15 @@ class UserServiceTest {
 
     @Test
     void addWorkspaceToUser() {
+        UserModel user = new UserModel();
+        user.setFirstName("Dani");
+        user.setLastName("Rojas");
+        user.setEmailId("daniaka@yahoo.com");
+        user.setPassword("Password");
+        user.setSecretKey("SecretKey");
+        Mockito.when(userRepository.findById(user.getUserId())).thenReturn(Optional.of(user));
 
-
+        WorkspaceModel workspace = new WorkspaceModel();
 
     }
     @Test

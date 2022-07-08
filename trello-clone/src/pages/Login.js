@@ -19,7 +19,8 @@ function Loginpage(){
       }
       else {
         localStorage.setItem('userId', data)
-        history.replace('/home');
+        localStorage.setItem('userEmail', email)
+        history.replace('/workspaces');
       }
     })
   }

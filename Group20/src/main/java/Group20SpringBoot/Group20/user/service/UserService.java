@@ -39,6 +39,8 @@ public class UserService implements IUserService {
             if (user.getPassword().equals(password)) {
                 result = "" + user.getUserId();
                 return result;
+            } else {
+                result = "Login unsuccessful, email or password incorrect.";
             }
         }
         // User with sent in email string does not exist in database
@@ -92,10 +94,10 @@ public class UserService implements IUserService {
 
             List<WorkspaceModel> workspaces = user.getWorkspaces();
             if (workspaces == null) {
-                workspaces = new ArrayList<>();
+                workspaces = new ArrayList<WorkspaceModel>();
             }
 
-            if (workspaces.contains(workspace)) {
+            if (!workspaces.contains(workspace)) {
                 workspaces.add(workspace);
                 user.setWorkspaces(workspaces);
                 userRepository.save(user);

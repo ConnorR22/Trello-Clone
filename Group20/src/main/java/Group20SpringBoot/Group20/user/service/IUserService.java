@@ -17,8 +17,6 @@ public interface IUserService {
     boolean addUserToWorkspace(String email, WorkspaceModel workspace);
     List<WorkspaceModel> getWorkspaces(int userId);
 
-
-
     //sanjay
 //    List<WorkspaceModel> getUserWorkspaces(int userId);
     UserModel findUserById(int userId);
