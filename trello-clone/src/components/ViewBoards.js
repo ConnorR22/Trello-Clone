@@ -1,7 +1,15 @@
 import React from 'react';
 import { Grid, Card, CardContent, Typography, Button } from '@mui/material';
+import { Link } from 'react-router-dom';
+
+
 
 function ViewBoards(props) {
+
+    function removeBoard(boardId) {
+        props.deleteBoard(boardId);
+    }
+
     return (
         <section style={{ marginTop: '64px' }}>
             <Card elevation={6}>
@@ -27,6 +35,12 @@ function ViewBoards(props) {
                                         <Button variant='contained' sx={{ marginTop: '16px' }}>
                                             View Tasks
                                         </Button>
+                                        <Link to={'/delete-board'}>
+                                            <Button variant='contained' sx={{ marginTop: '16px' }} onClick={() => localStorage.setItem('boardIdToDelete', board.boardId)}>
+                                                Delete Board
+                                            </Button>
+                                        </Link>
+
                                     </CardContent>
                                 </Card>
                             </Grid>

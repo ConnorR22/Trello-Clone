@@ -26,8 +26,9 @@ function CreateBoard() {
             } else {
                 alert("Board already exists in this workspace.")
             }
-            return;
-        })
+        }).then(
+                () => history.replace('/boards/'+workspaceId)
+        )
     }
 
     function createBoardHandler(board) {
@@ -39,10 +40,7 @@ function CreateBoard() {
             }
         }).then(
             response => response.json()
-        ).then( (response) => {addBoardToWorkspace(response, workspaceId)})
-            .then(
-               () => history.replace('/boards')
-            );
+        ).then( (response) => {addBoardToWorkspace(response, workspaceId)});
     }
 
     return (

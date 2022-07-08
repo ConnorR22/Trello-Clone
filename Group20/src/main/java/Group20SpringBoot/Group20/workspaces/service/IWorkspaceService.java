@@ -13,7 +13,7 @@ public interface IWorkspaceService {
 
     boolean addBoard(int workspaceId, int boardId);
 
-    WorkspaceModel removeBoard(int workspaceId, int boardId);
+    int removeBoard(int workspaceId, int boardId);
 
     List<BoardModel> getBoardsOfWorkspace(int workspaceId);
 

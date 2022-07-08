@@ -75,7 +75,7 @@ public class WorkspaceService implements IWorkspaceService{
     }
 
     @Override
-    public WorkspaceModel removeBoard(int workspaceId, int boardId){
+    public int removeBoard(int workspaceId, int boardId){
         WorkspaceModel updatedWorkspace = null;
         Optional<WorkspaceModel> workspace = null;
 
@@ -87,7 +87,7 @@ public class WorkspaceService implements IWorkspaceService{
 
                 List<BoardModel> boards = workspaceModel.getBoards();
                 if (boards == null){
-                    return workspaceModel;
+                    return -1;
                 }
 
                 boards.remove(boardModel);
@@ -100,7 +100,7 @@ public class WorkspaceService implements IWorkspaceService{
             e.printStackTrace();
         }
 
-        return updatedWorkspace;
+        return boardId;
     }
     
     @Override

@@ -36,7 +36,7 @@ public class WorkspaceController {
 
     @DeleteMapping("/removeBoard/{workspaceId}")
     @CrossOrigin(origins = "http://localhost:3000")
-    public Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel removeBoard(@PathVariable int workspaceId, @RequestParam int boardId) {
+    public int removeBoard(@PathVariable int workspaceId, @RequestParam int boardId) {
         return workspaceService.removeBoard(workspaceId, boardId);
     }
 

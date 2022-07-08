@@ -11,6 +11,7 @@ import ForgotPass from "./pages/Forgotpassword";
 import ResetPass from "./pages/ResetPassword";
 import CreateWorkspace from "./pages/CreateWorkspace";
 import Workspaces from "./pages/Workspaces";
+import DeleteBoard from "./pages/DeleteBoard";
 
 function App() {
   return (   
@@ -33,6 +34,9 @@ function App() {
             </Route>
             <Route path="/create-board">
               <CreateBoard/>
+            </Route>
+            <Route path="/delete-board">
+              <DeleteBoard/>
             </Route>
             <Route path="/forgotpassword">
               <ForgotPass/>
