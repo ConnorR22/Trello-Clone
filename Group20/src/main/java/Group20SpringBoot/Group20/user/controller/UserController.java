@@ -29,7 +29,7 @@ public class UserController {
 
     @PostMapping("/login/{email}")
     @CrossOrigin(origins = "http://localhost:3000")
-    public String loginUser(@PathVariable String email, @RequestBody String password){
+    public String loginUser(@PathVariable String email, @RequestParam String password){
         return userService.loginUser(email, password);
     }
 
