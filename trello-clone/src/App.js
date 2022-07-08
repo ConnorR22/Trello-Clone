@@ -9,6 +9,8 @@ import Boards from "./pages/Boards";
 import CreateBoard from "./pages/CreateBoard";
 import ForgotPass from "./pages/Forgotpassword";
 import ResetPass from "./pages/ResetPassword";
+import CreateWorkspace from "./pages/CreateWorkspace";
+import Workspaces from "./pages/Workspaces";
 
 function App() {
   return (   
@@ -37,6 +39,12 @@ function App() {
             </Route>
             <Route path="/resetpassword">
               <ResetPass/>
+            </Route>
+            <Route path="/create-workspace">
+              <CreateWorkspace/>
+            </Route>
+            <Route path="/workspaces">
+              <Workspaces/>
             </Route>
           </Switch>
         </Container>

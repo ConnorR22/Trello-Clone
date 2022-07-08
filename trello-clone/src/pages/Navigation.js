@@ -11,6 +11,8 @@ function Navigation(){
             <li><Link to="/register">Register</Link></li>
             <li><Link to="/boards">Boards</Link></li>
             <li><Link to="/create-board">Create Boards</Link></li>
+            <li><Link to="/workspaces">Workspaces</Link></li>
+            <li><Link to="/create-workspace">Create Workspaces</Link></li>
         </ul>
      </nav>
 

@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import ViewWorkspaces from '../components/ViewWorkSpaces';
+import ViewWorkspaces from '../components/ViewWorkspaces';
 
 function Workspaces() {
-    const [WorkspacesData, setWorkspacesData] = useState([]);
+    const [workspacesData, setWorkspacesData] = useState([]);
 
     function getAllWorkspaces() {
-        fetch('http://localhost:3000/Workspaces')
+        fetch('http://localhost:9001/workspace')
             .then(response => response.json())
-            .then(Workspaces => {
-                setWorkspacesData(Workspaces);
+            .then(workspaces => {
+                setWorkspacesData(workspaces);
             });
     };
 
@@ -18,7 +18,7 @@ function Workspaces() {
 
     return (
         <section>
-            <ViewWorkspaces Workspaces={WorkspacesData} />
+            <ViewWorkspaces workspaces={workspacesData} />
         </section>
     );
 };
