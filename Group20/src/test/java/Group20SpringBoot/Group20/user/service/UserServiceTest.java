@@ -154,10 +154,20 @@ class UserServiceTest {
         user.setEmailId("daniaka@yahoo.com");
         user.setPassword("Password");
         user.setSecretKey("SecretKey");
+
+        WorkspaceModel workspacemodel = new WorkspaceModel();
+        workspacemodel.setWorkspaceDesc("Testing workspace");
+        workspacemodel.setWorkspaceTitle("Tests");
+
+        List<WorkspaceModel> workspace = new ArrayList<>();
+        workspace.add(workspacemodel);
+        user.setWorkspaces(workspace);
+
         Mockito.when(userRepository.findById(user.getUserId())).thenReturn(Optional.of(user));
 
-        List<WorkspaceModel> userWorkspaces = userService.getWorkspaces(user.getUserId());
-        assertNull(userWorkspaces);
+        List<WorkspaceModel> demoUserWorkspace = userService.getUserWorkspaces(user.getUserId());
+        assertNotNull(demoUserWorkspace);
+        assertEquals(demoUserWorkspace,user.getWorkspaces());
 
     }
 
