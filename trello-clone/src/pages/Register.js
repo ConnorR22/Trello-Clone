@@ -16,7 +16,7 @@ function Registration(){
       response => response.json()
     )
     .then( function(data) {
-      console.log(data);
+      // console.log(data);
       if (data === true) {
         history.replace('/login');
         alert("User registered successfully.")

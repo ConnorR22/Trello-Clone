@@ -45,20 +45,21 @@ public class UserController {
         return userService.changePassword(userId, newPass);
     }
 
-
-
+    @GetMapping("/getWorkspaces/{userId}")
+    @CrossOrigin(origins = "http://localhost:3000")
+    public List<WorkspaceModel> getWorkspaces(@PathVariable int userId){
+        return userService.getWorkspaces(userId);
+    }
 
     //sanjay
     @PutMapping("/add_workspace/{email}")
-    public boolean addUserToWorkspace(@PathVariable String email, @RequestBody WorkspaceModel workspace){
+    public boolean addUserToWorkspace(@PathVariable String email, @RequestParam WorkspaceModel workspace){
         return userService.addUserToWorkspace(email, workspace);
-//        System.out.println("User Added to the Workspace Successfully");
     }
     @PutMapping ("/delete_workspace/{userId}")
     public void deleteWorkspaceFromUser(@PathVariable int userId, @RequestBody WorkspaceModel workspace){
         userService.deleteWorkspaceFromUser(userId, workspace);
         System.out.println("User Deleted from the Workspace Successfully");
-
     }
 
 

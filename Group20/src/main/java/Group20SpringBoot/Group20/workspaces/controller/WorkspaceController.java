@@ -9,41 +9,46 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
+@RequestMapping("/workspace")
 public class WorkspaceController {
 
-
-    private final IWorkspaceService workspaceService;
     @Autowired
-    public WorkspaceController(IWorkspaceService workspaceService) {
-        this.workspaceService = workspaceService;
-    }
+    IWorkspaceService workspaceService;
 
     @PostMapping("/save")
+    @CrossOrigin(origins = "http://localhost:3000")
     public WorkspaceModel addWorkspace(@RequestBody WorkspaceModel workspaceModel) {
         return workspaceService.createWorkspace(workspaceModel);
     }
 
     @PutMapping("/addBoard/{workspaceId}")
+    @CrossOrigin(origins = "http://localhost:3000")
     public WorkspaceModel addBoard(@PathVariable int workspaceId, @RequestParam int boardId) {
         return workspaceService.addBoard(workspaceId, boardId);
     }
 
     @GetMapping("/getBoards/{workspaceId}")
+    @CrossOrigin(origins = "http://localhost:3000")
     public List<BoardModel> getBoards(@PathVariable int workspaceId) {
         return workspaceService.getBoardsOfWorkspace(workspaceId);
     }
 
     @DeleteMapping("/removeBoard/{workspaceId}")
+    @CrossOrigin(origins = "http://localhost:3000")
     public Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel removeBoard(@PathVariable int workspaceId, @RequestParam int boardId) {
         return workspaceService.removeBoard(workspaceId, boardId);
     }
 
     //sanjay
-//    @PutMapping("/addUser/{userId}")
-//    public void addUserToWorkspace(@PathVariable int workspaceId, @RequestParam int userId){
-//        workspaceService.addUserToWorkspace(workspaceId, userId);
-//    }
+    @PostMapping("/addUser/{workspaceId}")
+    @CrossOrigin(origins = "http://localhost:3000")
+    public boolean addUserToWorkspace(@PathVariable int workspaceId, @RequestParam String email){
+        return workspaceService.addUserToWorkspace(workspaceId, email);
+    }
+
 //    @PutMapping ("/deleteUser/{userId}")
+//    @CrossOrigin(origins = "http://localhost:3000")
 //    public void deleteUserFromWorkspace(@PathVariable int workspaceId, @RequestParam int userId){
 //        workspaceService.deleteUserFromWorkspace(workspaceId, userId);
 //    }

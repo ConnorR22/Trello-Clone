@@ -17,12 +17,12 @@ import java.util.Optional;
 public class WorkspaceService implements IWorkspaceService{
     private final WorkspaceRepository workspaceRepository;
     private final BoardService boardService;
-//    private final UserService userService;
+    private final UserService userService;
     @Autowired
-    public WorkspaceService(WorkspaceRepository workspaceRepository, BoardService boardService){
+    public WorkspaceService(WorkspaceRepository workspaceRepository, BoardService boardService, UserService userService){
         this.workspaceRepository = workspaceRepository;
         this.boardService = boardService;
-//        this.userService = userService;
+        this.userService = userService;
     }
 
     @Override
@@ -113,33 +113,21 @@ public class WorkspaceService implements IWorkspaceService{
     }
 
 
-
     //sanjay
+    @Override
+    public boolean addUserToWorkspace(int workspaceId, String email) {
 
+        WorkspaceModel workspace = null;
+        boolean result = false;
 
-//    public void addUserToWorkspace(int workspaceId, int userId) {
-//
-//        Optional<WorkspaceModel> workspace = null;
-//        try{
-//            workspace = workspaceRepository.findById(workspaceId);
-//            if(workspace.isPresent()){
-//
-//                WorkspaceModel workspacemodel = workspace.get();
-//                UserModel userModel = userService.findUserById(userId);
-//
-//                List<UserModel> user_List = workspacemodel.getUser_List();
-//                if(user_List==null){
-//                    user_List = new ArrayList<>();
-//                }
-//                user_List.add(userModel);
-//                workspacemodel.setUser_List(user_List);
-//                workspaceRepository.save(workspacemodel);
-//            }
-//        } catch (Exception err){
-//            System.out.println("Cannot add the user to workspace");
-//        }
-//
-//    }
+        Optional<WorkspaceModel> optionalWorkspaceModel = workspaceRepository.findById(workspaceId);
+        if(optionalWorkspaceModel.isPresent()){
+            workspace = optionalWorkspaceModel.get();
+            result = userService.addUserToWorkspace(email, workspace);
+        }
+        return result;
+    }
+
 //    @Override
 //    public void deleteUserFromWorkspace(int workspaceId, int userId){
 //        Optional<WorkspaceModel> workspace = null;
