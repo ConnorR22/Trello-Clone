@@ -27,16 +27,16 @@
 # Citations
 
 ## Material-ui
-Date accessed: July 3, 2022
-URL: https://mui.com/
+- Date accessed: July 3, 2022
+- URL: https://mui.com/
 
 ## React-Router-Dom
-Date accessed: July 4, 2022
-URL: https://v5.reactrouter.com/web/guides/quick-start
+- Date accessed: July 4, 2022
+- URL: https://v5.reactrouter.com/web/guides/quick-start
 
 ## Mockito
-Date accessed: June 25, 2022
-URL: https://site.mockito.org/
+- Date accessed: June 25, 2022
+- URL: https://site.mockito.org/
 
 # Frontend
 
@@ -50,24 +50,22 @@ URL: https://site.mockito.org/
 
 - Steps to setup the frontend project on local machine:
 
-Change directory to trello-clone with:
-cd .\trello-clone\ 
+- Change directory to trello-clone with: cd .\trello-clone\ 
 
-Run installation dependencies:
-npm install
-npm install react-router-dom@5.2.0
-npm install @material-ui/core
+- Run installation dependencies:
+- npm install
+- npm install react-router-dom@5.2.0
+- npm install @material-ui/core
 
 
 ## Running the Frontend
 
 - Developed through React in Trello-clone folder. To access the documents launch the files through Local port: 3000. 
-Using npm start in terminal to launch the browser once repository is downloaded.
+- Using npm start in terminal to launch the browser once repository is downloaded.
 
-To launch the frontend code, run the command:
-npm run start
+- To launch the frontend code, run the command: npm run start
 
-Ensure you're running on port 3000 to send requests to the backend as that is the listening port for the API calls.
+- Ensure you're running on port 3000 to send requests to the backend as that is the listening port for the API calls.
 
 
 # Backend
