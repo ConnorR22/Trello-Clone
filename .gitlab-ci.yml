@@ -14,7 +14,7 @@ build-job:
     - mvn clean package -DskipTests
   artifacts:
     paths: 
-      - Group20/target/*.jar
+      - group20/target/*.jar
     expire_in: 1 week
 
 test-job:  
@@ -29,6 +29,6 @@ test-job:
   artifacts:
     reports: 
       junit:
-        - Group20/target/surefire-reports/TEST-*.xml
-        - Group20/target/failsafe-reports/TEST-*.xml
+        - group20/target/surefire-reports/TEST-*.xml
+        - group20/target/failsafe-reports/TEST-*.xml
     expire_in: 1 week
