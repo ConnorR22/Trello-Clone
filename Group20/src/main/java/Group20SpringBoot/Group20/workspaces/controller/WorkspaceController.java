@@ -24,7 +24,7 @@ public class WorkspaceController {
 
     @PutMapping("/addBoard/{workspaceId}")
     @CrossOrigin(origins = "http://localhost:3000")
-    public WorkspaceModel addBoard(@PathVariable int workspaceId, @RequestParam int boardId) {
+    public boolean addBoard(@PathVariable int workspaceId, @RequestParam int boardId) {
         return workspaceService.addBoard(workspaceId, boardId);
     }
 

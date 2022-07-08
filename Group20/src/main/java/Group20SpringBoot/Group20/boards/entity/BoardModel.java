@@ -11,8 +11,13 @@ public class BoardModel {
 
     private String boardTitle;
 
-    public BoardModel(String boardTitle) {
+    private String boardDesc;
+
+
+
+    public BoardModel(String boardTitle, String boardDesc) {
         this.boardTitle = boardTitle;
+        this.boardDesc = boardDesc;
     }
 
     public BoardModel() {
@@ -31,4 +36,11 @@ public class BoardModel {
         this.boardTitle = boardTitle;
     }
 
+    public String getBoardDesc() {
+        return boardDesc;
+    }
+
+    public void setBoardDesc(String boardDesc) {
+        this.boardDesc = boardDesc;
+    }
 }

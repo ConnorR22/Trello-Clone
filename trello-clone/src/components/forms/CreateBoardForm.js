@@ -11,8 +11,8 @@ function CreateBoardForm(props) {
         const boardDesp = boardDespRef.current.value;
 
         const board = {
-            name: boardName,
-            description: boardDesp
+            boardTitle: boardName,
+            boardDesc: boardDesp
         };
 
         props.createBoard(board);

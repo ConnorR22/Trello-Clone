@@ -44,9 +44,10 @@ public class WorkspaceService implements IWorkspaceService{
     }
 
     @Override
-    public WorkspaceModel addBoard(int workspaceId, int boardId){
+    public boolean addBoard(int workspaceId, int boardId){
         WorkspaceModel updatedWorkspace = null;
         Optional<WorkspaceModel> workspace = null;
+        boolean result = false;
 
         try {
             workspace = workspaceRepository.findById(workspaceId);
@@ -64,12 +65,13 @@ public class WorkspaceService implements IWorkspaceService{
                 workspaceModel.setBoards(boards);
 
                 updatedWorkspace = workspaceRepository.save(workspaceModel);
+                result = true;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return updatedWorkspace;
+        return result;
     }
 
     @Override

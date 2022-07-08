@@ -65,7 +65,7 @@ class BoardServiceTest {
     @Test
     void getBoardsTest() {
 
-        boardRepository.save(new BoardModel("Test"));
+        boardRepository.save(new BoardModel("Test", "Test"));
         List<BoardModel> boards = boardService.getBoards();
         assertNotNull(boards);
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid, Card, CardContent, Typography, Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 function ViewWorkspaces(props) {
     return (
@@ -15,18 +16,21 @@ function ViewWorkspaces(props) {
                 <Typography variant='h2' component='h2'>Workspaces</Typography>
                     {props.workspaces.map((workspaces) => {
                         return (
-                            <Grid item xs={12} sm={12} md={4} lg={4} key={workspaces.id}>
+                            <Grid item xs={12} sm={12} md={4} lg={4} key={workspaces}>
                                 <Card elevation={6}>
                                     <CardContent>
                                         <Typography component='h4' variant='h4'>
-                                            {workspaces.name}
+                                            {workspaces.workspaceTitle}
                                         </Typography>
                                         <Typography component='p' variant='p'>
-                                            {workspaces.description}
+                                            {workspaces.workspaceDesc}
                                         </Typography>
-                                        <Button variant='contained' sx={{ marginTop: '16px' }}>
-                                            View Boards
-                                        </Button>
+                                        <Link to={'/boards/'+workspaces.workspaceId}>
+                                            <Button variant='contained' sx={{ marginTop: '16px' }} onClick={() => localStorage.setItem("current_workspaceId", workspaces.workspaceId)}>
+                                                View Boards
+                                            </Button>
+                                        </Link>
+
                                     </CardContent>
                                 </Card>
                             </Grid>

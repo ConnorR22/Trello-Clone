@@ -5,15 +5,44 @@ import CreateBoardForm from '../components/forms/CreateBoardForm';
 function CreateBoard() {
 
     const history = useHistory();
+    const workspaceId = localStorage.getItem('current_workspaceId')
+
+    function addBoardToWorkspace(board, workspace_id) {
+        const boardId = board.boardId;
+        console.log(boardId)
+
+        fetch(`http://localhost:9001/workspace/addBoard/${workspace_id}?boardId=${boardId}`, {
+            method: 'PUT',
+            // body: JSON.stringify(board),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(
+            response => response.json()
+        ).then( function(data) {
+            console.log(data)
+            if (data === true){
+                alert("Successfully added board to workspace.")
+            } else {
+                alert("Board already exists in this workspace.")
+            }
+            return;
+        })
+    }
 
     function createBoardHandler(board) {
-        fetch('http://localhost:9001/board', {
+        fetch(`http://localhost:9001/board/save`, {
             method: 'POST',
             body: JSON.stringify(board),
             headers: {
                 'Content-Type': 'application/json'
             }
-        }).then(() => history.replace('/boards'));
+        }).then(
+            response => response.json()
+        ).then( (response) => {addBoardToWorkspace(response, workspaceId)})
+            .then(
+               () => history.replace('/boards')
+            );
     }
 
     return (

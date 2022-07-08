@@ -19,10 +19,10 @@ function ViewBoards(props) {
                                 <Card elevation={6}>
                                     <CardContent>
                                         <Typography component='h4' variant='h4'>
-                                            {board.name}
+                                            {board.boardTitle}
                                         </Typography>
                                         <Typography component='p' variant='p'>
-                                            {board.description}
+                                            {board.boardDesc}
                                         </Typography>
                                         <Button variant='contained' sx={{ marginTop: '16px' }}>
                                             View Tasks

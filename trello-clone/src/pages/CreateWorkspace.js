@@ -9,7 +9,7 @@ function CreateWorkspace() {
     const userEmail = localStorage.getItem('userEmail');
 
     function addToWorkspace(workspaceId, email) {
-        console.log(workspaceId)
+        // console.log(workspaceId)
         fetch(`http://localhost:9001/workspace/addUser/${workspaceId.workspaceId}?email=${email}`, {
             method: 'POST',
             // body: JSON.stringify(workspace),
