@@ -4,7 +4,7 @@ import { Container } from "@mui/material";
 import Registration from "./pages/Register";
 import Loginpage from "./pages/Login";
 import Home from "./pages/Home";
-import Navigation from "./pages/Navigation";
+import NavigationWorkspace from "./pages/NavigationWorkspace";
 import Boards from "./pages/Boards";
 import CreateBoard from "./pages/CreateBoard";
 import ForgotPass from "./pages/Forgotpassword";
@@ -13,49 +13,71 @@ import CreateWorkspace from "./pages/CreateWorkspace";
 import Workspaces from "./pages/Workspaces";
 import DeleteBoard from "./pages/DeleteBoard";
 import AddMemberToWorkspace from "./pages/AddMemberToWorkspace";
+import NavigationLogin from "./pages/NavigationLogin";
+import NavigationBoards from "./pages/NavigationBoards";
 
 function App() {
   return (   
     <div>
+
       <React.Fragment>
-        <Navigation/>
-        <Container>
           <Switch>
+
             <Route path={["/", "/login"]} exact>
+              <NavigationLogin/>
               <Loginpage/>
             </Route>
+
             <Route path="/home">
               <Home/>
             </Route>
+
             <Route path="/register">
+              <NavigationLogin/>
               <Registration/>
             </Route>
-            <Route path="/boards">
-              <Boards/>
-            </Route>
-            <Route path="/create-board">
-              <CreateBoard/>
-            </Route>
-            <Route path="/delete-board">
-              <DeleteBoard/>
-            </Route>
+
             <Route path="/forgotpassword">
+              <NavigationLogin/>
               <ForgotPass/>
             </Route>
+
             <Route path="/resetpassword">
+              <NavigationLogin/>
               <ResetPass/>
             </Route>
+
+            <Route path="/boards">
+              <NavigationBoards/>
+              <Boards/>
+            </Route>
+
+            <Route path="/create-board">
+              <NavigationBoards/>
+              <CreateBoard/>
+            </Route>
+
+            <Route path="/delete-board">
+              <NavigationBoards/>
+              <DeleteBoard/>
+            </Route>
+
             <Route path="/create-workspace">
+              <NavigationWorkspace/>
               <CreateWorkspace/>
             </Route>
+
             <Route path="/addUser-workspace">
+              <NavigationWorkspace/>
               <AddMemberToWorkspace/>
             </Route>
+
             <Route path="/workspaces">
+              <NavigationWorkspace/>
               <Workspaces/>
             </Route>
+
           </Switch>
-        </Container>
       </React.Fragment>
     </div>
   );

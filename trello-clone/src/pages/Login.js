@@ -14,13 +14,13 @@ function Loginpage(){
     }).then(
         response => response.json()
     ).then( function(data) {
-      if (data === "Login unsuccessful, email or password incorrect.") {
-        alert(data);
+      if (data === -1) {
+        alert("Login unsuccessful, email or password incorrect.");
       }
       else {
         localStorage.setItem('userId', data)
         localStorage.setItem('userEmail', email)
-        history.replace('/workspaces');
+        history.replace(`/workspaces/${data}`);
       }
     })
   }
@@ -30,6 +30,7 @@ function Loginpage(){
       <div className={c.forms}>
         <h1 className={c.loginColor}> Login Here </h1>
         <LoginForm LoginHand={LoginHandler}/>
+
         <section className="forgetIt"> <a href="/forgotpassword"><p> Forgot Password? </p></a></section>
       </div>
   );

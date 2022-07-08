@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface IUserService {
     boolean registerUser(UserModel usermodel);
-    String loginUser(String email, String password);
-    String resetPassword(String email, String securityAnswer);
+    int loginUser(String email, String password);
+    int resetPassword(String email, String securityAnswer);
 
     boolean changePassword(int userId, String newPass);
 

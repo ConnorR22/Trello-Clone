@@ -20,7 +20,7 @@ function AddMemberToWorkspace() {
             console.log(data)
             if (data === true){
                 alert("User Successfully Added to Workspace!")
-                history.replace('/workspaces/'+localStorage.getItem('current_workspaceId'))
+                history.replace('/workspaces/'+localStorage.getItem('userId'))
             } else {
                 alert("User does not exist, or user is already part of this workspace.")
             }

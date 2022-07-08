@@ -2,15 +2,12 @@ import {Link} from "react-router-dom"
 import React from 'react';
 
 /* functionality for stagnant registration */
-function Navigation(){
+function NavigationWorkspace(){
 
     return(
      <nav>
          <ul>
-            <li><Link to="/login">Login</Link></li>
-            <li><Link to="/register">Register</Link></li>
-            <li><Link to="/boards">Boards</Link></li>
-            <li><Link to="/create-board">Create Boards</Link></li>
+            <li><Link to="/login">Logout</Link></li>
             <li><Link to="/workspaces">Workspaces</Link></li>
             <li><Link to="/create-workspace">Create Workspaces</Link></li>
         </ul>
@@ -19,4 +16,4 @@ function Navigation(){
        
     );
 }
-export default Navigation;
+export default NavigationWorkspace;

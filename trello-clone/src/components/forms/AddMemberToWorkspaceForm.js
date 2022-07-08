@@ -35,7 +35,7 @@ function AddMemberToWorkspaceForm(props) {
                         <Button type='submit' variant='contained' color='primary' sx={{ marginTop: '16px'}}>
                             Add User
                         </Button>
-                        <Link to={'/workspaces/'+localStorage.getItem('current_workspaceId')}>
+                        <Link to={'/workspaces/'+localStorage.getItem('userId')}>
                             <Button type='submit' variant='contained' color='primary' sx={{ marginTop: '16px'}}>
                                 Back to Workspaces
                             </Button>

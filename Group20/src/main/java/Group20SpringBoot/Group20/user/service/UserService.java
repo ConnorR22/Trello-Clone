@@ -29,29 +29,26 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public String loginUser(String email, String password) {
-        String result = "";
+    public int loginUser(String email, String password) {
 
         UserModel user = null;
         Optional<UserModel> optionalUserModel = userRepository.findByEmailId(email);
         if (optionalUserModel.isPresent()) {
             user = optionalUserModel.get();
             if (user.getPassword().equals(password)) {
-                result = "" + user.getUserId();
-                return result;
+                return user.getUserId();
             } else {
-                result = "Login unsuccessful, email or password incorrect.";
+                return -1;
             }
         }
         // User with sent in email string does not exist in database
         else {
-            result = "Login unsuccessful, email or password incorrect.";
+            return -1;
         }
-        return result;
     }
 
     @Override
-    public String resetPassword(String email, String securityAnswer) {
+    public int resetPassword(String email, String securityAnswer) {
 
         UserModel user = null;
         Optional<UserModel> optionalUserModel = userRepository.findByEmailId(email);
@@ -60,14 +57,14 @@ public class UserService implements IUserService {
             user = optionalUserModel.get();
             // If security answer matches, register the new password
             if (user.getSecretKey().equals(securityAnswer)) {
-                return ""+user.getUserId();
+                return user.getUserId();
             } else {
-                return "Incorrect security answer.";
+                return -1;
             }
         }
         // User with sent in email string does not exist in database
         else {
-            return "No User Exists With that Email.";
+            return -1;
         }
 
     }

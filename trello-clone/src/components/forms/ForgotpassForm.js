@@ -6,14 +6,19 @@ function ForgotPassForm(props){
     const emailRef = useRef();
     const securityRef = useRef();
 
+
     function ForgotpassHandler(event){
         event.preventDefault();
 
+        console.log("hit here")
+
         const email = emailRef.current.value;
         const securityAnswer = securityRef.current.value;
-        const user = {email, securityAnswer};
 
-        props.ForgotHand(user, email, securityAnswer);
+        console.log(email)
+        console.log(securityAnswer)
+
+        props.forgotPasswordHandler(email, securityAnswer);
     }
 
     return (

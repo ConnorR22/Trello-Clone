@@ -12,6 +12,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -57,10 +58,10 @@ class UserServiceTest {
         user.setSecretKey("SecretKey");
         Mockito.when(userRepository.findByEmailId(user.getEmailId())).thenReturn(Optional.of(user));
 
-        String result = userService.loginUser("daniaka@yahoo.com","Password");
+        int result = userService.loginUser("daniaka@yahoo.com","Password");
 
-        String expected = "0";
-        assertEquals(expected, result);
+//        String expected = "0";
+        assertEquals(0, result);
 
     }
 
@@ -76,10 +77,10 @@ class UserServiceTest {
 
         Mockito.when(userRepository.findByEmailId(user.getEmailId())).thenReturn(Optional.of(user));
 
-        String result = userService.loginUser("daniaka@yahoo.com","WrongPassword");
+        int result = userService.loginUser("daniaka@yahoo.com","WrongPassword");
 
-        String expected = "Login unsuccessful, email or password incorrect.";
-        assertEquals(expected, result);
+//        String expected = "Login unsuccessful, email or password incorrect.";
+        assertEquals(-1, result);
 
 
     }
@@ -94,9 +95,9 @@ class UserServiceTest {
 
         Mockito.when(userRepository.findByEmailId(user.getEmailId())).thenReturn(Optional.of(user));
 
-        String result = userService.resetPassword("daniaka@yahoo.com","SecretKey");
+        int result = userService.resetPassword("daniaka@yahoo.com","SecretKey");
 
-        assertEquals("0", result);
+        assertEquals(0, result);
 
     }
     @Test
@@ -109,9 +110,9 @@ class UserServiceTest {
 
         Mockito.when(userRepository.findByEmailId(user.getEmailId())).thenReturn(Optional.of(user));
 
-        String result = userService.resetPassword("daniaka@yahoo.com","~/~#");
-        String expected = "Incorrect security answer.";
-        assertEquals(expected, result);
+        int result = userService.resetPassword("daniaka@yahoo.com","~/~#");
+//        String expected = "Incorrect security answer.";
+        assertEquals(-1, result);
 
 
     }
@@ -154,7 +155,7 @@ class UserServiceTest {
 
         Mockito.when(userRepository.findById(user.getUserId())).thenReturn(Optional.of(user));
 
-        List<WorkspaceModel> demoUserWorkspace = userService.getUserWorkspaces(user.getUserId());
+        List<WorkspaceModel> demoUserWorkspace = userService.getWorkspaces(user.getUserId());
         assertNotNull(demoUserWorkspace);
         assertEquals(demoUserWorkspace,user.getWorkspaces());
 

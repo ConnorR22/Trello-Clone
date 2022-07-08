@@ -29,13 +29,13 @@ public class UserController {
 
     @PostMapping("/login/{email}")
     @CrossOrigin(origins = "http://localhost:3000")
-    public String loginUser(@PathVariable String email, @RequestParam String password){
+    public int loginUser(@PathVariable String email, @RequestParam String password){
         return userService.loginUser(email, password);
     }
 
     @PostMapping("/resetPassword/{email}")
     @CrossOrigin(origins = "http://localhost:3000")
-    public String resetPassword(@PathVariable String email, @RequestParam String securityAnswer){
+    public int resetPassword(@PathVariable String email, @RequestParam String securityAnswer){
         return userService.resetPassword(email, securityAnswer);
     }
 

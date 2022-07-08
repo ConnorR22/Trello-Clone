@@ -27,7 +27,9 @@ function CreateWorkspace() {
                 alert("User already exists in this workspace.")
             }
             return;
-        })
+        }).then(
+            () => history.replace(`/workspaces/${userId}`)
+        );
     }
 
     function createWorkspaceHandler(workspace) {
@@ -43,9 +45,7 @@ function CreateWorkspace() {
         ).then(
 
             (response) => {addToWorkspace(response, userEmail)}
-        ).then(
-            () => history.replace('/Workspaces')
-        );
+        )
     }
 
 
