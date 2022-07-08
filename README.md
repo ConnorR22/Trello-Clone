@@ -95,22 +95,3 @@ Ensure you're running on port 3000 to send requests to the backend as that is th
 # Teaching Assistant
 
 - [Nikita Kothari | nikita.kothari@dal.ca](nikita.kothari@dal.ca)
-
-
-# Citations 
-
--Sanjay:
-	-https://www.tutorialspoint.com/mockito/mockito_junit_integration.htm    
-		Reason: To understand how to create and apply mock tests in junit 
--Connor:
--Daniyal:
-	-https://git.cs.dal.ca/annamalai/trello-backend
-		Reason: See how to setup backend 
-	-https://www.codejava.net/frameworks/spring-boot/user-registration-and-login-tutorial
-		Reason: Getting an idea on how to do the back end for Login and Registration
-
--Lynda:
-	-https://www.w3schools.com/css/css_form.asp
-		Reason: Used to remember functionality for css styling for forms
--Sei-Jin:
-
