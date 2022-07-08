@@ -12,6 +12,7 @@ import ResetPass from "./pages/ResetPassword";
 import CreateWorkspace from "./pages/CreateWorkspace";
 import Workspaces from "./pages/Workspaces";
 import DeleteBoard from "./pages/DeleteBoard";
+import AddMemberToWorkspace from "./pages/AddMemberToWorkspace";
 
 function App() {
   return (   
@@ -46,6 +47,9 @@ function App() {
             </Route>
             <Route path="/create-workspace">
               <CreateWorkspace/>
+            </Route>
+            <Route path="/addUser-workspace">
+              <AddMemberToWorkspace/>
             </Route>
             <Route path="/workspaces">
               <Workspaces/>

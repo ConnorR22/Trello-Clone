@@ -30,6 +30,11 @@ function ViewWorkspaces(props) {
                                                 View Boards
                                             </Button>
                                         </Link>
+                                        <Link to={'/addUser-workspace'}>
+                                            <Button variant='contained' sx={{ marginTop: '16px' }} onClick={() => localStorage.setItem("current_workspaceId", workspaces.workspaceId)}>
+                                                Add User
+                                            </Button>
+                                        </Link>
 
                                     </CardContent>
                                 </Card>

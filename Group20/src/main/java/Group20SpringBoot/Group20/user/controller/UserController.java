@@ -53,10 +53,12 @@ public class UserController {
 
     //sanjay
     @PutMapping("/add_workspace/{email}")
+    @CrossOrigin(origins = "http://localhost:3000")
     public boolean addUserToWorkspace(@PathVariable String email, @RequestParam WorkspaceModel workspace){
         return userService.addUserToWorkspace(email, workspace);
     }
     @PutMapping ("/delete_workspace/{userId}")
+    @CrossOrigin(origins = "http://localhost:3000")
     public void deleteWorkspaceFromUser(@PathVariable int userId, @RequestBody WorkspaceModel workspace){
         userService.deleteWorkspaceFromUser(userId, workspace);
         System.out.println("User Deleted from the Workspace Successfully");
