@@ -163,15 +163,6 @@ class UserServiceTest {
 
     @Test
     void addWorkspaceToUser() {
-        UserModel user = new UserModel();
-        user.setFirstName("Dani");
-        user.setLastName("Rojas");
-        user.setEmailId("daniaka@yahoo.com");
-        user.setPassword("Password");
-        user.setSecretKey("SecretKey");
-        Mockito.when(userRepository.findById(user.getUserId())).thenReturn(Optional.of(user));
-
-        WorkspaceModel workspace = new WorkspaceModel();
 
     }
     @Test
