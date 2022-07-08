@@ -3,29 +3,29 @@ import React, { useRef } from 'react';
 /* Login form */
 function LoginForm(props){
 
-   const emailRef = useRef();
-   const passwordRef = useRef();
+    const emailRef = useRef();
+    const passwordRef = useRef();
 
-   function submitHandler(event){
-      event.preventDefault();
-   
-      const email = emailRef.current.value;
-      const password = passwordRef.current.value;
-      const user = {email, password};
+    function submitHandler(event){
+        event.preventDefault();
 
-      props.LoginHand(user);
-   }
+        const email = emailRef.current.value;
+        const password = passwordRef.current.value;
+        const user = {password};
 
-   return (
-       <form onSubmit={submitHandler}>
-        <input type="email" required placeholder="Email Address" ref={emailRef} />
-        <br></br>
-        <input type="password" required placeholder="Password" ref={passwordRef} />
-        <br></br>
-        <button> Login </button>
-       </form>
+        props.LoginHand(user, email, password);
+    }
+
+    return (
+        <form onSubmit={submitHandler}>
+            <input type="email" required placeholder="Email Address" ref={emailRef} />
+            <br></br>
+            <input type="password" required placeholder="Password" ref={passwordRef} />
+            <br></br>
+            <button> Login </button>
+        </form>
     );
-  
-  }
-  export default LoginForm;
+
+}
+export default LoginForm;
   
