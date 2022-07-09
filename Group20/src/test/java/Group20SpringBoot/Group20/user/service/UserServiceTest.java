@@ -166,7 +166,7 @@ class UserServiceTest {
     }
 
     @Test
-    void addWorkspaceToUser() {
+    void addWorkspaceToUserTest() {
 
 
         UserModel user = new UserModel();
@@ -186,6 +186,37 @@ class UserServiceTest {
         assertTrue(result);
 
     }
+
+    @Test
+    void addWorkspaceToUserTestFail() {
+
+        UserModel user = new UserModel();
+        user.setFirstName("Dani");
+        user.setLastName("Rojas");
+        user.setEmailId("daniaka@yahoo.com");
+        user.setPassword("Password");
+        user.setSecretKey("SecretKey");
+
+        WorkspaceModel workspaceModel = new WorkspaceModel();
+        workspaceModel.setWorkspaceTitle("Test");
+        workspaceModel.setWorkspaceDesc("TestingTests");
+
+        Mockito.when(userRepository.findByEmailId(user.getEmailId())).thenReturn(Optional.of(user));
+        userService.addUserToWorkspace(user.getEmailId(),workspaceModel);
+        assertFalse(userService.addUserToWorkspace(user.getEmailId(),workspaceModel));
+    }
+
+    @Test
+    void deleteWorkspaceFromUser() {
+
+        UserModel userMock = mock(UserModel.class);
+        WorkspaceModel workspaceMock = mock(WorkspaceModel.class);
+
+        userService.deleteWorkspaceFromUser(userMock.getUserId(), workspaceMock);
+        verify(userRepository).findById(userMock.getUserId());
+
+    }
+
 //    @Test
 //    void deleteUserFromWorkspace() {
 //        UserModel user = new UserModel();
