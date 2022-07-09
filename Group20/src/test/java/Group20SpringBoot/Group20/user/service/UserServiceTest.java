@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.times;
 
 @ExtendWith(MockitoExtension.class)
 class UserServiceTest {
@@ -26,6 +27,9 @@ class UserServiceTest {
     @Mock
     @Autowired
     private UserRepository userRepository;
+
+    @Mock
+    private WorkspaceService workspaceService;
 
     @InjectMocks
     UserService userService;
@@ -164,8 +168,45 @@ class UserServiceTest {
     @Test
     void addWorkspaceToUser() {
 
+
+        UserModel user = new UserModel();
+        user.setFirstName("Dani");
+        user.setLastName("Rojas");
+        user.setEmailId("daniaka@yahoo.com");
+        List<WorkspaceModel> workspaces = new ArrayList<>();
+        user.setWorkspaces(workspaces);
+
+        Mockito.when(userRepository.findByEmailId(user.getEmailId())).thenReturn(Optional.of(user));
+
+        WorkspaceModel workspaceModel = new WorkspaceModel();
+        workspaceModel.setWorkspaceTitle("Test");
+        workspaceModel.setWorkspaceDesc("TestingTests");
+
+        boolean result = userService.addUserToWorkspace( user.getEmailId(), workspaceModel);
+        assertTrue(result);
+
     }
-    @Test
-    void deleteWorkspaceFromUser() {
-    }
+//    @Test
+//    void deleteUserFromWorkspace() {
+//        UserModel user = new UserModel();
+//        user.setFirstName("Dani");
+//        user.setLastName("Rojas");
+//        user.setEmailId("daniaka@yahoo.com");
+//        List<WorkspaceModel> workspaces = new ArrayList<>();
+//        user.setWorkspaces(workspaces);
+//
+//        Mockito.when(userRepository.findById(user.getUserId())).thenReturn(Optional.of(user));
+//
+//        WorkspaceModel workspaceModel = new WorkspaceModel();
+//        workspaceModel.setWorkspaceTitle("Test");
+//        workspaceModel.setWorkspaceDesc("TestingTests");
+//
+//
+////        Mockito.when(userService.deleteWorkspaceFromUser(user.getUserId(), workspaceModel)).thenReturn(true);
+//        Mockito.verify(userService, times(1)).deleteWorkspaceFromUser(user.);
+//
+//
+//        boolean result = workspaceService.addUserToWorkspace(workspaceModel.getWorkspaceId(), user.getEmailId());
+//        assertTrue(result);
+//    }
 }

@@ -2,6 +2,8 @@ package Group20SpringBoot.Group20.workspaces.service;
 
 import Group20SpringBoot.Group20.boards.entity.BoardModel;
 import Group20SpringBoot.Group20.boards.service.BoardService;
+import Group20SpringBoot.Group20.user.entity.UserModel;
+import Group20SpringBoot.Group20.user.service.UserService;
 import Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel;
 import Group20SpringBoot.Group20.workspaces.repository.WorkspaceRepository;
 import org.hibernate.jdbc.Work;
@@ -18,6 +20,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.times;
 
 @ExtendWith(MockitoExtension.class)
 class WorkspaceServiceTest {
@@ -29,6 +32,9 @@ class WorkspaceServiceTest {
     @Mock
     @Autowired
     private BoardService boardService = new BoardService();
+
+    @Mock
+    private UserService userService = new UserService();
 
     @InjectMocks
     WorkspaceService workspaceService;
@@ -134,15 +140,42 @@ class WorkspaceServiceTest {
 
         Mockito.when(workspaceRepository.findById(workspaceModel.getWorkspaceId())).thenReturn(Optional.of(workspaceModel));
 
-        BoardModel boardmodel = new BoardModel();
-        boardmodel.setBoardTitle("Test");
+        UserModel user = new UserModel();
+        user.setFirstName("Dani");
+        user.setLastName("Rojas");
+        user.setEmailId("daniaka@yahoo.com");
+        List<WorkspaceModel> workspaces = new ArrayList<>();
+        user.setWorkspaces(workspaces);
 
-        Mockito.when(boardService.findBoardByID(boardmodel.getBoardId())).thenReturn(boardmodel);
+
+        Mockito.when(userService.addUserToWorkspace(user.getEmailId(), workspaceModel)).thenReturn(true);
+
+        boolean result = workspaceService.addUserToWorkspace(workspaceModel.getWorkspaceId(), user.getEmailId());
+        assertTrue(result);
 
     }
 
-    @Test
-    void deleteUserFromWorkspace() {
-
-    }
+//    @Test
+//    void deleteUserFromWorkspace() {
+//        WorkspaceModel workspaceModel = new WorkspaceModel();
+//        workspaceModel.setWorkspaceTitle("Test");
+//        workspaceModel.setWorkspaceDesc("TestingTests");
+//
+//        Mockito.when(workspaceRepository.findById(workspaceModel.getWorkspaceId())).thenReturn(Optional.of(workspaceModel));
+//
+//        UserModel user = new UserModel();
+//        user.setFirstName("Dani");
+//        user.setLastName("Rojas");
+//        user.setEmailId("daniaka@yahoo.com");
+//        List<WorkspaceModel> workspaces = new ArrayList<>();
+//        user.setWorkspaces(workspaces);
+//
+//
+////        Mockito.when(userService.deleteWorkspaceFromUser(user.getUserId(), workspaceModel)).thenReturn(true);
+//        Mockito.verify(userService, times(1)).deleteWorkspaceFromUser(user.);
+//
+//
+//        boolean result = workspaceService.addUserToWorkspace(workspaceModel.getWorkspaceId(), user.getEmailId());
+//        assertTrue(result);
+//    }
 }
