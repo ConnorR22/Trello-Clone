@@ -51,21 +51,7 @@ class WorkspaceServiceTest {
         WorkspaceModel demoWorkspaceModel = workspaceService.findWorkspaceByID(workspaceModel.getWorkspaceId());
         assertNotNull(demoWorkspaceModel);
     }
-
-    @Test
-    void addBoard() {
-
-    }
-
-    @Test
-    void removeBoard() {
-
-    }
-
-    @Test
-    void getBoardsOfWorkspace() {
-
-    }
+    
 
     @Test
     void deleteWorkspace() {
@@ -83,7 +69,4 @@ class WorkspaceServiceTest {
     void addUserToWorkspace() {
     }
 
-    @Test
-    void deleteUserFromWorkspace() {
-    }
 }
