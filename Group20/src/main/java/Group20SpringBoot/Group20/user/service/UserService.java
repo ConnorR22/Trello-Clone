@@ -90,9 +90,7 @@ public class UserService implements IUserService {
             user = optionalUserModel.get();
 
             List<WorkspaceModel> workspaces = user.getWorkspaces();
-            if (workspaces == null) {
-                workspaces = new ArrayList<WorkspaceModel>();
-            }
+            workspaces = getWorkspaceModels(workspaces);
 
             if (!workspaces.contains(workspace)) {
                 workspaces.add(workspace);
@@ -104,6 +102,13 @@ public class UserService implements IUserService {
         }
 
         return false;
+    }
+
+    private List<WorkspaceModel> getWorkspaceModels(List<WorkspaceModel> workspaces) {
+        if (workspaces == null) {
+            workspaces = new ArrayList<WorkspaceModel>();
+        }
+        return workspaces;
     }
 
     @Override

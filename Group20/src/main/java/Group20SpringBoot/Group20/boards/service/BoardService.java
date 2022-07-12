@@ -2,10 +2,12 @@ package Group20SpringBoot.Group20.boards.service;
 
 import Group20SpringBoot.Group20.boards.entity.BoardModel;
 import Group20SpringBoot.Group20.boards.repository.BoardRepository;
+import Group20SpringBoot.Group20.task.entity.TaskModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,6 +44,21 @@ public class BoardService implements IBoardService {
     @Override
     public List<BoardModel> getBoards() {
         return boardRepository.findAll();
+    }
+
+    @Override
+    public boolean addTaskToBoard(int boardId, String email) {
+        return false;
+    }
+
+    @Override
+    public List<TaskModel> getTasks(int boardId) {
+        return null;
+    }
+
+    @Override
+    public List<TaskModel> getTaskFiltered(int boardId, Date date, int when) {
+        return null;
     }
 
 }

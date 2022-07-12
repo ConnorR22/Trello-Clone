@@ -1,5 +1,9 @@
 package Group20SpringBoot.Group20.boards.entity;
+import Group20SpringBoot.Group20.task.entity.TaskModel;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "Boards")
@@ -12,6 +16,11 @@ public class BoardModel {
     private String boardTitle;
 
     private String boardDesc;
+
+    @JsonIgnore
+    @OneToMany(targetEntity = TaskModel.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "taskMap")
+    private List<TaskModel> tasks;
 
 
 
@@ -42,5 +51,13 @@ public class BoardModel {
 
     public void setBoardDesc(String boardDesc) {
         this.boardDesc = boardDesc;
+    }
+
+    public List<TaskModel> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<TaskModel> tasks) {
+        this.tasks = tasks;
     }
 }
