@@ -63,8 +63,8 @@ public class WorkspaceService implements IWorkspaceService{
                 boards.add(boardModel);
 
                 workspaceModel.setBoards(boards);
+                workspaceRepository.save(workspaceModel);
 
-                updatedWorkspace = workspaceRepository.save(workspaceModel);
                 result = true;
             }
         } catch (Exception e) {

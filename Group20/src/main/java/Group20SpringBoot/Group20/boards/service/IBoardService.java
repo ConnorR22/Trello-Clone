@@ -13,9 +13,7 @@ public interface IBoardService {
 
     void deleteBoard(int boardId);
 
-    List<BoardModel> getBoards();
-
-    boolean addTaskToBoard(int boardId, String email);
+    boolean addTaskToBoard(int boardId, int taskId);
 
     List<TaskModel> getTasks(int boardId);
 

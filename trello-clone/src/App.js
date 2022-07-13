@@ -1,6 +1,5 @@
 import React from "react";
 import {Route, Switch} from "react-router-dom"
-import { Container } from "@mui/material";
 import Registration from "./pages/Register";
 import Loginpage from "./pages/Login";
 import Home from "./pages/Home";
@@ -15,6 +14,8 @@ import DeleteBoard from "./pages/DeleteBoard";
 import AddMemberToWorkspace from "./pages/AddMemberToWorkspace";
 import NavigationLogin from "./pages/NavigationLogin";
 import NavigationBoards from "./pages/NavigationBoards";
+import Tasks from "./pages/Tasks";
+import NavigationTasks from "./pages/NavigationTasks";
 
 function App() {
   return (   
@@ -45,6 +46,11 @@ function App() {
             <Route path="/resetpassword">
               <NavigationLogin/>
               <ResetPass/>
+            </Route>
+
+            <Route path="/tasks">
+              <NavigationTasks/>
+              <Tasks/>
             </Route>
 
             <Route path="/boards">
