@@ -16,6 +16,7 @@ import NavigationLogin from "./pages/NavigationLogin";
 import NavigationBoards from "./pages/NavigationBoards";
 import Tasks from "./pages/Tasks";
 import NavigationTasks from "./pages/NavigationTasks";
+import CreateTask from "./pages/CreateTask";
 
 function App() {
   return (   
@@ -51,6 +52,11 @@ function App() {
             <Route path="/tasks">
               <NavigationTasks/>
               <Tasks/>
+            </Route>
+
+            <Route path="/create-task">
+              <NavigationTasks/>
+              <CreateTask/>
             </Route>
 
             <Route path="/boards">

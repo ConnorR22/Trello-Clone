@@ -22,9 +22,10 @@ public class TaskModel {
 
     private int assigneeId;
 
-    public TaskModel(String taskTitle, String taskDesc) {
+    public TaskModel(String taskTitle, String taskDesc, Date dueDate) {
         this.taskTitle = taskTitle;
         this.taskDesc = taskDesc;
+        this.dueDate = dueDate;
     }
 
     public TaskModel() {}
