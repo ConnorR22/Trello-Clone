@@ -39,7 +39,7 @@ public class BoardController {
         return boardService.getTasks(boardId);
     }
 
-    @PostMapping("/addTask/{boardId}")
+    @PutMapping("/addTask/{boardId}")
     @CrossOrigin(origins = "http://localhost:3000")
     public boolean addTask(@PathVariable int boardId, @RequestParam int taskId)
     {

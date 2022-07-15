@@ -75,7 +75,7 @@ public class BoardService implements IBoardService {
             e.printStackTrace();
         }
 
-        return false;
+        return result;
     }
 
     @Override

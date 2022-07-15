@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import CreateTaskForm from "../components/forms/CreateTaskForm";
 
-function CreateBoard() {
+function CreateTask() {
 
     const history = useHistory();
     const boardId = localStorage.getItem('current_boardId')
@@ -24,7 +24,7 @@ function CreateBoard() {
             if (data === true){
                 alert("Successfully added task to board.")
             } else {
-                alert("Task already exists in this workspace.")
+                alert("Task already exists in this board.")
             }
         }).then(
             () => history.replace('/tasks/'+boardId)
@@ -48,4 +48,4 @@ function CreateBoard() {
     );
 }
 
-export default CreateBoard;
+export default CreateTask;

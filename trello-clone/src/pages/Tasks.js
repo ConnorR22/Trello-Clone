@@ -3,7 +3,7 @@ import ViewTasks from "../components/ViewTasks";
 
 function Tasks() {
     const [tasksData, setTasksData] = useState([]);
-    const boardId = localStorage.getItem('current_workspaceId')
+    const boardId = localStorage.getItem('current_boardId')
 
     function getAllTasks() {
         fetch(`http://localhost:9001/board/getTasks/${boardId}`)

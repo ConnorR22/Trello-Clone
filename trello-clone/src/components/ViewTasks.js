@@ -28,12 +28,17 @@ function ViewTasks(props) {
                                         <Typography component='p' variant='p'>
                                             {task.taskDesc}
                                         </Typography>
+                                        <Typography component='p' variant='p'>
+                                            {task.dueDate}
+                                        </Typography>
+                                        <Typography component='p' variant='p'>
+                                            {task.assigneeId}
+                                        </Typography>
                                         <Link to={'/assign-task'}>
                                             <Button variant='contained' sx={{ marginTop: '16px' }} onClick={() => localStorage.setItem('assignTaskTo', task.taskId)}>
                                                 Assign User
                                             </Button>
                                         </Link>
-
                                     </CardContent>
                                 </Card>
                             </Grid>

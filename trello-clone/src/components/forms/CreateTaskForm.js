@@ -17,7 +17,8 @@ function CreateTaskForm(props) {
         const task = {
             taskTitle: taskTitle,
             taskDesc: taskDesc,
-            dueDate: dueDate
+            dueDate: dueDate,
+            assigneeId: null
         };
 
         console.log(dueDate);
