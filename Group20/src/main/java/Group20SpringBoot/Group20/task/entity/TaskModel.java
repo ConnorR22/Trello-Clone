@@ -20,7 +20,7 @@ public class TaskModel {
     @Temporal(TemporalType.DATE)
     private Date dueDate;
 
-    private int assigneeId;
+    private String assigneeId;
 
     public TaskModel(String taskTitle, String taskDesc, Date dueDate) {
         this.taskTitle = taskTitle;
@@ -58,11 +58,11 @@ public class TaskModel {
         this.dueDate = dueDate;
     }
 
-    public int getAssigneeId() {
+    public String getAssigneeId() {
         return assigneeId;
     }
 
-    public void setAssigneeId(int assigneeId) {
+    public void setAssigneeId(String assigneeId) {
         this.assigneeId = assigneeId;
     }
 }

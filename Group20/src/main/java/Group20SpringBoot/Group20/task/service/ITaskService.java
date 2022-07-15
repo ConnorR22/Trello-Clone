@@ -8,7 +8,7 @@ public interface ITaskService {
 
     TaskModel findTaskByID(int taskId);
 
-    boolean assignTask(int taskId, int userId);
+    boolean assignTask(int taskId, String email);
 
     boolean changeStatus(int taskId, String status);
 

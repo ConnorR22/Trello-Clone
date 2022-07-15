@@ -20,6 +20,9 @@ public interface IUserService {
     //sanjay
 //    List<WorkspaceModel> getUserWorkspaces(int userId);
     UserModel findUserById(int userId);
+
+    UserModel findUserByEmail(String email);
+
     void deleteWorkspaceFromUser(int userId, WorkspaceModel workspace);
 //    void addWorkspaceToUser(int userId, int workspaceId);
 

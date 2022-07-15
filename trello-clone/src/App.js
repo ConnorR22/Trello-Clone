@@ -17,6 +17,7 @@ import NavigationBoards from "./pages/NavigationBoards";
 import Tasks from "./pages/Tasks";
 import NavigationTasks from "./pages/NavigationTasks";
 import CreateTask from "./pages/CreateTask";
+import AssignMemberToTask from "./pages/AssignMemberToTask";
 
 function App() {
   return (   
@@ -57,6 +58,11 @@ function App() {
             <Route path="/create-task">
               <NavigationTasks/>
               <CreateTask/>
+            </Route>
+
+            <Route path="/assign-task">
+              <NavigationTasks/>
+              <AssignMemberToTask/>
             </Route>
 
             <Route path="/boards">

@@ -25,10 +25,10 @@ public class TaskController {
         return taskService.findTaskByID(taskId);
     }
 
-    @GetMapping("/assign/{taskId}")
+    @PostMapping("/assign/{taskId}")
     @CrossOrigin(origins = "http://localhost:3000")
-    public boolean assignTask(@PathVariable int taskId, @RequestParam int userId){
-        return taskService.assignTask(taskId, userId);
+    public boolean assignTask(@PathVariable int taskId, @RequestParam String email){
+        return taskService.assignTask(taskId, email);
     }
 
     @GetMapping("/changeStatus/{taskId}")

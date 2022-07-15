@@ -3,7 +3,6 @@ package Group20SpringBoot.Group20.user.service;
 import Group20SpringBoot.Group20.user.entity.UserModel;
 import Group20SpringBoot.Group20.user.repository.UserRepository;
 import Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel;
-import Group20SpringBoot.Group20.workspaces.service.IWorkspaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -127,6 +126,18 @@ public class UserService implements IUserService {
         }
         return user;
     }
+
+    @Override
+    public UserModel findUserByEmail(String email) {
+        UserModel user = null;
+        Optional<UserModel> optionalUserModel = userRepository.findByEmailId(email);
+
+        if (optionalUserModel.isPresent()) {
+            user = optionalUserModel.get();
+        }
+        return user;
+    }
+
 //
 //    //sanjay
 //    @Autowired
