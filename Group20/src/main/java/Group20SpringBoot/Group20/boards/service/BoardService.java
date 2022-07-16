@@ -5,6 +5,7 @@ import Group20SpringBoot.Group20.boards.repository.BoardRepository;
 import Group20SpringBoot.Group20.task.entity.TaskModel;
 import Group20SpringBoot.Group20.task.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.config.Task;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -85,7 +86,22 @@ public class BoardService implements IBoardService {
     }
 
     @Override
-    public List<TaskModel> getTaskFiltered(int boardId, Date date, int when) {
+    public List<TaskModel> getDateFiltered(int boardId, Date date, int when) {
+        return null;
+    }
+
+    @Override
+    public List<TaskModel> getNameFiltered(int boardId, String filter) {
+        BoardModel board = null;
+        Optional<BoardModel> optionalBoardModel = boardRepository.findById(boardId);
+
+        if (optionalBoardModel.isPresent()){
+            board = optionalBoardModel.get();
+
+            List<TaskModel> tasks = board.getTasks();
+            return tasks.stream().filter(task -> task.getTaskTitle().contains(filter)).toList();
+        }
+
         return null;
     }
 

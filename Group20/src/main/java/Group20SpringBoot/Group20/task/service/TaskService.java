@@ -57,6 +57,17 @@ public class TaskService implements ITaskService{
 
     @Override
     public boolean changeStatus(int taskId, String status) {
-        return false;
+        TaskModel task = null;
+        boolean result = false;
+
+        Optional<TaskModel> optionalTaskModel = taskRepository.findById(taskId);
+        if (optionalTaskModel.isPresent()){
+            task = optionalTaskModel.get();
+            task.setStatus(status);
+            taskRepository.save(task);
+            result = true;
+        }
+
+        return result;
     }
 }

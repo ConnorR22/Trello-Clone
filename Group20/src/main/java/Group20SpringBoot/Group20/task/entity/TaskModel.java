@@ -22,6 +22,10 @@ public class TaskModel {
 
     private String assigneeId;
 
+    private String status;
+
+
+
     public TaskModel(String taskTitle, String taskDesc, Date dueDate) {
         this.taskTitle = taskTitle;
         this.taskDesc = taskDesc;
@@ -64,5 +68,13 @@ public class TaskModel {
 
     public void setAssigneeId(String assigneeId) {
         this.assigneeId = assigneeId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

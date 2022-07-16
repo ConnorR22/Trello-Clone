@@ -34,6 +34,9 @@ function ViewTasks(props) {
                                         <Typography component='p' variant='p'>
                                             {task.assigneeId}
                                         </Typography>
+                                        <Typography component='p' variant='p'>
+                                            {task.status}
+                                        </Typography>
                                         <Link to={'/assign-task'}>
                                             <Button variant='contained' sx={{ marginTop: '16px' }} onClick={() => localStorage.setItem('assignTaskTo', task.taskId)}>
                                                 Assign User
