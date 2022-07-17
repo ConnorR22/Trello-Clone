@@ -25,21 +25,27 @@ function ViewTasks(props) {
                                         <Typography component='h4' variant='h4'>
                                             {task.taskTitle}
                                         </Typography>
-                                        <Typography component='p' variant='p'>
+                                        <Typography component='h6' variant='h6'>
                                             {task.taskDesc}
                                         </Typography>
+                                        <br/>
                                         <Typography component='p' variant='p'>
-                                            {task.dueDate}
+                                            Due Date - {task.dueDate}
                                         </Typography>
                                         <Typography component='p' variant='p'>
-                                            {task.assigneeId}
+                                            Assigned - {task.assigneeId}
                                         </Typography>
                                         <Typography component='p' variant='p'>
-                                            {task.status}
+                                            Status - {task.status}
                                         </Typography>
                                         <Link to={'/assign-task'}>
                                             <Button variant='contained' sx={{ marginTop: '16px' }} onClick={() => localStorage.setItem('assignTaskTo', task.taskId)}>
                                                 Assign User
+                                            </Button>
+                                        </Link>
+                                        <Link to={'/change-status'}>
+                                            <Button variant='contained' sx={{ marginTop: '16px' }} onClick={() => localStorage.setItem('changeStatusOf', task.taskId)}>
+                                                Change Status
                                             </Button>
                                         </Link>
                                     </CardContent>

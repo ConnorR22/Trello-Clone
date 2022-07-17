@@ -1,19 +1,28 @@
-import { Grid, Card, Button, TextField, Typography } from '@mui/material';
-import React, { useRef } from 'react';
+import {Grid, Card, Button, Typography} from '@mui/material';
+import React, { useState } from 'react';
+import Select from 'react-select';
 import {Link} from "react-router-dom";
 
-function AssignMemberToTaskForm(props) {
-    const emailRef = useRef();
+
+function ChangeStatusForm(props) {
+    const [status, setStatus] = useState({ label: "To-Do", value: "To-Do" });
     const taskId = localStorage.getItem('changeStatusOf')
+    const statuses = [
+        { label: "To-Do", value: "To-Do" },
+        { label: "Doing", value: "Doing" },
+        { label: "Done", value: "Done" },
+    ];
 
-    function assignTaskToUser(e) {
+
+    function changeStatus(e) {
         e.preventDefault();
-        const email = emailRef.current.value;
+        // const status = statusRef.current.valueOf();
 
-        console.log(email);
+        console.log(status.value);
+        // console.log(e.target.);
         console.log(taskId);
 
-        props.assignMemberToTask(taskId, email);
+        props.changeStatus(taskId, status.value);
     };
 
     return (
@@ -25,18 +34,16 @@ function AssignMemberToTaskForm(props) {
                       alignItems="center"
                       padding={10}
                 >
-                    <Typography variant='h2'>Assign Task To User</Typography>
+                    <Typography variant='h2'>Change Status</Typography>
                     <br></br>
-                    <form onSubmit={assignTaskToUser}>
-                        <TextField
-                            id='email'
-                            placeholder='Email'
-                            variant='outlined'
-                            required
-                            fullWidth
-                            inputRef={emailRef} />
+                    <form onSubmit={changeStatus}>
+                        <Select
+                            options={statuses}
+                            placeholder={status.value}
+                            onChange={ (value) => setStatus(value)}
+                        />
                         <Button type='submit' variant='contained' color='primary' sx={{ marginTop: '16px'}}>
-                            Assign User To Task
+                            Update Status
                         </Button>
                         <Link to={'/tasks/'+localStorage.getItem('current_boardId')}>
                             <Button type='submit' variant='contained' color='primary' sx={{ marginTop: '16px'}}>
@@ -50,4 +57,4 @@ function AssignMemberToTaskForm(props) {
     );
 };
 
-export default AssignMemberToTaskForm;
+export default ChangeStatusForm;

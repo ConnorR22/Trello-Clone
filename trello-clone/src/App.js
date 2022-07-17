@@ -18,6 +18,7 @@ import Tasks from "./pages/Tasks";
 import NavigationTasks from "./pages/NavigationTasks";
 import CreateTask from "./pages/CreateTask";
 import AssignMemberToTask from "./pages/AssignMemberToTask";
+import ChangeStatus from "./pages/ChangeStatus";
 
 function App() {
   return (   
@@ -63,6 +64,11 @@ function App() {
             <Route path="/assign-task">
               <NavigationTasks/>
               <AssignMemberToTask/>
+            </Route>
+
+            <Route path="/change-status">
+              <NavigationTasks/>
+              <ChangeStatus/>
             </Route>
 
             <Route path="/boards">
