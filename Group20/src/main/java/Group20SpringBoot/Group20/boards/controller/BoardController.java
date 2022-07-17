@@ -2,6 +2,7 @@ package Group20SpringBoot.Group20.boards.controller;
 
 import Group20SpringBoot.Group20.boards.entity.BoardModel;
 import Group20SpringBoot.Group20.boards.service.IBoardService;
+import Group20SpringBoot.Group20.task.entity.TaskModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,11 +32,18 @@ public class BoardController {
         return boardService.findBoardByID(boardId);
     }
 
-    @GetMapping("/getAll")
+    @GetMapping("/getTasks/{boardId}")
     @CrossOrigin(origins = "http://localhost:3000")
-    public List<BoardModel> getAllBoards()
+    public List<TaskModel> getTasks(@PathVariable int boardId)
     {
-        return boardService.getBoards();
+        return boardService.getTasks(boardId);
+    }
+
+    @PutMapping("/addTask/{boardId}")
+    @CrossOrigin(origins = "http://localhost:3000")
+    public boolean addTask(@PathVariable int boardId, @RequestParam int taskId)
+    {
+        return boardService.addTaskToBoard(boardId, taskId);
     }
 
     @DeleteMapping("/delete/{boardId}")

@@ -6,10 +6,6 @@ import { Link } from 'react-router-dom';
 
 function ViewBoards(props) {
 
-    function removeBoard(boardId) {
-        props.deleteBoard(boardId);
-    }
-
     return (
         <section style={{ marginTop: '64px' }}>
             <Card elevation={6}>
@@ -32,15 +28,17 @@ function ViewBoards(props) {
                                         <Typography component='p' variant='p'>
                                             {board.boardDesc}
                                         </Typography>
-                                        <Button variant='contained' sx={{ marginTop: '16px' }}>
-                                            View Tasks
-                                        </Button>
+                                        <Link to={'/tasks/'+board.boardId}>
+                                            <Button variant='contained' sx={{ marginTop: '16px' }} onClick={() => localStorage.setItem('current_boardId', board.boardId)}>
+                                                View Tasks
+                                            </Button>
+                                        </Link>
+
                                         <Link to={'/delete-board'}>
                                             <Button variant='contained' sx={{ marginTop: '16px' }} onClick={() => localStorage.setItem('boardIdToDelete', board.boardId)}>
                                                 Delete Board
                                             </Button>
                                         </Link>
-
                                     </CardContent>
                                 </Card>
                             </Grid>

@@ -62,12 +62,12 @@ class BoardServiceTest {
 
     }
 
-    @Test
-    void getBoardsTest() {
-
-        boardRepository.save(new BoardModel("Test", "Test"));
-        List<BoardModel> boards = boardService.getBoards();
-        assertNotNull(boards);
-
-    }
+//    @Test
+//    void getBoardsTest() {
+//
+//        boardRepository.save(new BoardModel("Test", "Test"));
+//        List<BoardModel> boards = boardService.getBoards();
+//        assertNotNull(boards);
+//
+//    }
 }
