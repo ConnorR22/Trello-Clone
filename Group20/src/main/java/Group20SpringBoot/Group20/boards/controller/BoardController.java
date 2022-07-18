@@ -4,8 +4,10 @@ import Group20SpringBoot.Group20.boards.entity.BoardModel;
 import Group20SpringBoot.Group20.boards.service.IBoardService;
 import Group20SpringBoot.Group20.task.entity.TaskModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -39,7 +41,15 @@ public class BoardController {
         return boardService.getTasks(boardId);
     }
 
-    @GetMapping("/getFiltered/{boardId}")
+    @GetMapping("/getFilteredDate/{boardId}")
+    @CrossOrigin(origins = "http://localhost:3000")
+    public List<TaskModel> getFilteredDate(@PathVariable int boardId, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date, @RequestParam int when)
+    {
+
+        return boardService.getDateFiltered(boardId, date, when);
+    }
+
+    @GetMapping("/getFilteredName/{boardId}")
     @CrossOrigin(origins = "http://localhost:3000")
     public List<TaskModel> getFilteredSearch(@PathVariable int boardId, @RequestParam String filter)
     {

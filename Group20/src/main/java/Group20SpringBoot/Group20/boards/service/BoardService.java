@@ -87,6 +87,18 @@ public class BoardService implements IBoardService {
 
     @Override
     public List<TaskModel> getDateFiltered(int boardId, Date date, int when) {
+        BoardModel board = null;
+        Optional<BoardModel> optionalBoardModel = boardRepository.findById(boardId);
+
+        if (optionalBoardModel.isPresent()){
+            board = optionalBoardModel.get();
+
+            List<TaskModel> tasks = board.getTasks();
+
+            System.out.println(date);
+        }
+
+
         return null;
     }
 
