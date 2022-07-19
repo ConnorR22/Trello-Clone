@@ -1,6 +1,7 @@
 import { Grid, Card, Button, TextField, Typography } from '@mui/material';
 import React, {useRef, useState} from 'react';
-import DatePicker from "react-datepicker";
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 
 function CreateTaskForm(props) {
     const taskTitleRef = useRef();
@@ -12,7 +13,7 @@ function CreateTaskForm(props) {
         e.preventDefault();
         const taskTitle = taskTitleRef.current.value;
         const taskDesc = taskDescRef.current.value;
-        const dateFormat = dueDate => dueDate.toISOString().slice(0, 10);
+        //const dateFormat = dueDate => dueDate.toISOString().slice(0, 10);
 
         const task = {
             taskTitle: taskTitle,
@@ -58,12 +59,17 @@ function CreateTaskForm(props) {
                             inputRef={taskDescRef} />
                         <div>
                             <DatePicker
+                                style={{width: 200}}
+
+
+
                                 placeholder='Task Due Date'
                                 selected={dueDate}
                                 onChange={(date) => setDueDate(date)}
                             />
                         </div>
-                        <Button type='submit' variant='contained' color='primary' sx={{ marginTop: '16px'}}>
+                        <br></br>
+                        <Button type='submit' variant='contained' color='primary' sx={{ marginTop: '20px'}}>
                             Create Task
                         </Button>
                     </form>
