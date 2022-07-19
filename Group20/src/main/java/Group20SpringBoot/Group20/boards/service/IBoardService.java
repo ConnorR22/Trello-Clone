@@ -17,7 +17,7 @@ public interface IBoardService {
 
     List<TaskModel> getTasks(int boardId);
 
-    List<TaskModel> getDateFiltered(int boardId, Date date, int when);
+    List<TaskModel> getDateFiltered(int boardId, int when);
 
     List<TaskModel> getNameFiltered(int boardId, String filter);
 }

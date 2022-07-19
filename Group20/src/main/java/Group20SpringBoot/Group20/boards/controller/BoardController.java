@@ -43,10 +43,10 @@ public class BoardController {
 
     @GetMapping("/getFilteredDate/{boardId}")
     @CrossOrigin(origins = "http://localhost:3000")
-    public List<TaskModel> getFilteredDate(@PathVariable int boardId, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date, @RequestParam int when)
+    public List<TaskModel> getFilteredDate(@PathVariable int boardId, @RequestParam int when)
     {
-
-        return boardService.getDateFiltered(boardId, date, when);
+        // @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date,
+        return boardService.getDateFiltered(boardId, when);
     }
 
     @GetMapping("/getFilteredName/{boardId}")

@@ -9,6 +9,8 @@ import org.springframework.scheduling.config.Task;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -86,7 +88,7 @@ public class BoardService implements IBoardService {
     }
 
     @Override
-    public List<TaskModel> getDateFiltered(int boardId, Date date, int when) {
+    public List<TaskModel> getDateFiltered(int boardId, int when) {
         BoardModel board = null;
         Optional<BoardModel> optionalBoardModel = boardRepository.findById(boardId);
 
@@ -94,12 +96,25 @@ public class BoardService implements IBoardService {
             board = optionalBoardModel.get();
 
             List<TaskModel> tasks = board.getTasks();
+            LocalDate today = LocalDate.now();
 
-            System.out.println(date);
+            // Overdue - 0
+            if (when == 0){
+                return overDueTasks(tasks, today);
+            }
+            // Due Today - 1
+            // Due This Week
+
+
+//            System.out.println(date);
         }
 
 
         return null;
+    }
+
+    private List<TaskModel> overDueTasks(List<TaskModel> tasks, LocalDate today) {
+        return tasks.stream().filter(task -> task.getDueDate().toInstant().isBefore(Instant.from(today))).toList();
     }
 
     @Override
