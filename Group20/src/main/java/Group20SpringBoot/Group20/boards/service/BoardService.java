@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -103,8 +104,13 @@ public class BoardService implements IBoardService {
                 return overDueTasks(tasks, today);
             }
             // Due Today - 1
-            // Due This Week
-
+            if (when == 1){
+//                return overDueTasks(tasks, today);
+            }
+            // Due This Week - 2
+            if (when == 2){
+//                return overDueTasks(tasks, today);
+            }
 
 //            System.out.println(date);
         }
@@ -114,7 +120,7 @@ public class BoardService implements IBoardService {
     }
 
     private List<TaskModel> overDueTasks(List<TaskModel> tasks, LocalDate today) {
-        return tasks.stream().filter(task -> task.getDueDate().toInstant().isBefore(Instant.from(today))).toList();
+        return tasks.stream().filter(task -> Instant.ofEpochMilli(task.getDueDate().getTime()).atZone(ZoneId.systemDefault()).toLocalDate().isBefore(today)).toList();
     }
 
     @Override
