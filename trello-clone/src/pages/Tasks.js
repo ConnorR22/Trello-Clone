@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ViewTasks from "../components/ViewTasks";
+import Filters from '../components/Filters';
 
 function Tasks() {
     const [tasksData, setTasksData] = useState([]);
@@ -18,8 +19,10 @@ function Tasks() {
     }, []);
 
 
+// Add a ternary statement to display only one of the components
     return (
         <section>
+            <Filters props={tasksData} />
             <ViewTasks tasks={tasksData} />
         </section>
     );
