@@ -12,12 +12,12 @@ function CreateTaskForm(props) {
         e.preventDefault();
         const taskTitle = taskTitleRef.current.value;
         const taskDesc = taskDescRef.current.value;
-        const dateFormat = dueDate => dueDate.toISOString().slice(0, 10);
 
         const task = {
             taskTitle: taskTitle,
             taskDesc: taskDesc,
             dueDate: dueDate,
+            status: "To-Do",
             assigneeId: null
         };
 

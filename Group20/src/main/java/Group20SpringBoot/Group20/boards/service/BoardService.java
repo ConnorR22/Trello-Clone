@@ -105,7 +105,7 @@ public class BoardService implements IBoardService {
             }
             // Due Today - 1
             if (when == 1){
-//                return overDueTasks(tasks, today);
+                return todayDueTasks(tasks, today);
             }
             // Due This Week - 2
             if (when == 2){
@@ -117,6 +117,12 @@ public class BoardService implements IBoardService {
 
 
         return null;
+    }
+
+    private List<TaskModel> todayDueTasks(List<TaskModel> tasks, LocalDate today) {
+        return tasks.stream().filter(
+                task -> Instant.ofEpochMilli(task.getDueDate().getTime()).atZone(ZoneId.systemDefault()).toLocalDate()
+                        .isEqual(today)).toList();
     }
 
     private List<TaskModel> overDueTasks(List<TaskModel> tasks, LocalDate today) {
