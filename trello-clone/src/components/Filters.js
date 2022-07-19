@@ -1,25 +1,26 @@
 import React, {useState} from "react";
-import { Grid, Card, CardContent, Typography, Button, TextField } from '@mui/material';
+import { Grid, Card, CardContent, Typography, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
-import Filter from '../components/Filters';
 
 function Filters(props) {
     // States for search bar input and dropdown options
     const [inputName, setInputName] = useState("");
     const [dropDownOption, setDropDownOption] = useState("");
 
-    const dueTodayArr = [];
-    const dueThisWeekArr = [];
-    const overdueArr = [];
-    const othersArr = [];
-    const toDisplay = [];
+    let dueTodayArr = [];
+    let dueThisWeekArr = [];
+    let overdueArr = [];
+    let othersArr = [];
+    let toDisplay = [];
 
-    // Filter function to separate the tasks based on their due date
-    const filter = (e) => {
+    // Function to separate the tasks based on their due date and choose which
+    // array of tasks to display based on the selected dropdown option
+    const handleSubmit = (e) => {
         e.preventDefault();
+
         const today = new Date();
-        props.tasks.map((task) => {
-            if (task.dueDate == new Date()) {
+        toDisplay = props.tasks.forEach((task) => {
+            if (task.dueDate === new Date()) {
                 dueTodayArr.push(task);
             } else if (task.dueDate < today) {
                 overdueArr.push(task);
@@ -29,12 +30,7 @@ function Filters(props) {
                 othersArr.push(task);
             }
         })
-    }
 
-    // Function to choose which array of tasks to display
-    // based on the selected dropdown option
-    const handleSubmit = (e) => {
-        e.preventDefault();
         setDropDownOption(e.target.value);
 
         if (dropDownOption === "dueToday") {
@@ -78,7 +74,7 @@ function Filters(props) {
           </label>
           <input type="submit" value="Submit" />
         </form>
-          <input id="searchbar" onkeyup="handleSearch()" type="text"
+          <input id="searchbar" onKeyUp={handleSearch} type="text"
                   name="search" placeholder="Search tasks.." />
 
 {/* Used part of the code from ViewTasks to display the selected list of tasks that were
