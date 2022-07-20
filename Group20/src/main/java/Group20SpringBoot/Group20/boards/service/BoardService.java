@@ -9,9 +9,11 @@ import org.springframework.scheduling.config.Task;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.time.DayOfWeek;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -109,14 +111,27 @@ public class BoardService implements IBoardService {
             }
             // Due This Week - 2
             if (when == 2){
-//                return overDueTasks(tasks, today);
+                return thisWeeksTasks(tasks);
             }
 
-//            System.out.println(date);
         }
 
-
         return null;
+    }
+
+    private List<TaskModel> thisWeeksTasks(List<TaskModel> tasks) {
+        LocalDate now = LocalDate.now();
+        LocalDate firstDayOfWeek = now.with(TemporalAdjusters.previousOrSame(DayOfWeek.SATURDAY));
+        LocalDate lastDayOfWeek = now.with(TemporalAdjusters.nextOrSame(DayOfWeek.SUNDAY));
+
+        return tasks.stream().filter(task -> withinWeek(firstDayOfWeek, lastDayOfWeek, task)).toList();
+    }
+
+    private boolean withinWeek(LocalDate firstDayOfWeek, LocalDate lastDayOfWeek, TaskModel taskModel) {
+        LocalDate taskDate = Instant.ofEpochMilli(taskModel.getDueDate().getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
+        boolean flag1 = taskDate.isAfter(firstDayOfWeek);
+        boolean flag2 = taskDate.isBefore(lastDayOfWeek);
+        return flag1 && flag2;
     }
 
     private List<TaskModel> todayDueTasks(List<TaskModel> tasks, LocalDate today) {
