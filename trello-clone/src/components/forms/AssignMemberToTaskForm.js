@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 
 function AssignMemberToTaskForm(props) {
     const emailRef = useRef();
-    const taskId = localStorage.getItem('changeStatusOf')
+    const taskId = localStorage.getItem('assignTaskTo')
 
     function assignTaskToUser(e) {
         e.preventDefault();
