@@ -5,7 +5,6 @@ import Group20SpringBoot.Group20.boards.repository.BoardRepository;
 import Group20SpringBoot.Group20.task.entity.TaskModel;
 import Group20SpringBoot.Group20.task.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.config.Task;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -15,7 +14,6 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -85,9 +83,19 @@ public class BoardService implements IBoardService {
     }
 
     @Override
-    public List<TaskModel> getTasks(int boardId) {
+    public List<TaskModel> getTasks(int boardId, String status) {
         BoardModel board = findBoardByID(boardId);
-        return board.getTasks();
+//        System.out.println(status);
+        List<TaskModel> tasks = board.getTasks();
+
+        if (tasks == null){
+            tasks = new ArrayList<>();
+        }
+
+//        boolean flag = tasks.get(0).getStatus().equals(status);
+
+//        return tasks;
+        return tasks.stream().filter(task -> task.getStatus().equals(status)).toList();
     }
 
     @Override

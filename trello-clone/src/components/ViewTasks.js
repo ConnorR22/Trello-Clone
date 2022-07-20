@@ -7,19 +7,19 @@ import { Link } from 'react-router-dom';
 function ViewTasks(props) {
 
     return (
-        <section style={{ marginTop: '64px' }}>
+        <section style={{ marginTop: '16px', marginBottom: '20px', marginLeft: '20px', marginRight: '20px' }}>
             <Card elevation={6}>
                 <Grid container
-                      direction="column"
-                      justifyContent="center"
+                      direction="row"
+                      justifyContent="left"
                       alignItems="center"
-                      paddingBottom={55}
+                      paddingBottom={5}
                       paddingTop={5}
                 >
-                    <Typography variant='h2' component='h2'>Tasks</Typography>
+                    {/*<Typography variant='h2' component='h2'>Tasks</Typography>*/}
                     {props.tasks.map((task) => {
                         return (
-                            <Grid item xs={12} sm={12} md={4} lg={4} key={task.taskId}>
+                            <Grid marginLeft={2} item xs={12} sm={12} md={4} lg={3.5} key={task.taskId}>
                                 <Card elevation={6}>
                                     <CardContent>
                                         <Typography component='h4' variant='h4'>
