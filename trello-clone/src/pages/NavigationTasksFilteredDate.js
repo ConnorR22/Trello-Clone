@@ -4,7 +4,7 @@ import Select from "react-select";
 import {Button} from "@mui/material";
 
 /* functionality for stagnant registration */
-function NavigationTasks(){
+function NavigationTasksFilteredDate(){
 
     const [dateType, setDateType] = useState({ label: "Today", value: 1 });
     const boardId = localStorage.getItem('current_boardId')
@@ -27,9 +27,17 @@ function NavigationTasks(){
         history.go(0)
     }
 
+    function unFilter(e) {
+        e.preventDefault();
+
+        console.log(boardId);
+
+        history.replace(`/tasks/${boardId}`)
+        history.go(0)
+    }
+
     return(
         <nav>
-
 
             <ul>
                 <li><Link to="/login">Logout</Link></li>
@@ -48,10 +56,15 @@ function NavigationTasks(){
                     Filter
                 </Button>
             </form>
+            <form onSubmit={unFilter}>
+                <Button type='submit' variant='contained' color='primary' sx={{ marginTop: '16px'}}>
+                    Unfilter Results
+                </Button>
+            </form>
 
         </nav>
 
 
     );
 }
-export default NavigationTasks;
+export default NavigationTasksFilteredDate;

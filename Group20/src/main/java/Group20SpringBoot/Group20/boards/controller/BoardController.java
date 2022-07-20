@@ -43,16 +43,16 @@ public class BoardController {
 
     @GetMapping("/getFilteredDate/{boardId}")
     @CrossOrigin(origins = "http://localhost:3000")
-    public List<TaskModel> getFilteredDate(@PathVariable int boardId, @RequestParam int when)
+    public List<TaskModel> getFilteredDate(@PathVariable int boardId, @RequestParam int when, @RequestParam String status)
     {
-        return boardService.getDateFiltered(boardId, when);
+        return boardService.getDateFiltered(boardId, status, when);
     }
 
     @GetMapping("/getFilteredName/{boardId}")
     @CrossOrigin(origins = "http://localhost:3000")
-    public List<TaskModel> getFilteredSearch(@PathVariable int boardId, @RequestParam String filter)
+    public List<TaskModel> getFilteredSearch(@PathVariable int boardId, @RequestParam String filter, @RequestParam String status)
     {
-        return boardService.getNameFiltered(boardId, filter);
+        return boardService.getNameFiltered(boardId, status, filter);
     }
 
 

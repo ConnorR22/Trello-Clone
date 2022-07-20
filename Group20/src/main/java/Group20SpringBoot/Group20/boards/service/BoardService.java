@@ -85,21 +85,17 @@ public class BoardService implements IBoardService {
     @Override
     public List<TaskModel> getTasks(int boardId, String status) {
         BoardModel board = findBoardByID(boardId);
-//        System.out.println(status);
         List<TaskModel> tasks = board.getTasks();
 
         if (tasks == null){
             tasks = new ArrayList<>();
         }
 
-//        boolean flag = tasks.get(0).getStatus().equals(status);
-
-//        return tasks;
         return tasks.stream().filter(task -> task.getStatus().equals(status)).toList();
     }
 
     @Override
-    public List<TaskModel> getDateFiltered(int boardId, int when) {
+    public List<TaskModel> getDateFiltered(int boardId, String status, int when) {
         BoardModel board = null;
         Optional<BoardModel> optionalBoardModel = boardRepository.findById(boardId);
 
@@ -107,6 +103,7 @@ public class BoardService implements IBoardService {
             board = optionalBoardModel.get();
 
             List<TaskModel> tasks = board.getTasks();
+            tasks = tasks.stream().filter(task -> task.getStatus().equals(status)).toList();
             LocalDate today = LocalDate.now();
 
             // Overdue - 0
@@ -153,7 +150,7 @@ public class BoardService implements IBoardService {
     }
 
     @Override
-    public List<TaskModel> getNameFiltered(int boardId, String filter) {
+    public List<TaskModel> getNameFiltered(int boardId, String status, String filter) {
         BoardModel board = null;
         Optional<BoardModel> optionalBoardModel = boardRepository.findById(boardId);
 
