@@ -20,7 +20,8 @@ import CreateTask from "./pages/CreateTask";
 import AssignMemberToTask from "./pages/AssignMemberToTask";
 import ChangeStatus from "./pages/ChangeStatus";
 import TasksFilteredByDate from "./pages/TasksFilteredByDate";
-import NavigationTasksFilteredDate from "./pages/NavigationTasksFilteredDate";
+import TasksFilteredByName from "./pages/TasksFilteredByName";
+import NavigationTasksFiltered from "./pages/NavigationTasksFiltered";
 
 function App() {
   return (   
@@ -69,8 +70,13 @@ function App() {
             </Route>
 
             <Route path="/filteredDate/:id/:date">
-              <NavigationTasksFilteredDate/>
+              <NavigationTasksFiltered/>
               <TasksFilteredByDate/>
+            </Route>
+
+            <Route path="/filteredName/:id/:key">
+              <NavigationTasksFiltered/>
+              <TasksFilteredByName/>
             </Route>
 
             <Route path="/change-status">

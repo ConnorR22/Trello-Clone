@@ -158,6 +158,7 @@ public class BoardService implements IBoardService {
             board = optionalBoardModel.get();
 
             List<TaskModel> tasks = board.getTasks();
+            tasks = tasks.stream().filter(task -> task.getStatus().equals(status)).toList();
             return tasks.stream().filter(task -> task.getTaskTitle().contains(filter)).toList();
         }
 

@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import {Typography} from "@mui/material";
-import ViewTasksFilteredByDate from "../components/ViewTasksFilteredByDate";
-import {useParams} from "react-router-dom";
+import ViewTasksFilteredByName from "../components/ViewTasksFilteredByName";
 
-function TasksFilteredByDate() {
+function TasksFilteredByName() {
+    // const {id, date} = useParams();
     const [tasksTODOData,  setTasksTODOData ] = useState([]);
     const [tasksDOINGData, setTasksDOINGData] = useState([]);
     const [tasksDONEData,  setTasksDONEData ] = useState([]);
     const boardId = localStorage.getItem('current_boardId')
-    const dateType = localStorage.getItem('dateType')
+    const search = localStorage.getItem('searchFilter')
 
     function getAllTODOTasks() {
-        fetch(`http://localhost:9001/board/getFilteredDate/${boardId}?when=${dateType}&status=To-Do`)
+        fetch(`http://localhost:9001/board/getFilteredName/${boardId}?filter=${search}&status=To-Do`)
             .then(response => response.json())
             .then(tasks => {
                 setTasksTODOData(tasks);
@@ -19,7 +19,7 @@ function TasksFilteredByDate() {
     };
 
     function getAllDOINGTasks() {
-        fetch(`http://localhost:9001/board/getFilteredDate/${boardId}?when=${dateType}&status=Doing`)
+        fetch(`http://localhost:9001/board/getFilteredName/${boardId}?filter=${search}&status=Doing`)
             .then(response => response.json())
             .then(tasks => {
                 setTasksDOINGData(tasks);
@@ -27,7 +27,7 @@ function TasksFilteredByDate() {
     };
 
     function getAllDONETasks() {
-        fetch(`http://localhost:9001/board/getFilteredDate/${boardId}?when=${dateType}&status=Done`)
+        fetch(`http://localhost:9001/board/getFilteredName/${boardId}?filter=${search}&status=Done`)
             .then(response => response.json())
             .then(tasks => {
                 setTasksDONEData(tasks);
@@ -46,18 +46,18 @@ function TasksFilteredByDate() {
 
             <div>
                 <Typography variant="h3" component="h3">To-Do</Typography>
-                <ViewTasksFilteredByDate tasks={tasksTODOData} />
+                <ViewTasksFilteredByName tasks={tasksTODOData} />
             </div>
             <div>
                 <Typography variant="h3" component="h3">Doing</Typography>
-                <ViewTasksFilteredByDate tasks={tasksDOINGData} />
+                <ViewTasksFilteredByName tasks={tasksDOINGData} />
             </div>
             <div>
                 <Typography variant="h3" component="h3">Done</Typography>
-                <ViewTasksFilteredByDate tasks={tasksDONEData} />
+                <ViewTasksFilteredByName tasks={tasksDONEData} />
             </div>
         </section>
     );
 };
 
-export default TasksFilteredByDate;
+export default TasksFilteredByName;
