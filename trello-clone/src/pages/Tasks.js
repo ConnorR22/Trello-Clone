@@ -8,7 +8,7 @@ function Tasks() {
     const [tasksDONEData,  setTasksDONEData ] = useState([]);
     const boardId = localStorage.getItem('current_boardId')
 
-    function getAllTODOTasks(status) {
+    function getAllTODOTasks() {
         fetch(`http://localhost:9001/board/getTasks/${boardId}?status=To-Do`)
             .then(response => response.json())
             .then(tasks => {
@@ -16,7 +16,7 @@ function Tasks() {
             });
     };
 
-    function getAllDOINGTasks(status) {
+    function getAllDOINGTasks() {
         fetch(`http://localhost:9001/board/getTasks/${boardId}?status=Doing`)
             .then(response => response.json())
             .then(tasks => {
@@ -24,7 +24,7 @@ function Tasks() {
             });
     };
 
-    function getAllDONETasks(status) {
+    function getAllDONETasks() {
         fetch(`http://localhost:9001/board/getTasks/${boardId}?status=Done`)
             .then(response => response.json())
             .then(tasks => {
