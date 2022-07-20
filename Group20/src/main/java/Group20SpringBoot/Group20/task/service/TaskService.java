@@ -4,9 +4,12 @@ import Group20SpringBoot.Group20.task.entity.TaskModel;
 import Group20SpringBoot.Group20.task.repository.TaskRepository;
 import Group20SpringBoot.Group20.user.entity.UserModel;
 import Group20SpringBoot.Group20.user.service.UserService;
+import Group20SpringBoot.Group20.workspaces.entity.WorkspaceModel;
+import Group20SpringBoot.Group20.workspaces.service.WorkspaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -36,7 +39,7 @@ public class TaskService implements ITaskService{
     }
 
     @Override
-    public boolean assignTask(int taskId, String email) {
+    public boolean assignTask(int taskId, String email, int workspaceId) {
         TaskModel task = null;
         boolean result = false;
 
@@ -46,9 +49,14 @@ public class TaskService implements ITaskService{
             UserModel assignee = userService.findUserByEmail(email);
 
             if (assignee != null) {
-                task.setAssigneeId(assignee.getFirstName() + " " + assignee.getLastName());
-                taskRepository.save(task);
-                result = true;
+                List<WorkspaceModel> workspaces = assignee.getWorkspaces();
+                boolean isInWorkspace = workspaces.stream().anyMatch(workspace -> workspace.getWorkspaceId() == workspaceId);
+
+                if  (isInWorkspace) {
+                    task.setAssigneeId(assignee.getFirstName() + " " + assignee.getLastName());
+                    taskRepository.save(task);
+                    result = true;
+                }
             }
         }
 

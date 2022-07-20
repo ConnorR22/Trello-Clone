@@ -27,8 +27,8 @@ public class TaskController {
 
     @PostMapping("/assign/{taskId}")
     @CrossOrigin(origins = "http://localhost:3000")
-    public boolean assignTask(@PathVariable int taskId, @RequestParam String email){
-        return taskService.assignTask(taskId, email);
+    public boolean assignTask(@PathVariable int taskId, @RequestParam String email, @RequestParam int workspaceId){
+        return taskService.assignTask(taskId, email, workspaceId);
     }
 
     @PostMapping("/changeStatus/{taskId}")
