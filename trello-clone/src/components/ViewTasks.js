@@ -19,7 +19,7 @@ function ViewTasks(props) {
                     <Typography variant='h2' component='h2'>Tasks</Typography>
                     {props.tasks.map((task) => {
                         return (
-                            <Grid item xs={12} sm={12} md={4} lg={4} key={task.id}>
+                            <Grid item xs={12} sm={12} md={4} lg={4} key={task.taskId}>
                                 <Card elevation={6}>
                                     <CardContent>
                                         <Typography component='h4' variant='h4'>

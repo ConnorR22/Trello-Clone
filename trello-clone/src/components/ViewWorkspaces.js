@@ -16,7 +16,7 @@ function ViewWorkspaces(props) {
                 <Typography variant='h2' component='h2'>Workspaces</Typography>
                     {props.workspaces.map((workspaces) => {
                         return (
-                            <Grid item xs={12} sm={12} md={4} lg={4} key={workspaces}>
+                            <Grid item xs={12} sm={12} md={4} lg={4} key={workspaces.workspaceId}>
                                 <Card elevation={6}>
                                     <CardContent>
                                         <Typography component='h4' variant='h4'>
