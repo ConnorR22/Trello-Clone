@@ -18,6 +18,7 @@ function CreateTaskForm(props) {
             taskTitle: taskTitle,
             taskDesc: taskDesc,
             dueDate: dueDate,
+            status: "To-Do",
             assigneeId: null
         };
 
