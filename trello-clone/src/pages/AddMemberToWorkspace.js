@@ -2,8 +2,6 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import AddMemberToWorkspaceForm from "../components/forms/AddMemberToWorkspaceForm";
 
-const workspaceId = localStorage.getItem('current_workspaceId')
-
 function AddMemberToWorkspace() {
 
     const history = useHistory();

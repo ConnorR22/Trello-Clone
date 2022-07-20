@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 
 
-function ViewTasks(props) {
+function ViewTasksFilteredByName(props) {
 
     return (
         <section style={{ marginTop: '16px', marginBottom: '20px', marginLeft: '20px', marginRight: '20px' }}>
@@ -59,4 +59,4 @@ function ViewTasks(props) {
     );
 };
 
-export default ViewTasks;
+export default ViewTasksFilteredByName;

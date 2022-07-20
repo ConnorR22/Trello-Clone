@@ -2,8 +2,6 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import AssignMemberToTaskForm from "../components/forms/AssignMemberToTaskForm";
 
-const taskId = localStorage.getItem('assignTaskTo')
-
 function AssignMemberToTask() {
 
     const history = useHistory();
