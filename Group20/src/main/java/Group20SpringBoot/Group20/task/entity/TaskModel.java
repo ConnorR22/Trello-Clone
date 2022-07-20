@@ -26,10 +26,11 @@ public class TaskModel {
 
 
 
-    public TaskModel(String taskTitle, String taskDesc, Date dueDate) {
+    public TaskModel(String taskTitle, String taskDesc, Date dueDate, String status) {
         this.taskTitle = taskTitle;
         this.taskDesc = taskDesc;
         this.dueDate = dueDate;
+        this.status = status;
     }
 
     public TaskModel() {}
