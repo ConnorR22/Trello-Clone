@@ -14,21 +14,27 @@ function Tasks() {
             });
     };
 
-    function getFilteredTasksDate(when) {
+//    function getFilteredTasksDate(when) {
+//
+//        fetch(`http://localhost:9001/board/getDateFiltered/${boardId}?when=${when}`)
+//            .then(response => response.json())
+//            .then(tasks => {
+//                setTasksData(tasks);
+//            });
+//        };
 
-        fetch(`http://localhost:9001/board/getDateFiltered/${boardId}?when=${when}`)
+    function getFilteredTasksName(event, filter) {
+        event.preventDefault();
+        fetch(`http://localhost:9001/board/getNameFiltered/${boardId}?filter=${filter}`)
             .then(response => response.json())
             .then(tasks => {
                 setTasksData(tasks);
             });
-        };
+    }
 
-    function getFilteredTasksName(filter) {
-        fetch(`http://localhost:9001/board/getNameFiltered/${boardId}?filter=${filter}`)
-                    .then(response => response.json())
-                    .then(tasks => {
-                        setTasksData(tasks);
-                    });
+    function handleSearch(event) {
+        console.log(searchInput);
+        setSearchInput(event.target.value);
     }
 
     useEffect(function () {
@@ -42,7 +48,7 @@ function Tasks() {
             <form>
               <label>
               Select a filter option:
-                  <select id="dueDateStatus" onChange={getFilteredTasksDate}>
+                  <select id="dueDateStatus" /*onChange={getFilteredTasksDate}*/>
                     <option value="dueToday">Due Today</option>
                     <option value="dueThisWeek">Due This Week</option>
                     <option value="overdue">Overdue</option>
@@ -50,8 +56,11 @@ function Tasks() {
               </label>
               <input type="submit" value="Submit" />
             </form>
-              <input id="searchbar" type="text"
-                      name="search" placeholder="Search tasks.." onChange={event => getFilteredTasksName(searchInput)}/>
+
+            <form onSubmit={event => getFilteredTasksName(event, searchInput)}>
+              <input id="searchbar" type="text" name="search" placeholder="Search tasks.." onChange={event => handleSearch(event)}/>
+              <input type="submit" value="Submit" />
+            </form>
             <ViewTasks tasks={tasksData} />
         </section>
     );

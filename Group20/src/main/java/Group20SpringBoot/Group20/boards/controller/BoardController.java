@@ -39,6 +39,20 @@ public class BoardController {
         return boardService.getTasks(boardId);
     }
 
+//    @GetMapping("/getDateFiltered/{boardId}")
+//    @CrossOrigin(origins = "http://localhost:3000")
+//    public List<TaskModel> getDateFiltered(@PathVariable int boardId)
+//    {
+//        return boardService.getDateFiltered(boardId, );
+//    }
+
+    @GetMapping("/getNameFiltered/{boardId}")
+    @CrossOrigin(origins = "http://localhost:3000")
+    public List<TaskModel> getNameFiltered(@PathVariable int boardId, String filter)
+    {
+        return boardService.getNameFiltered(boardId, filter);
+    }
+
     @PutMapping("/addTask/{boardId}")
     @CrossOrigin(origins = "http://localhost:3000")
     public boolean addTask(@PathVariable int boardId, @RequestParam int taskId)
