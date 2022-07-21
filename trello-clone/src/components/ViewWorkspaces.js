@@ -19,7 +19,7 @@ function ViewWorkspaces(props) {
                 <br></br>
                     {props.workspaces.map((workspaces) => {
                         return (
-                            <Grid item xs={8} sm={9} md={2.5} lg={2.75} key={workspaces}>
+                            <Grid item xs={8} sm={9} md={2.5} lg={2.75} key={workspaces.workspaceId}>
                                 <Card elevation={5}>
                                 <br></br>
                                     <CardContent>
