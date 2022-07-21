@@ -23,9 +23,10 @@ function CreateBoardForm(props) {
             <Card elevation={6}>
                 <Grid container 
                     direction="column" 
-                    justifyContent="center" 
+                    justifyContent="center"
                     alignItems="center"
                     padding={10}
+                    fullWidth
 
                 >
                     <Typography variant='h2'>Create New Board</Typography>

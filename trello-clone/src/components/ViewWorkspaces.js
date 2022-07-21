@@ -5,19 +5,23 @@ import { Link } from 'react-router-dom';
 function ViewWorkspaces(props) {
     return (
         <section style={{ marginTop: '64px' }}>
+         <Typography variant='h2' component='h2' align='center' paddingBottom={2}>Workspaces</Typography>
             <Card elevation={6}>
                 <Grid container 
-                    direction="column" 
-                    justifyContent="center" 
+                    direction="row"
+                    justifyContent="center"
+                    spacing={{ xs: 1, md: 2 }}
+                    column={{ xs: 3, sm: 7, md: 10 }}
                     alignItems="center"
                     paddingBottom={55}
                     paddingTop={5}
                 >
-                <Typography variant='h2' component='h2'>Workspaces</Typography>
+                <br></br>
                     {props.workspaces.map((workspaces) => {
                         return (
-                            <Grid item xs={12} sm={12} md={4} lg={4} key={workspaces}>
-                                <Card elevation={6}>
+                            <Grid item xs={8} sm={9} md={2.5} lg={2.75} key={workspaces}>
+                                <Card elevation={5}>
+                                <br></br>
                                     <CardContent>
                                         <Typography component='h4' variant='h4'>
                                             {workspaces.workspaceTitle}
@@ -30,13 +34,16 @@ function ViewWorkspaces(props) {
                                                 View Boards
                                             </Button>
                                         </Link>
+                                        <br></br>
                                         <Link to={'/addUser-workspace'}>
                                             <Button variant='contained' sx={{ marginTop: '16px' }} onClick={() => localStorage.setItem("current_workspaceId", workspaces.workspaceId)}>
                                                 Add User
                                             </Button>
+
                                         </Link>
 
                                     </CardContent>
+
                                 </Card>
                             </Grid>
                         );
