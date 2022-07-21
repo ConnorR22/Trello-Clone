@@ -20,6 +20,11 @@ import java.util.Optional;
 @Service
 public class BoardService implements IBoardService {
 
+
+    private static final int overdue_tasks = 0;
+    private static final int today_tasks = 1;
+    private static final int this_week_tasks = 2;
+
     @Autowired
     BoardRepository boardRepository;
 
@@ -107,15 +112,15 @@ public class BoardService implements IBoardService {
             LocalDate today = LocalDate.now();
 
             // Overdue - 0
-            if (when == 0){
+            if (when == overdue_tasks){
                 return overDueTasks(tasks, today);
             }
             // Due Today - 1
-            if (when == 1){
+            if (when == today_tasks){
                 return todayDueTasks(tasks, today);
             }
             // Due This Week - 2
-            if (when == 2){
+            if (when == this_week_tasks){
                 return thisWeeksTasks(tasks);
             }
 
@@ -140,13 +145,21 @@ public class BoardService implements IBoardService {
     }
 
     private List<TaskModel> todayDueTasks(List<TaskModel> tasks, LocalDate today) {
-        return tasks.stream().filter(
-                task -> Instant.ofEpochMilli(task.getDueDate().getTime()).atZone(ZoneId.systemDefault()).toLocalDate()
-                        .isEqual(today)).toList();
+        return tasks.stream().filter(task -> todayTasks(today, task)).toList();
+    }
+
+    private boolean todayTasks(LocalDate today, TaskModel task) {
+        LocalDate taskDate = Instant.ofEpochMilli(task.getDueDate().getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
+        return taskDate.isEqual(today);
     }
 
     private List<TaskModel> overDueTasks(List<TaskModel> tasks, LocalDate today) {
-        return tasks.stream().filter(task -> Instant.ofEpochMilli(task.getDueDate().getTime()).atZone(ZoneId.systemDefault()).toLocalDate().isBefore(today)).toList();
+        return tasks.stream().filter(task -> pastDueDate(today, task)).toList();
+    }
+
+    private boolean pastDueDate(LocalDate today, TaskModel task) {
+        LocalDate taskDate = Instant.ofEpochMilli(task.getDueDate().getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
+        return taskDate.isBefore(today);
     }
 
     @Override
