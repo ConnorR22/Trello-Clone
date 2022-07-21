@@ -2,14 +2,13 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import AssignMemberToTaskForm from "../components/forms/AssignMemberToTaskForm";
 
-const taskId = localStorage.getItem('assignTaskTo')
-
 function AssignMemberToTask() {
 
     const history = useHistory();
+    const workspaceId = localStorage.getItem('current_workspaceId')
 
     function assignMemberHandler(taskId, email) {
-        fetch(`http://localhost:9001/task/assign/${taskId}?email=${email}`, {
+        fetch(`http://localhost:9001/task/assign/${taskId}?email=${email}&workspaceId=${workspaceId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

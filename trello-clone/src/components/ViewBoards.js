@@ -7,22 +7,20 @@ import { Link } from 'react-router-dom';
 function ViewBoards(props) {
 
     return (
-        <section style={{ marginTop: '25px' }}>
-        <Typography variant='h2' component='h2' align='center' paddingBottom={2}>Boards</Typography>
+        <section style={{ marginTop: '64px' }}>
             <Card elevation={6}>
                 <Grid container 
-                    direction="row"
-                    justifyContent="center"
-                    spacing={{ xs: 1, md: 2 }}
-                    column={{ xs: 3, sm: 7, md: 10 }}
+                    direction="column" 
+                    justifyContent="center" 
                     alignItems="center"
                     paddingBottom={55}
                     paddingTop={5}
                 >
+                <Typography variant='h2' component='h2'>Boards</Typography>
                     {props.boards.map((board) => {
                         return (
-                            <Grid item xs={8} sm={9} md={2.5} lg={2.75} key={board.id}>
-                                <Card elevation={5}>
+                            <Grid item xs={12} sm={12} md={4} lg={4} key={board.id}>
+                                <Card elevation={6}>
                                     <CardContent>
                                         <Typography component='h4' variant='h4'>
                                             {board.boardTitle}
@@ -35,7 +33,7 @@ function ViewBoards(props) {
                                                 View Tasks
                                             </Button>
                                         </Link>
-                                            <br></br>
+
                                         <Link to={'/delete-board'}>
                                             <Button variant='contained' sx={{ marginTop: '16px' }} onClick={() => localStorage.setItem('boardIdToDelete', board.boardId)}>
                                                 Delete Board

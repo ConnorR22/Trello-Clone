@@ -4,7 +4,7 @@ import Select from "react-select";
 import {Button, TextField} from "@mui/material";
 
 /* functionality for stagnant registration */
-function NavigationTasks(){
+function NavigationTasksFiltered(){
 
     const filterRef = useRef();
     const [dateType, setDateType] = useState({ label: "Today", value: 1 });
@@ -28,12 +28,19 @@ function NavigationTasks(){
         history.go(0)
     }
 
+    function unFilter(e) {
+        e.preventDefault();
+
+        console.log(boardId);
+
+        history.replace(`/tasks/${boardId}`)
+        history.go(0)
+    }
+
     function filterName(e) {
         e.preventDefault();
         const search = filterRef.current.value;
         localStorage.setItem('searchFilter', filterRef.current.value);
-
-        console.log(search)
 
         history.replace(`/filteredName/${boardId}/${search}`)
         history.go(0)
@@ -41,7 +48,6 @@ function NavigationTasks(){
 
     return(
         <nav>
-
 
             <ul>
                 <li><Link to="/login">Logout</Link></li>
@@ -57,10 +63,9 @@ function NavigationTasks(){
                     onChange={ (value) => setDateType(value)}
                 />
                 <Button type='submit' variant='contained' color='primary' sx={{ margin: '4px'}}>
-                    Filter Dates
+                    Filter Date
                 </Button>
             </form>
-
             <form onSubmit={filterName}>
                 <TextField
                     id='filter'
@@ -73,10 +78,16 @@ function NavigationTasks(){
                     Search Tasks
                 </Button>
             </form>
+            <form onSubmit={unFilter}>
+                <Button type='submit' variant='contained' color='primary' sx={{ margin: '4px'}}>
+                    Unfilter Results
+                </Button>
+            </form>
+
 
         </nav>
 
 
     );
 }
-export default NavigationTasks;
+export default NavigationTasksFiltered;

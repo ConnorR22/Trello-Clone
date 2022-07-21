@@ -15,9 +15,9 @@ public interface IBoardService {
 
     boolean addTaskToBoard(int boardId, int taskId);
 
-    List<TaskModel> getTasks(int boardId);
+    List<TaskModel> getTasks(int boardId, String status);
 
-    List<TaskModel> getDateFiltered(int boardId, Date date, int when);
+    List<TaskModel> getDateFiltered(int boardId, String status, int when);
 
-    List<TaskModel> getNameFiltered(int boardId, String filter);
+    List<TaskModel> getNameFiltered(int boardId, String status, String filter);
 }
