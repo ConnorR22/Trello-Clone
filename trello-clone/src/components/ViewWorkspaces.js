@@ -11,7 +11,7 @@ function ViewWorkspaces(props) {
                     direction="row"
                     justifyContent="center"
                     spacing={{ xs: 1, md: 2 }}
-                    column={{ xs: 3, sm: 7, md: 10 }}
+                    column={{ xs: 3, sm: 6, md: 10 }}
                     alignItems="center"
                     paddingBottom={55}
                     paddingTop={5}
