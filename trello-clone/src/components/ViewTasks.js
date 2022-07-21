@@ -8,7 +8,7 @@ function ViewTasks(props) {
 
     return (
         <section style={{ marginTop: '25px' }}>
-        <Typography variant='h2' component='h2' align='center' paddingBottom={2}>Tasks</Typography>
+        {/*<Typography variant='h2' component='h2' align='center' paddingBottom={2}>Tasks</Typography>*/}
             <Card elevation={6}>
                 <Grid container
                       direction="row"
@@ -16,13 +16,13 @@ function ViewTasks(props) {
                       spacing={{ xs: 1, md: 2 }}
                       column={{ xs: 3, sm: 7, md: 10 }}
                       alignItems="center"
-                      paddingBottom={55}
+                      paddingBottom={5}
                       paddingTop={5}
                 >
 
                     {props.tasks.map((task) => {
                         return (
-                            <Grid item xs={8} sm={9} md={2.5} lg={2.75} key={task.id}>
+                            <Grid item xs={8} sm={9} md={2.5} lg={2.75} key={task.taskId}>
                                 <Card elevation={5}>
                                     <CardContent>
                                         <Typography component='h4' variant='h4'>
