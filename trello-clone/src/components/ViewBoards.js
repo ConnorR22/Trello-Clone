@@ -19,7 +19,6 @@ function ViewBoards(props) {
                     paddingBottom={55}
                     paddingTop={5}
                 >
-                <Typography variant='h2' component='h2'>Boards</Typography>
                     {props.boards.map((board) => {
                         return (
                             <Grid item xs={8} sm={9} md={2.5} lg={2.75} key={board.id}>
