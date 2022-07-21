@@ -105,7 +105,7 @@ public class UserService implements IUserService {
 
     private List<WorkspaceModel> getWorkspaceModels(List<WorkspaceModel> workspaces) {
         if (workspaces == null) {
-            workspaces = new ArrayList<WorkspaceModel>();
+            workspaces = new ArrayList<>();
         }
         return workspaces;
     }
@@ -137,59 +137,6 @@ public class UserService implements IUserService {
         }
         return user;
     }
-
-//
-//    //sanjay
-//    @Autowired
-//    IWorkspaceService workspaceService;
-//
-//
-//public List<WorkspaceModel> getUserWorkspaces(int userId) {
-//
-//    Optional<UserModel> user = null;
-//    List<WorkspaceModel> workspacemodel = null;
-//    user = userRepository.findById(userId);
-//    if (user.isPresent()) {
-//
-//        workspacemodel = user.get().getWorkspace_list();
-//
-//    }
-//
-//        return workspacemodel;
-//
-//}
-//
-//
-//    @Override
-//    public void addWorkspaceToUser(int userId, int workspaceId) {
-//
-//        Optional<UserModel> user = null;
-//
-//        try {
-//            user = userRepository.findById(userId);
-//            if (user.isPresent()) {
-//
-//                UserModel usermodel = user.get();
-//                WorkspaceModel workspacemodel = workspaceService.findWorkspaceByID(workspaceId);
-//
-//                List<WorkspaceModel> workspace_list = usermodel.getWorkspace_list();
-//
-//                if (workspace_list == null) {
-//                    workspace_list = new ArrayList<>();
-//                }
-//
-//                workspace_list.add(workspacemodel);
-//                usermodel.setWorkspace_list(workspace_list);
-//                userRepository.save(usermodel);
-//
-//            }
-//
-//        } catch (Exception err) {
-//            System.out.println("Cannot add workspace to user");
-//
-//        }
-//
-//    }
 
     @Override
     public void deleteWorkspaceFromUser(int userId, WorkspaceModel workspace) {
