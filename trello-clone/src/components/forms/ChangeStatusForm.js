@@ -26,13 +26,13 @@ function ChangeStatusForm(props) {
     };
 
     return (
-        <section style={{ marginTop: '70px' }}>
+        <section style={{ marginTop: '30px' }}>
             <Card elevation={6}>
                 <Grid container
                       direction="column"
                       justifyContent="center"
                       alignItems="center"
-                      padding={10}
+                      padding={20}
                 >
                     <Typography variant='h2'>Change Status</Typography>
                     <br></br>
@@ -45,6 +45,7 @@ function ChangeStatusForm(props) {
                         <Button type='submit' variant='contained' color='primary' sx={{ marginTop: '16px'}}>
                             Update Status
                         </Button>
+                        <br></br>
                         <Link to={'/tasks/'+localStorage.getItem('current_boardId')}>
                             <Button type='submit' variant='contained' color='primary' sx={{ marginTop: '16px'}}>
                                 Back to Tasks
