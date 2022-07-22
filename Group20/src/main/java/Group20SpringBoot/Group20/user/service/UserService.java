@@ -141,7 +141,7 @@ public class UserService implements IUserService {
     @Override
     public void deleteWorkspaceFromUser(int userId, WorkspaceModel workspace) {
 
-            Optional<UserModel> user = null;
+            Optional<UserModel> user;
             try {
                 user = userRepository.findById(userId);
                 if (user.isPresent()) {
