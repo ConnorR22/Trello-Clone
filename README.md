@@ -1,7 +1,7 @@
 # CSCI 3130 - Software Engineering (Summer 2022)
 
 - Date Created: 2022 07 07
-- Date Modified: 2022 07 07
+- Date Modified: 2022 07 22
 
 # Team
 
@@ -34,6 +34,10 @@
 - Date accessed: July 4, 2022
 - URL: https://v5.reactrouter.com/web/guides/quick-start
 
+## React Date Picker
+- Date accessed: July 18, 2022
+- URL: https://www.npmjs.com/package/react-datepicker
+
 ## Mockito
 - Date accessed: June 25, 2022
 - URL: https://site.mockito.org/
@@ -56,6 +60,7 @@
 - npm install
 - npm install react-router-dom@5.2.0
 - npm install @material-ui/core
+- npm install react-datepicker --save
 
 
 ## Running the Frontend
