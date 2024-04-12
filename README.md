@@ -1,7 +1,7 @@
 # Trello Clone
 
 # Project
-A web based trello application clone built using ReactJS and Spring Boot for a university course final project.
+A full-stack web application clone of Trello built using ReactJS and Spring Boot for a university course final project.
 Project focused on demonstrating agile principles in software development, back-end development utilizing SQL database structure and MVVM application structure, and user-authentication. 
 
 ## App Features
