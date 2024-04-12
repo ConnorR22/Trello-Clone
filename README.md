@@ -1,30 +1,19 @@
-# CSCI 3130 - Software Engineering (Summer 2022)
-
-- Date Created: 2022 07 07
-- Date Modified: 2022 07 22
-
-# Team
-
-- Team Name: Group 20
-- Team Members:
-  - (B00738568) | [Lynda Ofume | ly863136@dal.ca](ly863136@dal.ca)
-  - (B00829324) | [Connor Russell | cn714299@dal.ca](cn714299@dal.ca)
-  - (B00811710) | [Daniyal Nawaz | dn780329@dal.ca](dn780329@dal.ca)
-  - (B00853337) | [Sanjay Jose | sanjay.jose@dal.ca](sanjay.jose@dal.ca)
-  - (B00846130) | [Sei-Jin Tufts | sj295306@dal.ca](sj295306@dal.ca)
-
+# Trello Clone
 
 # Project
+A web based trello application clone built using ReactJS and Spring Boot for a university course final project.
+Project focused on demonstrating agile principles in software development, back-end development utilizing SQL database structure and MVVM application structure, and user-authentication. 
 
-- Project Name: Trello Application
-- Project Description: A web based trello application clone build using ReactJS and Spring Boot
-- Inception Year: 2022
+## App Features
+- User-Authentication
+- Workspace Creation and User Collaboration
+- Task Creation, Tracking, Search and Filtering
 
-# Links
-
-- [GitLab Project](https://git.cs.dal.ca/courses/2022-summer/csci-3130/projects/group20)
-
-# Citations
+## Technical Aspects
+- MVVM Structure
+- SQL Database using MySQL
+- SpringBoot back-end
+- ReactJS front-end
 
 ## Material-ui
 - Date accessed: July 3, 2022
