@@ -79,11 +79,3 @@ Project focused on demonstrating agile principles in software development, back-
 ## Running the Backend
 
 - Open the backend on the IDE of choice, locate and run the TrelloCloneApplication.java
-
-# Instructor
-
-- [Dr. Tushar Sharma | tushar@dal.ca](tushar@dal.ca)
-
-# Teaching Assistant
-
-- [Nikita Kothari | nikita.kothari@dal.ca](nikita.kothari@dal.ca)
